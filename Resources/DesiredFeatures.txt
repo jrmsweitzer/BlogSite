@@ -18,3 +18,5 @@ On each blog post:
 On the main page
  n blogs, most recent, highest viewed, highest rated, etc.
  Dropdown to sort
+
+--Edited--
