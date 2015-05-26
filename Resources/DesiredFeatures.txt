@@ -1,0 +1,20 @@
+Everywhere:
+ Search Bar - Search by {Tag, Title, Content}
+ Navigation Bar - Home, My account, Literature, Veganism, Animals, Art, ???
+ 
+Advance Search:
+ Sort by {CreateDate, Views, Likes, Shares}
+
+On each blog post:
+ Title
+ CreateDate
+ Content
+ Tags
+ Views
+ Share on Facebook, Twitter, etc.
+ Likes
+ Unobtrusive ads
+
+On the main page
+ n blogs, most recent, highest viewed, highest rated, etc.
+ Dropdown to sort
