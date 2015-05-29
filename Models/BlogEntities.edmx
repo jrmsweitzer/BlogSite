@@ -1,0 +1,626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Post" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="NumViews" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NumShares" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlogLike">
+          <Key>
+            <PropertyRef Name="BlogLikeID" />
+          </Key>
+          <Property Name="BlogLikeID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlogTag">
+          <Key>
+            <PropertyRef Name="BlogTagID" />
+          </Key>
+          <Property Name="BlogTagID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TagID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Post" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommentLike">
+          <Key>
+            <PropertyRef Name="CommentLikeID" />
+          </Key>
+          <Property Name="CommentLikeID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PermissionID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HashedPassword" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="JoinDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Blog_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogLike_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="BlogLike" Type="Self.BlogLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="BlogLike">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogLike_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="BlogLike" Type="Self.BlogLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BlogLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogTag_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="BlogTag" Type="Self.BlogTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="BlogTag">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="BlogTag" Type="Self.BlogTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="BlogTag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentLike_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="1" />
+          <End Role="CommentLike" Type="Self.CommentLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentID" />
+            </Principal>
+            <Dependent Role="CommentLike">
+              <PropertyRef Name="CommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentLike_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="CommentLike" Type="Self.CommentLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogLike" EntityType="Self.BlogLike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogTag" EntityType="Self.BlogTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentLike" EntityType="Self.CommentLike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Blog_User" Association="Self.FK_Blog_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogLike_Blog" Association="Self.FK_BlogLike_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="BlogLike" EntitySet="BlogLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogLike_User" Association="Self.FK_BlogLike_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="BlogLike" EntitySet="BlogLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogTag_Blog" Association="Self.FK_BlogTag_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="BlogTag" EntitySet="BlogTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogTag_Tag" Association="Self.FK_BlogTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="BlogTag" EntitySet="BlogTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Blog" Association="Self.FK_Comment_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentLike_Comment" Association="Self.FK_CommentLike_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="CommentLike" EntitySet="CommentLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentLike_User" Association="Self.FK_CommentLike_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="CommentLike" EntitySet="CommentLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Permission" Association="Self.FK_User_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Post" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NumViews" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NumShares" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Blog_User" FromRole="Blog" ToRole="User" />
+          <NavigationProperty Name="BlogLikes" Relationship="Self.FK_BlogLike_Blog" FromRole="Blog" ToRole="BlogLike" />
+          <NavigationProperty Name="BlogTags" Relationship="Self.FK_BlogTag_Blog" FromRole="Blog" ToRole="BlogTag" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Blog" FromRole="Blog" ToRole="Comment" />
+        </EntityType>
+        <EntityType Name="BlogLike">
+          <Key>
+            <PropertyRef Name="BlogLikeID" />
+          </Key>
+          <Property Name="BlogLikeID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_BlogLike_Blog" FromRole="BlogLike" ToRole="Blog" />
+          <NavigationProperty Name="User" Relationship="Self.FK_BlogLike_User" FromRole="BlogLike" ToRole="User" />
+        </EntityType>
+        <EntityType Name="BlogTag">
+          <Key>
+            <PropertyRef Name="BlogTagID" />
+          </Key>
+          <Property Name="BlogTagID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TagID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_BlogTag_Blog" FromRole="BlogTag" ToRole="Blog" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_BlogTag_Tag" FromRole="BlogTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Post" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_Comment_Blog" FromRole="Comment" ToRole="Blog" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Comment_User" FromRole="Comment" ToRole="User" />
+          <NavigationProperty Name="CommentLikes" Relationship="Self.FK_CommentLike_Comment" FromRole="Comment" ToRole="CommentLike" />
+        </EntityType>
+        <EntityType Name="CommentLike">
+          <Key>
+            <PropertyRef Name="CommentLikeID" />
+          </Key>
+          <Property Name="CommentLikeID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_CommentLike_Comment" FromRole="CommentLike" ToRole="Comment" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CommentLike_User" FromRole="CommentLike" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Permission" FromRole="Permission" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BlogTags" Relationship="Self.FK_BlogTag_Tag" FromRole="Tag" ToRole="BlogTag" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PermissionID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HashedPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_User" FromRole="User" ToRole="Blog" />
+          <NavigationProperty Name="BlogLikes" Relationship="Self.FK_BlogLike_User" FromRole="User" ToRole="BlogLike" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_User" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="CommentLikes" Relationship="Self.FK_CommentLike_User" FromRole="User" ToRole="CommentLike" />
+          <NavigationProperty Name="Permission" Relationship="Self.FK_User_Permission" FromRole="User" ToRole="Permission" />
+        </EntityType>
+        <Association Name="FK_Blog_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogLike_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="BlogLike" Type="Self.BlogLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="BlogLike">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogTag_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="BlogTag" Type="Self.BlogTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="BlogTag">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogLike_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="BlogLike" Type="Self.BlogLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BlogLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="BlogTag" Type="Self.BlogTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="BlogTag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentLike_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="1" />
+          <End Role="CommentLike" Type="Self.CommentLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentID" />
+            </Principal>
+            <Dependent Role="CommentLike">
+              <PropertyRef Name="CommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentLike_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="CommentLike" Type="Self.CommentLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CommentLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BlogEntitiesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Blogs" EntityType="Self.Blog" />
+          <EntitySet Name="BlogLikes" EntityType="Self.BlogLike" />
+          <EntitySet Name="BlogTags" EntityType="Self.BlogTag" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="CommentLikes" EntityType="Self.CommentLike" />
+          <EntitySet Name="Permissions" EntityType="Self.Permission" />
+          <EntitySet Name="Tags" EntityType="Self.Tag" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Blog_User" Association="Self.FK_Blog_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Blog" EntitySet="Blogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogLike_Blog" Association="Self.FK_BlogLike_Blog">
+            <End Role="Blog" EntitySet="Blogs" />
+            <End Role="BlogLike" EntitySet="BlogLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogTag_Blog" Association="Self.FK_BlogTag_Blog">
+            <End Role="Blog" EntitySet="Blogs" />
+            <End Role="BlogTag" EntitySet="BlogTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Blog" Association="Self.FK_Comment_Blog">
+            <End Role="Blog" EntitySet="Blogs" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogLike_User" Association="Self.FK_BlogLike_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="BlogLike" EntitySet="BlogLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogTag_Tag" Association="Self.FK_BlogTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="BlogTag" EntitySet="BlogTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentLike_Comment" Association="Self.FK_CommentLike_Comment">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="CommentLike" EntitySet="CommentLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentLike_User" Association="Self.FK_CommentLike_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CommentLike" EntitySet="CommentLikes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Permission" Association="Self.FK_User_Permission">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="BlogEntitiesEntities">
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="Models.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="NumViews" ColumnName="NumViews" />
+                <ScalarProperty Name="NumShares" ColumnName="NumShares" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogLikes">
+            <EntityTypeMapping TypeName="Models.BlogLike">
+              <MappingFragment StoreEntitySet="BlogLike">
+                <ScalarProperty Name="BlogLikeID" ColumnName="BlogLikeID" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogTags">
+            <EntityTypeMapping TypeName="Models.BlogTag">
+              <MappingFragment StoreEntitySet="BlogTag">
+                <ScalarProperty Name="BlogTagID" ColumnName="BlogTagID" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="Models.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentLikes">
+            <EntityTypeMapping TypeName="Models.CommentLike">
+              <MappingFragment StoreEntitySet="CommentLike">
+                <ScalarProperty Name="CommentLikeID" ColumnName="CommentLikeID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="Models.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="Models.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Models.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HashedPassword" ColumnName="HashedPassword" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
