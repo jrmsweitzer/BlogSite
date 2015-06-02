@@ -1,7 +1,7 @@
 USE [master]
 GO
 
-/****** Object:  Database [BlogEntities]    Script Date: 5/28/2015 7:24:27 PM ******/
+/****** Object:  Database [BlogEntities]    Script Date: 05/29/2015 19:58:07 ******/
 CREATE DATABASE [BlogEntities] ON  PRIMARY 
 ( NAME = N'BlogEntities', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\BlogEntities.mdf' , SIZE = 2048KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
@@ -33,6 +33,9 @@ ALTER DATABASE [BlogEntities] SET ARITHABORT OFF
 GO
 
 ALTER DATABASE [BlogEntities] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [BlogEntities] SET AUTO_CREATE_STATISTICS ON 
 GO
 
 ALTER DATABASE [BlogEntities] SET AUTO_SHRINK OFF 
@@ -83,6 +86,9 @@ GO
 ALTER DATABASE [BlogEntities] SET HONOR_BROKER_PRIORITY OFF 
 GO
 
+ALTER DATABASE [BlogEntities] SET  READ_WRITE 
+GO
+
 ALTER DATABASE [BlogEntities] SET RECOVERY FULL 
 GO
 
@@ -95,7 +101,267 @@ GO
 ALTER DATABASE [BlogEntities] SET DB_CHAINING OFF 
 GO
 
-ALTER DATABASE [BlogEntities] SET  READ_WRITE 
+
+USE [BlogEntities]
+GO
+
+/****** Object:  Table [dbo].[Tag]    Script Date: 05/29/2015 20:02:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tag](
+	[ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Tag] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+USE [BlogEntities]
+GO
+
+/****** Object:  Table [dbo].[Permission]    Script Date: 05/29/2015 20:03:37 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Permission](
+	[ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Permission] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+USE [BlogEntities]
+GO
+
+/****** Object:  Table [dbo].[User]    Script Date: 05/29/2015 20:03:57 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[User](
+	[ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+	[PermissionID] [numeric](18, 0) NOT NULL,
+	[UserName] [nvarchar](50) NOT NULL,
+	[HashedPassword] [nvarchar](max) NOT NULL,
+	[JoinDate] [datetime] NOT NULL,
+	[IsActive] [bit] NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Permission] FOREIGN KEY([PermissionID])
+REFERENCES [dbo].[Permission] ([ID])
+GO
+
+ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Permission]
+GO
+
+
+USE [BlogEntities]
+GO
+
+/****** Object:  Table [dbo].[Blog]    Script Date: 05/29/2015 20:04:38 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Blog](
+	[ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+	[UserID] [numeric](18, 0) NOT NULL,
+	[Title] [nvarchar](50) NOT NULL,
+	[Post] [nvarchar](max) NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[ApprovalDate] [datetime] NOT NULL,
+	[NumViews] [numeric](18, 0) NOT NULL,
+	[NumShares] [numeric](18, 0) NOT NULL,
+	[IsApproved] [bit] NOT NULL,
+ CONSTRAINT [PK_Blog] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Blog]  WITH CHECK ADD  CONSTRAINT [FK_Blog_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[Blog] CHECK CONSTRAINT [FK_Blog_User]
+GO
+
+
+USE [BlogEntities]
+GO
+
+/****** Object:  Table [dbo].[BlogLike]    Script Date: 05/29/2015 20:05:00 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[BlogLike](
+	[ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+	[BlogID] [numeric](18, 0) NOT NULL,
+	[UserID] [numeric](18, 0) NOT NULL,
+ CONSTRAINT [PK_BlogLike] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[BlogLike]  WITH CHECK ADD  CONSTRAINT [FK_BlogLike_Blog] FOREIGN KEY([BlogID])
+REFERENCES [dbo].[Blog] ([ID])
+GO
+
+ALTER TABLE [dbo].[BlogLike] CHECK CONSTRAINT [FK_BlogLike_Blog]
+GO
+
+ALTER TABLE [dbo].[BlogLike]  WITH CHECK ADD  CONSTRAINT [FK_BlogLike_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[BlogLike] CHECK CONSTRAINT [FK_BlogLike_User]
+GO
+
+
+USE [BlogEntities]
+GO
+
+/****** Object:  Table [dbo].[BlogTag]    Script Date: 05/29/2015 20:05:32 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[BlogTag](
+	[ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+	[BlogID] [numeric](18, 0) NOT NULL,
+	[TagID] [numeric](18, 0) NOT NULL,
+ CONSTRAINT [PK_BlogTag] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[BlogTag]  WITH CHECK ADD  CONSTRAINT [FK_BlogTag_Blog] FOREIGN KEY([BlogID])
+REFERENCES [dbo].[Blog] ([ID])
+GO
+
+ALTER TABLE [dbo].[BlogTag] CHECK CONSTRAINT [FK_BlogTag_Blog]
+GO
+
+ALTER TABLE [dbo].[BlogTag]  WITH CHECK ADD  CONSTRAINT [FK_BlogTag_Tag] FOREIGN KEY([TagID])
+REFERENCES [dbo].[Tag] ([ID])
+GO
+
+ALTER TABLE [dbo].[BlogTag] CHECK CONSTRAINT [FK_BlogTag_Tag]
+GO
+
+
+USE [BlogEntities]
+GO
+
+/****** Object:  Table [dbo].[Comment]    Script Date: 05/29/2015 20:05:56 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Comment](
+	[ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+	[UserID] [numeric](18, 0) NOT NULL,
+	[BlogID] [numeric](18, 0) NOT NULL,
+	[Post] [nvarchar](max) NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Comment] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Comment]  WITH CHECK ADD  CONSTRAINT [FK_Comment_Blog] FOREIGN KEY([BlogID])
+REFERENCES [dbo].[Blog] ([ID])
+GO
+
+ALTER TABLE [dbo].[Comment] CHECK CONSTRAINT [FK_Comment_Blog]
+GO
+
+ALTER TABLE [dbo].[Comment]  WITH CHECK ADD  CONSTRAINT [FK_Comment_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[Comment] CHECK CONSTRAINT [FK_Comment_User]
+GO
+
+
+USE [BlogEntities]
+GO
+
+/****** Object:  Table [dbo].[CommentLike]    Script Date: 05/29/2015 20:06:10 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CommentLike](
+	[ID] [numeric](18, 0) NOT NULL,
+	[CommentID] [numeric](18, 0) NOT NULL,
+	[UserID] [numeric](18, 0) NOT NULL,
+ CONSTRAINT [PK_CommentLike] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[CommentLike]  WITH CHECK ADD  CONSTRAINT [FK_CommentLike_Comment] FOREIGN KEY([CommentID])
+REFERENCES [dbo].[Comment] ([ID])
+GO
+
+ALTER TABLE [dbo].[CommentLike] CHECK CONSTRAINT [FK_CommentLike_Comment]
+GO
+
+ALTER TABLE [dbo].[CommentLike]  WITH CHECK ADD  CONSTRAINT [FK_CommentLike_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[CommentLike] CHECK CONSTRAINT [FK_CommentLike_User]
 GO
 
 

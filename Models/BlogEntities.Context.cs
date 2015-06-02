@@ -13,10 +13,10 @@ namespace Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BlogEntitiesEntities : DbContext
+    public partial class BlogEntities : DbContext
     {
-        public BlogEntitiesEntities()
-            : base("name=BlogEntitiesEntities")
+        public BlogEntities()
+            : base("name=BlogEntities")
         {
         }
     

@@ -19,7 +19,7 @@ namespace Models
             this.CommentLikes = new HashSet<CommentLike>();
         }
     
-        public decimal CommentID { get; set; }
+        public decimal ID { get; set; }
         public decimal UserID { get; set; }
         public decimal BlogID { get; set; }
         public string Post { get; set; }

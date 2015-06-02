@@ -7,38 +7,39 @@
       <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Blog">
           <Key>
-            <PropertyRef Name="BlogID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Post" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ApprovalDate" Type="datetime" Nullable="false" />
           <Property Name="NumViews" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="NumShares" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="IsApproved" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="BlogLike">
           <Key>
-            <PropertyRef Name="BlogLikeID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="BlogLikeID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="BlogTag">
           <Key>
-            <PropertyRef Name="BlogTagID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="BlogTagID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="TagID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
-            <PropertyRef Name="CommentID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="CommentID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Post" Type="nvarchar(max)" Nullable="false" />
@@ -46,31 +47,31 @@
         </EntityType>
         <EntityType Name="CommentLike">
           <Key>
-            <PropertyRef Name="CommentLikeID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="CommentLikeID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CommentID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Permission">
           <Key>
-            <PropertyRef Name="PermissionID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="PermissionID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
-            <PropertyRef Name="TagID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="TagID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PermissionID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="HashedPassword" Type="nvarchar(max)" Nullable="false" />
@@ -82,7 +83,7 @@
           <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Blog">
               <PropertyRef Name="UserID" />
@@ -94,7 +95,7 @@
           <End Role="BlogLike" Type="Self.BlogLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Blog">
-              <PropertyRef Name="BlogID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BlogLike">
               <PropertyRef Name="BlogID" />
@@ -106,7 +107,7 @@
           <End Role="BlogLike" Type="Self.BlogLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BlogLike">
               <PropertyRef Name="UserID" />
@@ -118,7 +119,7 @@
           <End Role="BlogTag" Type="Self.BlogTag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Blog">
-              <PropertyRef Name="BlogID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BlogTag">
               <PropertyRef Name="BlogID" />
@@ -130,7 +131,7 @@
           <End Role="BlogTag" Type="Self.BlogTag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tag">
-              <PropertyRef Name="TagID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BlogTag">
               <PropertyRef Name="TagID" />
@@ -142,7 +143,7 @@
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Blog">
-              <PropertyRef Name="BlogID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Comment">
               <PropertyRef Name="BlogID" />
@@ -154,7 +155,7 @@
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Comment">
               <PropertyRef Name="UserID" />
@@ -166,7 +167,7 @@
           <End Role="CommentLike" Type="Self.CommentLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Comment">
-              <PropertyRef Name="CommentID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="CommentLike">
               <PropertyRef Name="CommentID" />
@@ -178,7 +179,7 @@
           <End Role="CommentLike" Type="Self.CommentLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="CommentLike">
               <PropertyRef Name="UserID" />
@@ -190,7 +191,7 @@
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Permission">
-              <PropertyRef Name="PermissionID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="PermissionID" />
@@ -254,13 +255,14 @@
       <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Blog">
           <Key>
-            <PropertyRef Name="BlogID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Post" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApprovalDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NumViews" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="NumShares" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
@@ -271,9 +273,9 @@
         </EntityType>
         <EntityType Name="BlogLike">
           <Key>
-            <PropertyRef Name="BlogLikeID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="BlogLikeID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="Blog" Relationship="Self.FK_BlogLike_Blog" FromRole="BlogLike" ToRole="Blog" />
@@ -281,9 +283,9 @@
         </EntityType>
         <EntityType Name="BlogTag">
           <Key>
-            <PropertyRef Name="BlogTagID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="BlogTagID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="TagID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="Blog" Relationship="Self.FK_BlogTag_Blog" FromRole="BlogTag" ToRole="Blog" />
@@ -291,9 +293,9 @@
         </EntityType>
         <EntityType Name="Comment">
           <Key>
-            <PropertyRef Name="CommentID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="CommentID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Post" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -304,9 +306,9 @@
         </EntityType>
         <EntityType Name="CommentLike">
           <Key>
-            <PropertyRef Name="CommentLikeID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="CommentLikeID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CommentID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_CommentLike_Comment" FromRole="CommentLike" ToRole="Comment" />
@@ -314,25 +316,25 @@
         </EntityType>
         <EntityType Name="Permission">
           <Key>
-            <PropertyRef Name="PermissionID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="PermissionID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_User_Permission" FromRole="Permission" ToRole="User" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
-            <PropertyRef Name="TagID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="TagID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="BlogTags" Relationship="Self.FK_BlogTag_Tag" FromRole="Tag" ToRole="BlogTag" />
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PermissionID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HashedPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -349,7 +351,7 @@
           <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Blog">
               <PropertyRef Name="UserID" />
@@ -361,7 +363,7 @@
           <End Role="BlogLike" Type="Self.BlogLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Blog">
-              <PropertyRef Name="BlogID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BlogLike">
               <PropertyRef Name="BlogID" />
@@ -373,7 +375,7 @@
           <End Role="BlogTag" Type="Self.BlogTag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Blog">
-              <PropertyRef Name="BlogID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BlogTag">
               <PropertyRef Name="BlogID" />
@@ -385,7 +387,7 @@
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Blog">
-              <PropertyRef Name="BlogID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Comment">
               <PropertyRef Name="BlogID" />
@@ -397,7 +399,7 @@
           <End Role="BlogLike" Type="Self.BlogLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BlogLike">
               <PropertyRef Name="UserID" />
@@ -409,7 +411,7 @@
           <End Role="BlogTag" Type="Self.BlogTag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tag">
-              <PropertyRef Name="TagID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BlogTag">
               <PropertyRef Name="TagID" />
@@ -421,7 +423,7 @@
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Comment">
               <PropertyRef Name="UserID" />
@@ -433,7 +435,7 @@
           <End Role="CommentLike" Type="Self.CommentLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Comment">
-              <PropertyRef Name="CommentID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="CommentLike">
               <PropertyRef Name="CommentID" />
@@ -445,7 +447,7 @@
           <End Role="CommentLike" Type="Self.CommentLike" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="CommentLike">
               <PropertyRef Name="UserID" />
@@ -457,14 +459,14 @@
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Permission">
-              <PropertyRef Name="PermissionID" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="PermissionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BlogEntitiesEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BlogEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Blogs" EntityType="Self.Blog" />
           <EntitySet Name="BlogLikes" EntityType="Self.BlogLike" />
           <EntitySet Name="BlogTags" EntityType="Self.BlogTag" />
@@ -519,15 +521,16 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="BlogEntitiesEntities">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="BlogEntities">
           <EntitySetMapping Name="Blogs">
             <EntityTypeMapping TypeName="Models.Blog">
               <MappingFragment StoreEntitySet="Blog">
-                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Post" ColumnName="Post" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
                 <ScalarProperty Name="NumViews" ColumnName="NumViews" />
                 <ScalarProperty Name="NumShares" ColumnName="NumShares" />
                 <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
@@ -537,7 +540,7 @@
           <EntitySetMapping Name="BlogLikes">
             <EntityTypeMapping TypeName="Models.BlogLike">
               <MappingFragment StoreEntitySet="BlogLike">
-                <ScalarProperty Name="BlogLikeID" ColumnName="BlogLikeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="BlogID" ColumnName="BlogID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
@@ -546,7 +549,7 @@
           <EntitySetMapping Name="BlogTags">
             <EntityTypeMapping TypeName="Models.BlogTag">
               <MappingFragment StoreEntitySet="BlogTag">
-                <ScalarProperty Name="BlogTagID" ColumnName="BlogTagID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="BlogID" ColumnName="BlogID" />
                 <ScalarProperty Name="TagID" ColumnName="TagID" />
               </MappingFragment>
@@ -555,7 +558,7 @@
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="Models.Comment">
               <MappingFragment StoreEntitySet="Comment">
-                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="BlogID" ColumnName="BlogID" />
                 <ScalarProperty Name="Post" ColumnName="Post" />
@@ -566,7 +569,7 @@
           <EntitySetMapping Name="CommentLikes">
             <EntityTypeMapping TypeName="Models.CommentLike">
               <MappingFragment StoreEntitySet="CommentLike">
-                <ScalarProperty Name="CommentLikeID" ColumnName="CommentLikeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CommentID" ColumnName="CommentID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
@@ -575,7 +578,7 @@
           <EntitySetMapping Name="Permissions">
             <EntityTypeMapping TypeName="Models.Permission">
               <MappingFragment StoreEntitySet="Permission">
-                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -583,7 +586,7 @@
           <EntitySetMapping Name="Tags">
             <EntityTypeMapping TypeName="Models.Tag">
               <MappingFragment StoreEntitySet="Tag">
-                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -591,7 +594,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Models.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="HashedPassword" ColumnName="HashedPassword" />

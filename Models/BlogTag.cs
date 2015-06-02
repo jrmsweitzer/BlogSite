@@ -14,7 +14,7 @@ namespace Models
     
     public partial class BlogTag
     {
-        public decimal BlogTagID { get; set; }
+        public decimal ID { get; set; }
         public decimal BlogID { get; set; }
         public decimal TagID { get; set; }
     

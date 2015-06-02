@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using BlogSite.Models;
+using BlogSite.ViewModels;
 
 namespace BlogSite.Controllers
 {

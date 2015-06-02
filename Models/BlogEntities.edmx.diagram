@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="da63082fbdce4b7c96bdab487ec083b2" Name="Diagram1">
-        <EntityTypeShape EntityType="Models.Blog" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+      <Diagram DiagramId="ac9dbf86c92f4c2cb256f3940ce6618b" Name="Diagram1">
+        <EntityTypeShape EntityType="Models.Blog" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.BlogLike" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.BlogTag" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.Comment" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />

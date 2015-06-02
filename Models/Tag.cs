@@ -19,7 +19,7 @@ namespace Models
             this.BlogTags = new HashSet<BlogTag>();
         }
     
-        public decimal TagID { get; set; }
+        public decimal ID { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<BlogTag> BlogTags { get; set; }

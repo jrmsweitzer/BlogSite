@@ -23,7 +23,7 @@ namespace Services.Impl
         /// </summary>
         /// <param name="password">The password to hash.</param>
         /// <returns>The hash of the password.</returns>
-        public static string CreateHash(string password)
+        public string CreateHash(string password)
         {
             // Generate a random salt
             RNGCryptoServiceProvider csprng = new RNGCryptoServiceProvider();
@@ -43,7 +43,7 @@ namespace Services.Impl
         /// <param name="password">The password to check.</param>
         /// <param name="correctHash">A hash of the correct password.</param>
         /// <returns>True if the password is correct. False otherwise.</returns>
-        public static bool ValidatePassword(string password, string correctHash)
+        public bool ValidatePassword(string password, string correctHash)
         {
             // Extract the parameters from the hash
             char[] delimiter = { ':' };

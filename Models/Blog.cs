@@ -21,11 +21,12 @@ namespace Models
             this.Comments = new HashSet<Comment>();
         }
     
-        public decimal BlogID { get; set; }
+        public decimal ID { get; set; }
         public decimal UserID { get; set; }
         public string Title { get; set; }
         public string Post { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public System.DateTime ApprovalDate { get; set; }
         public decimal NumViews { get; set; }
         public decimal NumShares { get; set; }
         public bool IsApproved { get; set; }

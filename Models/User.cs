@@ -22,7 +22,7 @@ namespace Models
             this.CommentLikes = new HashSet<CommentLike>();
         }
     
-        public decimal UserID { get; set; }
+        public decimal ID { get; set; }
         public decimal PermissionID { get; set; }
         public string UserName { get; set; }
         public string HashedPassword { get; set; }

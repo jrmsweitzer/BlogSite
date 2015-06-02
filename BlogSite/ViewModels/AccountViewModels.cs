@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace BlogSite.Models
+namespace BlogSite.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "UserName / Email")]
         public string Email { get; set; }
     }
 

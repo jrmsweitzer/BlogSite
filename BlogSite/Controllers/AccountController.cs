@@ -8,7 +8,11 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using BlogSite.Models;
+using BlogSite.ViewModels;
+using Models;
+using Services.Impl;
+using Utilities;
+using System.Web.Security;
 
 namespace BlogSite.Controllers
 {
@@ -17,15 +21,22 @@ namespace BlogSite.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private EncryptionService _encryptionService;
+        private UserService _userService;
+        private PermissionService _permissionService;
 
         public AccountController()
         {
+            _encryptionService = new EncryptionService();
+            _userService = new UserService();
+            _permissionService = new PermissionService();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _encryptionService = new EncryptionService();
         }
 
         public ApplicationSignInManager SignInManager
@@ -34,9 +45,9 @@ namespace BlogSite.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -73,22 +84,16 @@ namespace BlogSite.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            User user = _userService.GetUserByUserName(model.Email);
+
+            if (user != null && _encryptionService.ValidatePassword(model.Password, user.HashedPassword))
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                Session["User"] = user;
+                FormsAuthentication.SetAuthCookie(model.Email, false);
+                RedirectToLocal(returnUrl);
             }
+
+            return View(model);
         }
 
         //
@@ -120,7 +125,7 @@ namespace BlogSite.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -149,23 +154,25 @@ namespace BlogSite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (_userService.GetUserByUserName(model.Email) == null && ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var user = new User
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    UserName = model.Email,
+                    HashedPassword = _encryptionService.CreateHash(model.Password),
+                    IsActive = true,
+                    JoinDate = DateTime.Now,
+                    PermissionID = _permissionService.GetPermissionByName(Utilities.Constants.Permissions.User).ID
+                };
 
-                    return RedirectToAction("Index", "Home");
+                if (_userService.GetUsers().Count == 0)
+                {
+                    user.PermissionID = _permissionService.GetPermissionByName(Utilities.Constants.Permissions.Admin).ID;
                 }
-                AddErrors(result);
+
+                _userService.AddUser(user);
+                Session["User"] = user;
+                return RedirectToAction("Index", "Home");
             }
 
             // If we got this far, something failed, redisplay form
@@ -387,11 +394,11 @@ namespace BlogSite.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut();
+            Session["User"] = null;
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
 
