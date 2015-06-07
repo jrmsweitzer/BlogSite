@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Repositories
+namespace Models.Repositories.Impl
 {
-    public class UserRepository
+    public class UserRepository : BaseRepository, IUserRepository
     {
-        private BlogEntities _db;
-
         public UserRepository()
         {
             _db = new BlogEntities();
+        }
+
+        public UserRepository(IBlogEntities db)
+        {
+            _db = db;
         }
 
         public List<User> GetUsers()
@@ -30,11 +33,6 @@ namespace Models.Repositories
         public User GetUserByUserName(string username)
         {
             return _db.Users.FirstOrDefault(u => u.UserName.ToLower().Equals(username.ToLower()));
-        }
-
-        public int SaveChanges()
-        {
-            return _db.SaveChanges();
         }
     }
 }

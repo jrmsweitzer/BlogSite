@@ -5,16 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using Models.Repositories;
+using Models.Repositories.Impl;
 
 namespace Services.Impl
 {
     public class UserService
     {
-        private UserRepository _userRepo;
+        private IUserRepository _userRepo;
+
+        public UserService(IBlogEntities db)
+        {
+            _userRepo = new UserRepository(db);
+        }
 
         public UserService()
         {
-            _userRepo = new UserRepository();
+            var db = new BlogEntities();
+            _userRepo = new UserRepository(db);
         }
 
         public List<User> GetUsers()

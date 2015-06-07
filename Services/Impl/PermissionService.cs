@@ -1,5 +1,6 @@
 ﻿using Models;
 using Models.Repositories;
+using Models.Repositories.Impl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,8 @@ namespace Services.Impl
 
         public PermissionService()
         {
-            _permissionRepo = new PermissionRepository();
+            var context = new BlogEntities();
+            _permissionRepo = new PermissionRepository(context);
         }
 
         public Permission GetPermissionByName(string name)

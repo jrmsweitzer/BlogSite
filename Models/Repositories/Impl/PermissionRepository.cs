@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Repositories
+namespace Models.Repositories.Impl
 {
-    public class PermissionRepository
+    public class PermissionRepository : BaseRepository, IPermissionRepository
     {
-        private BlogEntities _db;
-
         public PermissionRepository()
         {
             _db = new BlogEntities();
+        }
+
+        public PermissionRepository(IBlogEntities db)
+        {
+            _db = db;
         }
 
         public Permission GetPermissionByName(string permissionName)
