@@ -1,16 +1,13 @@
 ﻿using Models;
-using Models.KO;
+using Models.KO.Blog;
 using Services.Impl;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BlogSite.Controllers
 {
-    public class BlogController : Controller
+    public class BlogController : BaseController
     {
         private readonly BlogService _blogService;
         private readonly UserService _userService;
@@ -24,16 +21,12 @@ namespace BlogSite.Controllers
         // GET: Blog
         public ActionResult Index()
         {
-            return View(new Blogs());
+            return View(new List());
         }
 
         // GET: Blog/Details/5
         public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Blog blog = _blogService.GetBlogById(id);
             if (blog == null)
             {
@@ -44,11 +37,11 @@ namespace BlogSite.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new BlogModel());
         }
 
         [HttpPost]
-        public ActionResult Create([FromJson] Blog model)
+        public ActionResult Create(BlogModel model)
         {
             User user = _userService.GetAnonymousUser();
 

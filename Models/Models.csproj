@@ -100,7 +100,8 @@
     <Compile Include="Extensions\BlogExtension.cs" />
     <Compile Include="Extensions\UserExt.cs" />
     <Compile Include="IBlogEntities.cs" />
-    <Compile Include="KO\Blogs.cs" />
+    <Compile Include="KO\Blog\BlogModel.cs" />
+    <Compile Include="KO\Blog\List.cs" />
     <Compile Include="Permission.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>

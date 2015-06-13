@@ -1,21 +1,15 @@
-﻿<head>
-    <title>Create New Blog</title>
-    <script src="~/Scripts/App/Blog.js"></script>
-</head>
+﻿@using PerpetuumSoft.Knockout
+@model Models.KO.Blog.BlogModel
+@{
+    var ko = Html.CreateKnockoutContext();
+}
 
-<div id="CreateBlog">
-    <div data-bind="with: currentBlog">
-        <p>Title: <input type="text" name="Title" data-bind="value: Title" /></p>
-        <p>Post: <input data-bind="value: Post" /></p>
-    </div>
-    <p><input type="button" value="Create" data-bind="click: saveBlog"/></p>
-</div>
-
+<p>Title: @ko.Html.TextBox(m => m.Title)</p>
+<p>Post: @ko.Html.TextArea(m => m.Post, new {@width="590px"})</p>
+<p>@ko.Html.HyperlinkButton("Create", "Create", "Blog")</p>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+@ko.Apply(Model)

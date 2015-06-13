@@ -5,6 +5,8 @@ namespace BlogSite
 {
     public class BundleConfig
     {
+        // NOTE::: IF YOU ADD A NEW BUNDLE HERE, ADD IT TO 
+        // BlogSite/Views/Shared/_Layout.cshtml as well.
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -24,7 +26,8 @@ namespace BlogSite
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
-                      "~/Scripts/knockout*"));
+                      "~/Scripts/knockout*",
+                      "~/Scripts/perpetuum.knockout.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

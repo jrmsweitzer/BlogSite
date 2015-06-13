@@ -10,7 +10,7 @@ using Models;
 
 namespace BlogSite.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private BlogEntities db = new BlogEntities();
 
