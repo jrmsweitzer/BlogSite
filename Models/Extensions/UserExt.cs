@@ -7,6 +7,21 @@ using System.Threading.Tasks;
 namespace Models
 {
     public partial class User
-    {      
+    {
+        public Blog MostViewedBlog
+        {
+            get
+            {
+                return Blogs.OrderByDescending(b => b.NumViews).FirstOrDefault();
+            }
+        }
+
+        public Blog MostRecentBlog
+        {
+            get
+            {
+                return Blogs.OrderByDescending(b => b.CreateDate).FirstOrDefault();
+            }
+        }
     }
 }

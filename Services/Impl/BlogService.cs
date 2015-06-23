@@ -49,6 +49,14 @@ namespace Services.Impl
             _blogRepo.IncrementViewCounter(blog);
         }
 
+        public Blog GetMostViewedBlog()
+        {
+            return _blogRepo.GetMostViewedBlog();
+        }
 
+        public Blog GetNewestBlog()
+        {
+            return _blogRepo.GetNewestBlog();
+        }
     }
 }

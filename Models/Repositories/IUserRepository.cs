@@ -13,5 +13,7 @@ namespace Models.Repositories
         User AddUser(User user);
 
         User GetUserByUserName(string username);
+
+        User GetUserById(int id);
     }
 }

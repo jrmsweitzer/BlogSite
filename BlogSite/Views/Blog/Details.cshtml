@@ -1,64 +1,16 @@
 ﻿@model Models.Blog
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title;
 }
 
-<h2>Details</h2>
+<h2>@Model.Title</h2>
 
 <div>
-    <h4>Blog</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Post)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Post)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreateDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumViews)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumViews)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumShares)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumShares)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.UserName)
-        </dd>
-
-    </dl>
+    <h4>@Model.CreateDate</h4>
+    <h4>By: @Html.ActionLink(Model.PostedBy, "Details", "User", new { id = Model.UserID }, null)</h4>
+    <p>@Model.Post</p>
+    <p>Views: @Model.NumViews</p>
 </div>
 <p>
     @Html.ActionLink("Back to List", "Index")

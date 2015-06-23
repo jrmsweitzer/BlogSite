@@ -43,5 +43,10 @@ namespace Services.Impl
         {
             return GetUserByUserName("Anonymous");
         }
+
+        public User GetUserById(int id)
+        {
+            return _userRepo.GetUserById(id);
+        }
     }
 }

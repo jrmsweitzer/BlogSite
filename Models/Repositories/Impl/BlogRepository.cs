@@ -49,5 +49,15 @@ namespace Models.Repositories.Impl
             blog.NumViews++;
             SaveChanges();
         }
+
+        public Blog GetMostViewedBlog()
+        {
+            return _db.Blogs.OrderByDescending(b => b.NumViews).FirstOrDefault();
+        }
+
+        public Blog GetNewestBlog()
+        {
+            return _db.Blogs.OrderByDescending(b => b.CreateDate).FirstOrDefault();
+        }
     }
 }

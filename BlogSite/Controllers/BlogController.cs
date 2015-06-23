@@ -26,8 +26,8 @@ namespace BlogSite.Controllers
             return View(_blogService.GetBlogs());
         }
 
-        // GET: Blog/Details/5
-        public ActionResult Details(int id)
+        // GET: Blog/5
+        public ActionResult Blogs(int id)
         {
             if (id == null)
             {
@@ -39,7 +39,7 @@ namespace BlogSite.Controllers
                 return HttpNotFound();
             }
             _blogService.IncrementViewCounter(blog);
-            return View(blog);
+            return View("Details", blog);
         }
 
         public ActionResult Create()

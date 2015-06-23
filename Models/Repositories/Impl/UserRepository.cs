@@ -34,5 +34,11 @@ namespace Models.Repositories.Impl
         {
             return _db.Users.FirstOrDefault(u => u.UserName.ToLower().Equals(username.ToLower()));
         }
+
+
+        public User GetUserById(int id)
+        {
+            return _db.Users.FirstOrDefault(u => u.ID == id);
+        }
     }
 }
