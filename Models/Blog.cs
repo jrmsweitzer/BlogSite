@@ -16,27 +16,27 @@ namespace Models
     {
         public Blog()
         {
+            this.BlogCategories = new HashSet<BlogCategory>();
             this.BlogLikes = new HashSet<BlogLike>();
             this.BlogTags = new HashSet<BlogTag>();
             this.Comments = new HashSet<Comment>();
-            this.BlogCategories = new HashSet<BlogCategory>();
         }
     
-        public decimal ID { get; set; }
-        public decimal UserID { get; set; }
+        public int ID { get; set; }
+        public int UserID { get; set; }
         public string Title { get; set; }
         public string Post { get; set; }
         public System.DateTime CreateDate { get; set; }
         public System.DateTime ApprovalDate { get; set; }
-        public decimal NumViews { get; set; }
-        public decimal NumShares { get; set; }
+        public int NumViews { get; set; }
+        public int NumShares { get; set; }
         public bool IsApproved { get; set; }
         public Nullable<bool> AllowComments { get; set; }
     
         public virtual User User { get; set; }
+        public virtual ICollection<BlogCategory> BlogCategories { get; set; }
         public virtual ICollection<BlogLike> BlogLikes { get; set; }
         public virtual ICollection<BlogTag> BlogTags { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<BlogCategory> BlogCategories { get; set; }
     }
 }

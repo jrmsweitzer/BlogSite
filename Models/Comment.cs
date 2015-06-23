@@ -19,9 +19,9 @@ namespace Models
             this.CommentLikes = new HashSet<CommentLike>();
         }
     
-        public decimal ID { get; set; }
-        public decimal UserID { get; set; }
-        public decimal BlogID { get; set; }
+        public int ID { get; set; }
+        public int UserID { get; set; }
+        public int BlogID { get; set; }
         public string Post { get; set; }
         public System.DateTime CreateDate { get; set; }
     

@@ -87,6 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BlogEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BlogEntitiesExtension.cs" />
     <Compile Include="BlogLike.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
@@ -102,7 +103,6 @@
     <Compile Include="CommentLike.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="BlogEntitiesExtension.cs" />
     <Compile Include="Extensions\BlogExtension.cs" />
     <Compile Include="Extensions\UserExt.cs" />
     <Compile Include="IBlogEntities.cs" />
@@ -126,13 +126,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="BlogEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BlogEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="BlogEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BlogEntities.edmx</DependentUpon>

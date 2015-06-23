@@ -39,7 +39,7 @@ namespace Services.Impl
             return _blogRepo.GetBlogs();
         }
 
-        public Blog GetBlogById(decimal id)
+        public Blog GetBlogById(int id)
         {
             return _blogRepo.GetBlogById(id);
         }

@@ -22,8 +22,8 @@ namespace Models
             this.CommentLikes = new HashSet<CommentLike>();
         }
     
-        public decimal ID { get; set; }
-        public decimal PermissionID { get; set; }
+        public int ID { get; set; }
+        public int PermissionID { get; set; }
         public string UserName { get; set; }
         public string HashedPassword { get; set; }
         public System.DateTime JoinDate { get; set; }

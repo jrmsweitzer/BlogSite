@@ -14,9 +14,9 @@ namespace Models
     
     public partial class CommentLike
     {
-        public decimal ID { get; set; }
-        public decimal CommentID { get; set; }
-        public decimal UserID { get; set; }
+        public int ID { get; set; }
+        public int CommentID { get; set; }
+        public int UserID { get; set; }
     
         public virtual Comment Comment { get; set; }
         public virtual User User { get; set; }

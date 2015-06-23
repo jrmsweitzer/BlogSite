@@ -15,7 +15,7 @@ namespace Models.Repositories
         List<Blog> GetBlogs();
 
         //TODO: CHANGE TO INT IN DB
-        Blog GetBlogById(decimal id);
+        Blog GetBlogById(int id);
 
         void IncrementViewCounter(Blog blog);
     }

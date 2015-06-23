@@ -4,19 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Blog">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Post" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="ApprovalDate" Type="datetime" Nullable="false" />
-          <Property Name="NumViews" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="NumShares" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NumViews" Type="int" Nullable="false" />
+          <Property Name="NumShares" Type="int" Nullable="false" />
           <Property Name="IsApproved" Type="bit" Nullable="false" />
           <Property Name="AllowComments" Type="bit" />
         </EntityType>
@@ -24,40 +24,40 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="CategoryID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="BlogLike">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="BlogTag">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="TagID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogID" Type="int" Nullable="false" />
+          <Property Name="TagID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="BlogID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BlogID" Type="int" Nullable="false" />
           <Property Name="Post" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -65,30 +65,30 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="CommentID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UserID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CommentID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Permission">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PermissionID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PermissionID" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="HashedPassword" Type="nvarchar(max)" Nullable="false" />
           <Property Name="JoinDate" Type="datetime" Nullable="false" />
@@ -298,7 +298,8 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -306,29 +307,39 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Post" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ApprovalDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="NumViews" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="NumShares" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NumViews" Type="Int32" Nullable="false" />
+          <Property Name="NumShares" Type="Int32" Nullable="false" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="AllowComments" Type="Boolean" />
           <NavigationProperty Name="User" Relationship="Self.FK_Blog_User" FromRole="Blog" ToRole="User" />
+          <NavigationProperty Name="BlogCategories" Relationship="Self.FK_BlogCategory_Blog" FromRole="Blog" ToRole="BlogCategory" />
           <NavigationProperty Name="BlogLikes" Relationship="Self.FK_BlogLike_Blog" FromRole="Blog" ToRole="BlogLike" />
           <NavigationProperty Name="BlogTags" Relationship="Self.FK_BlogTag_Blog" FromRole="Blog" ToRole="BlogTag" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Blog" FromRole="Blog" ToRole="Comment" />
-          <Property Name="AllowComments" Type="Boolean" />
-          <NavigationProperty Name="BlogCategories" Relationship="Models.FK_BlogCategory_Blog" FromRole="Blog" ToRole="BlogCategory" />
+        </EntityType>
+        <EntityType Name="BlogCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_BlogCategory_Blog" FromRole="BlogCategory" ToRole="Blog" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_BlogCategory_Category" FromRole="BlogCategory" ToRole="Category" />
         </EntityType>
         <EntityType Name="BlogLike">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Blog" Relationship="Self.FK_BlogLike_Blog" FromRole="BlogLike" ToRole="Blog" />
           <NavigationProperty Name="User" Relationship="Self.FK_BlogLike_User" FromRole="BlogLike" ToRole="User" />
         </EntityType>
@@ -336,19 +347,27 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="TagID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogID" Type="Int32" Nullable="false" />
+          <Property Name="TagID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Blog" Relationship="Self.FK_BlogTag_Blog" FromRole="BlogTag" ToRole="Blog" />
           <NavigationProperty Name="Tag" Relationship="Self.FK_BlogTag_Tag" FromRole="BlogTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BlogCategories" Relationship="Self.FK_BlogCategory_Category" FromRole="Category" ToRole="BlogCategory" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="BlogID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BlogID" Type="Int32" Nullable="false" />
           <Property Name="Post" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Blog" Relationship="Self.FK_Comment_Blog" FromRole="Comment" ToRole="Blog" />
@@ -359,9 +378,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="CommentID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CommentID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_CommentLike_Comment" FromRole="CommentLike" ToRole="Comment" />
           <NavigationProperty Name="User" Relationship="Self.FK_CommentLike_User" FromRole="CommentLike" ToRole="User" />
         </EntityType>
@@ -369,7 +388,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_User_Permission" FromRole="Permission" ToRole="User" />
         </EntityType>
@@ -377,7 +396,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="BlogTags" Relationship="Self.FK_BlogTag_Tag" FromRole="Tag" ToRole="BlogTag" />
         </EntityType>
@@ -385,8 +404,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PermissionID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HashedPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -406,6 +425,18 @@
             </Principal>
             <Dependent Role="Blog">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogCategory_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="BlogCategory" Type="Self.BlogCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BlogCategory">
+              <PropertyRef Name="BlogID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -442,6 +473,18 @@
             </Principal>
             <Dependent Role="Comment">
               <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogCategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="BlogCategory" Type="Self.BlogCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BlogCategory">
+              <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -519,8 +562,10 @@
         </Association>
         <EntityContainer Name="BlogEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Blogs" EntityType="Self.Blog" />
+          <EntitySet Name="BlogCategories" EntityType="Self.BlogCategory" />
           <EntitySet Name="BlogLikes" EntityType="Self.BlogLike" />
           <EntitySet Name="BlogTags" EntityType="Self.BlogTag" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Comments" EntityType="Self.Comment" />
           <EntitySet Name="CommentLikes" EntityType="Self.CommentLike" />
           <EntitySet Name="Permissions" EntityType="Self.Permission" />
@@ -529,6 +574,10 @@
           <AssociationSet Name="FK_Blog_User" Association="Self.FK_Blog_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Blog" EntitySet="Blogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogCategory_Blog" Association="Self.FK_BlogCategory_Blog">
+            <End Role="Blog" EntitySet="Blogs" />
+            <End Role="BlogCategory" EntitySet="BlogCategories" />
           </AssociationSet>
           <AssociationSet Name="FK_BlogLike_Blog" Association="Self.FK_BlogLike_Blog">
             <End Role="Blog" EntitySet="Blogs" />
@@ -541,6 +590,10 @@
           <AssociationSet Name="FK_Comment_Blog" Association="Self.FK_Comment_Blog">
             <End Role="Blog" EntitySet="Blogs" />
             <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogCategory_Category" Association="Self.FK_BlogCategory_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="BlogCategory" EntitySet="BlogCategories" />
           </AssociationSet>
           <AssociationSet Name="FK_BlogLike_User" Association="Self.FK_BlogLike_User">
             <End Role="User" EntitySet="Users" />
@@ -566,59 +619,7 @@
             <End Role="Permission" EntitySet="Permissions" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <EntitySet Name="BlogCategories" EntityType="Models.BlogCategory" />
-          <EntitySet Name="Categories" EntityType="Models.Category" />
-          <AssociationSet Name="FK_BlogCategory_Blog" Association="Models.FK_BlogCategory_Blog">
-            <End Role="Blog" EntitySet="Blogs" />
-            <End Role="BlogCategory" EntitySet="BlogCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BlogCategory_Category" Association="Models.FK_BlogCategory_Category">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="BlogCategory" EntitySet="BlogCategories" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="BlogCategory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BlogID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="CategoryID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <NavigationProperty Name="Blog" Relationship="Models.FK_BlogCategory_Blog" FromRole="BlogCategory" ToRole="Blog" />
-          <NavigationProperty Name="Category" Relationship="Models.FK_BlogCategory_Category" FromRole="BlogCategory" ToRole="Category" />
-        </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BlogCategories" Relationship="Models.FK_BlogCategory_Category" FromRole="Category" ToRole="BlogCategory" />
-        </EntityType>
-        <Association Name="FK_BlogCategory_Blog">
-          <End Type="Models.Blog" Role="Blog" Multiplicity="1" />
-          <End Type="Models.BlogCategory" Role="BlogCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Blog">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BlogCategory">
-              <PropertyRef Name="BlogID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BlogCategory_Category">
-          <End Type="Models.Category" Role="Category" Multiplicity="1" />
-          <End Type="Models.BlogCategory" Role="BlogCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BlogCategory">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -628,7 +629,6 @@
           <EntitySetMapping Name="Blogs">
             <EntityTypeMapping TypeName="Models.Blog">
               <MappingFragment StoreEntitySet="Blog">
-                <ScalarProperty Name="AllowComments" ColumnName="AllowComments" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -638,6 +638,16 @@
                 <ScalarProperty Name="NumViews" ColumnName="NumViews" />
                 <ScalarProperty Name="NumShares" ColumnName="NumShares" />
                 <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="AllowComments" ColumnName="AllowComments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogCategories">
+            <EntityTypeMapping TypeName="Models.BlogCategory">
+              <MappingFragment StoreEntitySet="BlogCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -656,6 +666,14 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="BlogID" ColumnName="BlogID" />
                 <ScalarProperty Name="TagID" ColumnName="TagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Models.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -704,23 +722,6 @@
                 <ScalarProperty Name="HashedPassword" ColumnName="HashedPassword" />
                 <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BlogCategories">
-            <EntityTypeMapping TypeName="Models.BlogCategory">
-              <MappingFragment StoreEntitySet="BlogCategory">
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="Models.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

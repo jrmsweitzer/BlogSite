@@ -14,9 +14,9 @@ namespace Models
     
     public partial class BlogCategory
     {
-        public decimal ID { get; set; }
-        public decimal BlogID { get; set; }
-        public decimal CategoryID { get; set; }
+        public int ID { get; set; }
+        public int BlogID { get; set; }
+        public int CategoryID { get; set; }
     
         public virtual Blog Blog { get; set; }
         public virtual Category Category { get; set; }

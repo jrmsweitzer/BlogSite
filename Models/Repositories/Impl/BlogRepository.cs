@@ -37,7 +37,7 @@ namespace Models.Repositories.Impl
         }
 
 
-        public Blog GetBlogById(decimal id)
+        public Blog GetBlogById(int id)
         {
             return _db.Blogs.FirstOrDefault(b => b.ID == id);
         }
