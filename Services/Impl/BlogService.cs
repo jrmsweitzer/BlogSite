@@ -39,9 +39,16 @@ namespace Services.Impl
             return _blogRepo.GetBlogs();
         }
 
-        public Blog GetBlogById(int id)
+        public Blog GetBlogById(decimal id)
         {
             return _blogRepo.GetBlogById(id);
         }
+
+        public void IncrementViewCounter(Blog blog)
+        {
+            _blogRepo.IncrementViewCounter(blog);
+        }
+
+
     }
 }

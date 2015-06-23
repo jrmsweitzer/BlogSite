@@ -3,12 +3,23 @@
     <script src="~/Scripts/App/Blog.js"></script>
 </head>
 
-<div id="CreateBlog">
+<div class="container" id="CreateBlog">
     <div data-bind="with: currentBlog">
-        <p>Title: <input type="text" name="Title" data-bind="value: Title" /></p>
-        <p>Post: <input data-bind="value: Post" /></p>
+        <div class="row">Title:</div>
+        <div class="row"><input type="text" name="Title" data-bind="value: Title" /></div>
+        <div class="row">Content:</div>
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="text" name="Content" data-bind="value: Post" />
+            </div>
+        </div>
+        <div class="row">Tags:</div>
+        <div class="row"> <input type="text" name="Tags" data-bind="value: Tags" /></div>
+        
+
     </div>
-    <p><input type="button" value="Create" data-bind="click: saveBlog"/></p>
+    <p><input type="button" value="Submit" data-bind="click: saveBlog" /></p>
+
 </div>
 
 

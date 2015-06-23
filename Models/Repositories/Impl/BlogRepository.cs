@@ -37,9 +37,17 @@ namespace Models.Repositories.Impl
         }
 
 
-        public Blog GetBlogById(int id)
+        public Blog GetBlogById(decimal id)
         {
             return _db.Blogs.FirstOrDefault(b => b.ID == id);
+        }
+
+
+        public void IncrementViewCounter(Blog b)
+        {
+            var blog = GetBlogById(b.ID);
+            blog.NumViews++;
+            SaveChanges();
         }
     }
 }

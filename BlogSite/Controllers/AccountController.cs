@@ -90,7 +90,7 @@ namespace BlogSite.Controllers
             {
                 Session["User"] = user;
                 FormsAuthentication.SetAuthCookie(model.Email, false);
-                RedirectToLocal(returnUrl);
+                return RedirectToLocal(returnUrl);
             }
 
             return View(model);
@@ -171,6 +171,7 @@ namespace BlogSite.Controllers
                 }
 
                 _userService.AddUser(user);
+                FormsAuthentication.SetAuthCookie(model.Email, false);
                 Session["User"] = user;
                 return RedirectToAction("Index", "Home");
             }
@@ -393,7 +394,7 @@ namespace BlogSite.Controllers
         }
 
         //
-        // POST: /Account/LogOff
+        // GET: /Account/LogOff
         [HttpGet]
         public ActionResult LogOff()
         {

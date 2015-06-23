@@ -33,5 +33,7 @@ namespace Models
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<BlogCategory> BlogCategories { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
     }
 }

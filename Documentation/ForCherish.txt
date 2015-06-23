@@ -1,0 +1,19 @@
+CSS - BlogSite/Content/Site.css
+- You can create other CSS classes if you'd like, for organization. 
+- If you do that, be sure to include them in bundles.Add in
+- BlogSite/App_Start/BundleConfig.cs, line 29
+
+HTML - BlogSite/Views/Blog
+
+Blog Listing Page - BlogSite/Views/Blog/Index.cshtml
+Blog Creation Page - BlogSite/Views/Blog/Create.cshtml
+Individual Blog Page - BlogSite/Views/Blog/Details.cshtml
+
+
+Useful Bootstrap Links:
+http://getbootstrap.com/css/#grid
+
+http://getbootstrap.com/getting-started/#examples
+http://getbootstrap.com/examples/blog/
+
+

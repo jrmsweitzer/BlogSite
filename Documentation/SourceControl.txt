@@ -1,0 +1,13 @@
+To pull latest code,
+
+Right-Click on the BlogSite Root Folder in the Repos Directory, and select TortoiseGit->Pull...
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After you've finished writing a piece of code, and want to share it with me,
+
+1. Right-Click on the BlogSite Root Folder in the Repos Directory, and select Git Commit -> "master"...
+2. Select all files you've changed that you want to share, give it a message, and click "OK". 
+That will commit it to your local version of the repository. To push it to the main repository...
+3. Right-Click on the BlogSite Root Folder in the Repos Directory, and select TortoiseGit->Push...
+4. Click OK

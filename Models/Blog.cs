@@ -19,6 +19,7 @@ namespace Models
             this.BlogLikes = new HashSet<BlogLike>();
             this.BlogTags = new HashSet<BlogTag>();
             this.Comments = new HashSet<Comment>();
+            this.BlogCategories = new HashSet<BlogCategory>();
         }
     
         public decimal ID { get; set; }
@@ -30,10 +31,12 @@ namespace Models
         public decimal NumViews { get; set; }
         public decimal NumShares { get; set; }
         public bool IsApproved { get; set; }
+        public Nullable<bool> AllowComments { get; set; }
     
         public virtual User User { get; set; }
         public virtual ICollection<BlogLike> BlogLikes { get; set; }
         public virtual ICollection<BlogTag> BlogTags { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<BlogCategory> BlogCategories { get; set; }
     }
 }

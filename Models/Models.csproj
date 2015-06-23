@@ -69,6 +69,9 @@
     <Compile Include="Blog.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="BlogCategory.cs">
+      <DependentUpon>BlogEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="BlogEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,6 +93,9 @@
     <Compile Include="BlogTag.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>BlogEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Comment.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
@@ -100,7 +106,6 @@
     <Compile Include="Extensions\BlogExtension.cs" />
     <Compile Include="Extensions\UserExt.cs" />
     <Compile Include="IBlogEntities.cs" />
-    <Compile Include="KO\Blogs.cs" />
     <Compile Include="Permission.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>

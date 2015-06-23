@@ -23,6 +23,10 @@
         <AssociationConnector Association="Models.FK_CommentLike_Comment" ManuallyRouted="false" />
         <AssociationConnector Association="Models.FK_CommentLike_User" ManuallyRouted="false" />
         <AssociationConnector Association="Models.FK_User_Permission" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Models.BlogCategory" Width="1.5" PointX="10.5" PointY="2.75" />
+        <EntityTypeShape EntityType="Models.Category" Width="1.5" PointX="8.25" PointY="10.875" />
+        <AssociationConnector Association="Models.FK_BlogCategory_Blog" />
+        <AssociationConnector Association="Models.FK_BlogCategory_Category" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

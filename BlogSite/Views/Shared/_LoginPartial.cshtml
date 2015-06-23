@@ -5,10 +5,10 @@
 {
     var user = (Models.User)Session["User"];
     string welcomeMessage = string.Format("Welcome {0}", user.UserName);
-    
+
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink(welcomeMessage, "Index", "Manage", routeValues: null, htmlAttributes: new { id = "Manage" })</li>
-        <li>@Ajax.ActionLink("Log Off", "LogOff", "Account", new AjaxOptions { HttpMethod = "Post" })</li>
+        <li>@Html.ActionLink("Log Off", "LogOff", "Account")</li>
     </ul>
 }
 else

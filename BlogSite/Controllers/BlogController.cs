@@ -1,5 +1,4 @@
 ﻿using Models;
-using Models.KO;
 using Services.Impl;
 using System;
 using System.Collections.Generic;
@@ -24,7 +23,7 @@ namespace BlogSite.Controllers
         // GET: Blog
         public ActionResult Index()
         {
-            return View(new Blogs());
+            return View(_blogService.GetBlogs());
         }
 
         // GET: Blog/Details/5
@@ -39,6 +38,7 @@ namespace BlogSite.Controllers
             {
                 return HttpNotFound();
             }
+            _blogService.IncrementViewCounter(blog);
             return View(blog);
         }
 
