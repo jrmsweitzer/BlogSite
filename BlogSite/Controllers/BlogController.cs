@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using BlogSite.Controllers.Base;
+using Models;
 using Services.Impl;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace BlogSite.Controllers
 {
-    public class BlogController : Controller
+    public class BlogController : BaseController
     {
         private readonly BlogService _blogService;
         private readonly UserService _userService;
@@ -50,7 +51,15 @@ namespace BlogSite.Controllers
         [HttpPost]
         public ActionResult Create([FromJson] Blog model)
         {
-            User user = _userService.GetAnonymousUser();
+            User user;
+            if (SessionUser == null)
+            {
+                user = _userService.GetAnonymousUser();
+            }
+            else
+            {
+                user = _userService.GetUserByUserName(SessionUser.UserName);
+            }
 
             var blog = new Blog
             {

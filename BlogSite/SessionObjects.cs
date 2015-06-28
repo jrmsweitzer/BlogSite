@@ -4,15 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Models;
+using System.Web.SessionState;
 
 namespace BlogSite
 {
-    public class SessionObjects
+    public static class SessionObjects
     {
-        public User User 
+        private static HttpSessionState Session { get { return HttpContext.Current.Session; } }
+
+        public static User User 
         {
-            get { return (User)(HttpContext.Current.Session["User"]); }
-            set { HttpContext.Current.Session["User"] = value; }
+            get { return ((Session["User"] is User) ? (User)Session["User"] : null); }
+            set { Session["User"] = value; }
         }
     }
 }

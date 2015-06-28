@@ -1,13 +1,16 @@
 ﻿@using Microsoft.AspNet.Identity
 
-
-@if (Session["User"] != null)
-{
+@{
     var user = (Models.User)Session["User"];
+}
+
+
+@if (user != null)
+{
     string welcomeMessage = string.Format("Welcome {0}", user.UserName);
 
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink(welcomeMessage, "Index", "Manage", routeValues: null, htmlAttributes: new { id = "Manage" })</li>
+        <li>@Html.ActionLink(welcomeMessage, "Index", "MyAccount", null, htmlAttributes: new { id = "Manage" })</li>
         <li>@Html.ActionLink("Log Off", "LogOff", "Account")</li>
     </ul>
 }
