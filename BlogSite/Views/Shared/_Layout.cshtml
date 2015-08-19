@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/bootstrap")   
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/ckeditor")
 
@@ -27,6 +27,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Blog Listing", "Index", "Blog", null, null)</li>
+                    <li><div><input placeholder="Search our website" /><a href="/Search"><span class="glyphicon glyphicon-search" /></a></div></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

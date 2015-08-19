@@ -6,7 +6,7 @@
 <div class="container" id="CreateBlog">
     <div data-bind="with: currentBlog">
         <div class="row">Title:</div>
-        <div class="row"><input type="text" name="Title" data-bind="value: Title" /></div>
+        <div class="row col-md-4 col-xs-12 col-md-offset-3"><input type="text" name="Title" data-bind="value: Title" /></div>
         <div class="row">Content:</div>
         <div class="row">
             <textarea name="Content" id="Content" rows="10" cols="80" type="text" data-bind="richText: Post, valueUpdate: 'afterkeydown'">
