@@ -6,10 +6,10 @@
 
 <h2>@Model.Title</h2>
 
-<div>
+<div ng-controller="BlogDetailsController">
     <h4>@Model.CreateDate</h4>
     <h4>By: @Html.ActionLink(Model.PostedBy, "Details", "User", new { id = Model.UserID }, null)</h4>
-    <p>@Model.Post</p>
+    <p >{{BlogContent}}</p>
     <p>Views: @Model.NumViews</p>
 </div>
 <p>

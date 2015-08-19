@@ -21,5 +21,7 @@ namespace Models.Repositories
         Blog GetMostViewedBlog();
 
         Blog GetNewestBlog();
+
+        List<Blog> GetBlogsByUsername(string username);
     }
 }

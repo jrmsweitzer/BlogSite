@@ -1,0 +1,34 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<BlogSiteNancy.Views.User.ViewModels.DetailsModel>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+<!-- {url}/user/{username} -->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @Model.Username - Joined @Model.JoinDate <br />
+        @if(@Model.NumBlogs == 0)
+        {
+            <div>
+                This user has no blogs.
+            </div>
+        } else {
+            <div>Most Recent Blog - <a href="/blog/@Model.MostRecentBlog.Title">@Model.MostRecentBlog.Title</a> <br />
+            Most Viewed Blog - <a href="/blog/@Model.MostViewedBlog.Title">@Model.MostViewedBlog.Title</a> <br /></div>
+            if (@Model.NumBlogs > 1)
+            {
+                <a href="/user/@Model.Username/allblogs">View all @Model.NumBlogs Blogs by @Model.Username</a>
+            }
+        }
+    </div>
+</body>
+</html>

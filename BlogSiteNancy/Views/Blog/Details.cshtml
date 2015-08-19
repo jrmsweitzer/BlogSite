@@ -1,0 +1,25 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Models.Blog>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+<!-- {url}/blog/{title} -->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @Model.Title<br />
+        <a href="/user/@Model.PostedBy">@Model.PostedBy</a><br />
+        @Model.CreateDate<br />
+        @Html.Raw(Model.Post)
+        <
+    </div>
+</body>
+</html>

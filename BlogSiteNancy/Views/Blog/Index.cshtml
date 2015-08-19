@@ -1,0 +1,46 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<Models.Blog>>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+    var vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
+    var blogs = vm.Blogs;
+
+    if (@Model != null)
+    {
+        blogs = @Model;
+    }
+}
+
+<!-- 
+    {url}/blog 
+    - All Blogs
+    
+    {url}/user/{username}/allblogs 
+    - Blogs filtered by username
+-->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>Create Date</td>
+            <td>Created By</td>
+        </tr>
+        @foreach (Models.Blog blog in blogs)
+        {
+            <tr>
+                <td><a href="/blog/@blog.Title">@blog.Title</a></td>
+                <td>@blog.CreateDate.ToShortDateString()</td>
+                <td><a href="/user/@blog.PostedBy">@blog.PostedBy</a></td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

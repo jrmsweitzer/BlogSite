@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "Views/Shared/_Layout.cshtml";
+    
+    BlogSiteNancy.Utils.AppViewModel vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
+
+    var mostRecent = vm.MostRecentBlog;
+    var mostViewed = vm.MostViewedBlog;
+    var mostShared = vm.MostSharedBlog;
+    var mostLiked = vm.MostLikedBlog;
+}
+
+<!-- {url}/ -->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        Welcome to the Blog Site.<br /><br />
+        <a href="/blog">Click here to view all blogs</a><br />
+        Most Recent Blog - <a href="/blog/@mostRecent.Title">@mostRecent.Title</a> - <a href="/user/@mostRecent.PostedBy">@mostRecent.PostedBy</a><br />
+        Most Viewed Blog - <a href="/blog/@mostViewed.Title">@mostViewed.Title</a> - <a href="/user/@mostViewed.PostedBy">@mostViewed.PostedBy</a><br />
+        Most Shared Blog - <a href="/blog/@mostShared.Title">@mostShared.Title</a> - <a href="/user/@mostShared.PostedBy">@mostShared.PostedBy</a><br />
+        Most Liked Blog - <a href="/blog/@mostLiked.Title">@mostLiked.Title</a> - <a href="/user/@mostLiked.PostedBy">@mostLiked.PostedBy</a><br />
+    </div>
+</body>
+</html>

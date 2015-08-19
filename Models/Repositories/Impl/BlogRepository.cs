@@ -59,5 +59,11 @@ namespace Models.Repositories.Impl
         {
             return _db.Blogs.OrderByDescending(b => b.CreateDate).FirstOrDefault();
         }
+
+
+        public List<Blog> GetBlogsByUsername(string username)
+        {
+            return _db.Blogs.Where(b => b.User.UserName.ToLower().Equals(username.ToLower())).ToList();
+        }
     }
 }

@@ -1,0 +1,31 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<BlogSiteNancy.Views.Shared.ViewModels._LayoutModel>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PotpourriBlogs!</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/layout.css")" />
+    <script src="~/Content/js/CKEditor/ckeditor.js"></script>
+    <script src="~/Content/js/CKEditor/adapters/jquery.js"></script>
+    <script src="~/Content/js/app.js"></script>
+</head>
+<body>
+    <div id="header">
+        <a href="/">Home</a>
+        <a href="/blog/new">Write a blog!</a>
+        <a href="/blog">See all blogs</a>
+
+        <form action="/search/" method="POST">
+            <input type="text" name="SearchParam" value="@Model.SearchParam" placeholder="Search PotpourriBlogs" />
+            <input type="Submit" value="Search" />
+        </form>
+    </div>
+
+    <div id="content">
+        @RenderBody()
+    </div>
+</body>
+</html>

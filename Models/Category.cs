@@ -16,12 +16,12 @@ namespace Models
     {
         public Category()
         {
-            this.BlogCategories = new HashSet<BlogCategory>();
+            this.Blogs = new HashSet<Blog>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
     
-        public virtual ICollection<BlogCategory> BlogCategories { get; set; }
+        public virtual ICollection<Blog> Blogs { get; set; }
     }
 }

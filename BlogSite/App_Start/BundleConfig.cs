@@ -32,6 +32,15 @@ namespace BlogSite
 
             bundles.Add(new ScriptBundle("~/bundles/ckeditor").Include(
                       "~/Scripts/CKEditor/ckeditor.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                      "~/Scripts/angular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/appcode")
+                .IncludeDirectory("~/Scripts/Controllers/", "*.js")
+                .IncludeDirectory("~/Scripts/App/", "*.js"));
+
+            System.Web.Optimization.BundleTable.EnableOptimizations = false;
         }
     }
 }

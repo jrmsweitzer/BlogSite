@@ -1,0 +1,17 @@
+﻿<script src="~/Scripts/respond.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/CKEditor/ckeditor.js"></script>
+<script src="~/Scripts/CKEditor/adapters/jquery.js"></script>
+<script src="~/Scripts/App/Blog/create.js"></script>
+
+@model WebApplication1.ViewModels.Blog.BlogCreateVM
+
+@{
+    ViewBag.Title = "Create a Blog!";
+}
+
+<form method="post" action="/Blog/Create">
+    @Html.TextBoxFor(x => x.Title, new { @placeholder = "title"})
+    @Html.TextAreaFor(x => x.Text, new { @class = "ckeditor", @id = "contentpost" })
+    <p><input type="submit" value="Submit"/></p>
+</form>

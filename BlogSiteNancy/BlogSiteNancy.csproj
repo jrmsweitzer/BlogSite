@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71710160-7075-4114-88E7-79D37FD8CA45}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlogSiteNancy</RootNamespace>
+    <AssemblyName>BlogSiteNancy</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.1.2.0\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Hosting.Aspnet">
+      <HintPath>..\packages\Nancy.Hosting.Aspnet.1.2.0\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.ViewEngines.Razor">
+      <HintPath>..\packages\Nancy.Viewengines.Razor.1.2.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\layout.css" />
+    <Content Include="Content\js\app.js" />
+    <Content Include="Content\js\CKEditor\adapters\jquery.js" />
+    <Content Include="Content\js\CKEditor\build-config.js" />
+    <Content Include="Content\js\CKEditor\ckeditor.js" />
+    <Content Include="Content\js\CKEditor\config.js" />
+    <Content Include="Content\js\CKEditor\contents.css" />
+    <Content Include="Content\js\CKEditor\lang\af.js" />
+    <Content Include="Content\js\CKEditor\lang\ar.js" />
+    <Content Include="Content\js\CKEditor\lang\bg.js" />
+    <Content Include="Content\js\CKEditor\lang\bn.js" />
+    <Content Include="Content\js\CKEditor\lang\bs.js" />
+    <Content Include="Content\js\CKEditor\lang\ca.js" />
+    <Content Include="Content\js\CKEditor\lang\cs.js" />
+    <Content Include="Content\js\CKEditor\lang\cy.js" />
+    <Content Include="Content\js\CKEditor\lang\da.js" />
+    <Content Include="Content\js\CKEditor\lang\de.js" />
+    <Content Include="Content\js\CKEditor\lang\el.js" />
+    <Content Include="Content\js\CKEditor\lang\en-au.js" />
+    <Content Include="Content\js\CKEditor\lang\en-ca.js" />
+    <Content Include="Content\js\CKEditor\lang\en-gb.js" />
+    <Content Include="Content\js\CKEditor\lang\en.js" />
+    <Content Include="Content\js\CKEditor\lang\eo.js" />
+    <Content Include="Content\js\CKEditor\lang\es.js" />
+    <Content Include="Content\js\CKEditor\lang\et.js" />
+    <Content Include="Content\js\CKEditor\lang\eu.js" />
+    <Content Include="Content\js\CKEditor\lang\fa.js" />
+    <Content Include="Content\js\CKEditor\lang\fi.js" />
+    <Content Include="Content\js\CKEditor\lang\fo.js" />
+    <Content Include="Content\js\CKEditor\lang\fr-ca.js" />
+    <Content Include="Content\js\CKEditor\lang\fr.js" />
+    <Content Include="Content\js\CKEditor\lang\gl.js" />
+    <Content Include="Content\js\CKEditor\lang\gu.js" />
+    <Content Include="Content\js\CKEditor\lang\he.js" />
+    <Content Include="Content\js\CKEditor\lang\hi.js" />
+    <Content Include="Content\js\CKEditor\lang\hr.js" />
+    <Content Include="Content\js\CKEditor\lang\hu.js" />
+    <Content Include="Content\js\CKEditor\lang\id.js" />
+    <Content Include="Content\js\CKEditor\lang\is.js" />
+    <Content Include="Content\js\CKEditor\lang\it.js" />
+    <Content Include="Content\js\CKEditor\lang\ja.js" />
+    <Content Include="Content\js\CKEditor\lang\ka.js" />
+    <Content Include="Content\js\CKEditor\lang\km.js" />
+    <Content Include="Content\js\CKEditor\lang\ko.js" />
+    <Content Include="Content\js\CKEditor\lang\ku.js" />
+    <Content Include="Content\js\CKEditor\lang\lt.js" />
+    <Content Include="Content\js\CKEditor\lang\lv.js" />
+    <Content Include="Content\js\CKEditor\lang\mk.js" />
+    <Content Include="Content\js\CKEditor\lang\mn.js" />
+    <Content Include="Content\js\CKEditor\lang\ms.js" />
+    <Content Include="Content\js\CKEditor\lang\nb.js" />
+    <Content Include="Content\js\CKEditor\lang\nl.js" />
+    <Content Include="Content\js\CKEditor\lang\no.js" />
+    <Content Include="Content\js\CKEditor\lang\pl.js" />
+    <Content Include="Content\js\CKEditor\lang\pt-br.js" />
+    <Content Include="Content\js\CKEditor\lang\pt.js" />
+    <Content Include="Content\js\CKEditor\lang\ro.js" />
+    <Content Include="Content\js\CKEditor\lang\ru.js" />
+    <Content Include="Content\js\CKEditor\lang\si.js" />
+    <Content Include="Content\js\CKEditor\lang\sk.js" />
+    <Content Include="Content\js\CKEditor\lang\sl.js" />
+    <Content Include="Content\js\CKEditor\lang\sq.js" />
+    <Content Include="Content\js\CKEditor\lang\sr-latn.js" />
+    <Content Include="Content\js\CKEditor\lang\sr.js" />
+    <Content Include="Content\js\CKEditor\lang\sv.js" />
+    <Content Include="Content\js\CKEditor\lang\th.js" />
+    <Content Include="Content\js\CKEditor\lang\tr.js" />
+    <Content Include="Content\js\CKEditor\lang\tt.js" />
+    <Content Include="Content\js\CKEditor\lang\ug.js" />
+    <Content Include="Content\js\CKEditor\lang\uk.js" />
+    <Content Include="Content\js\CKEditor\lang\vi.js" />
+    <Content Include="Content\js\CKEditor\lang\zh-cn.js" />
+    <Content Include="Content\js\CKEditor\lang\zh.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Content\js\CKEditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Content\js\CKEditor\plugins\about\dialogs\about.js" />
+    <Content Include="Content\js\CKEditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Content\js\CKEditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Content\js\CKEditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Content\js\CKEditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="Content\js\CKEditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Content\js\CKEditor\plugins\div\dialogs\div.js" />
+    <Content Include="Content\js\CKEditor\plugins\find\dialogs\find.js" />
+    <Content Include="Content\js\CKEditor\plugins\flash\dialogs\flash.js" />
+    <Content Include="Content\js\CKEditor\plugins\flash\images\placeholder.png" />
+    <Content Include="Content\js\CKEditor\plugins\forms\dialogs\button.js" />
+    <Content Include="Content\js\CKEditor\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="Content\js\CKEditor\plugins\forms\dialogs\form.js" />
+    <Content Include="Content\js\CKEditor\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="Content\js\CKEditor\plugins\forms\dialogs\radio.js" />
+    <Content Include="Content\js\CKEditor\plugins\forms\dialogs\select.js" />
+    <Content Include="Content\js\CKEditor\plugins\forms\dialogs\textarea.js" />
+    <Content Include="Content\js\CKEditor\plugins\forms\dialogs\textfield.js" />
+    <Content Include="Content\js\CKEditor\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="Content\js\CKEditor\plugins\icons.png" />
+    <Content Include="Content\js\CKEditor\plugins\icons_hidpi.png" />
+    <Content Include="Content\js\CKEditor\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="Content\js\CKEditor\plugins\iframe\images\placeholder.png" />
+    <Content Include="Content\js\CKEditor\plugins\image\dialogs\image.js" />
+    <Content Include="Content\js\CKEditor\plugins\image\images\noimage.png" />
+    <Content Include="Content\js\CKEditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Content\js\CKEditor\plugins\link\dialogs\link.js" />
+    <Content Include="Content\js\CKEditor\plugins\link\images\anchor.png" />
+    <Content Include="Content\js\CKEditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Content\js\CKEditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="Content\js\CKEditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Content\js\CKEditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Content\js\CKEditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Content\js\CKEditor\plugins\magicline\images\icon.png" />
+    <Content Include="Content\js\CKEditor\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="Content\js\CKEditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Content\js\CKEditor\plugins\preview\preview.html" />
+    <Content Include="Content\js\CKEditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Content\js\CKEditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="Content\js\CKEditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\angel_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\angry_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\broken_heart.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\confused_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\cry_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\devil_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\embarrassed_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\embarrassed_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\envelope.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\heart.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\heart.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\kiss.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\lightbulb.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\omg_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\regular_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\sad_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\shades_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\teeth_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\thumbs_down.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\thumbs_up.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\tongue_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\tongue_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\whatchutalkingabout_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="Content\js\CKEditor\plugins\smiley\images\wink_smile.png" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Content\js\CKEditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Content\js\CKEditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Content\js\CKEditor\plugins\table\dialogs\table.js" />
+    <Content Include="Content\js\CKEditor\plugins\templates\dialogs\templates.css" />
+    <Content Include="Content\js\CKEditor\plugins\templates\dialogs\templates.js" />
+    <Content Include="Content\js\CKEditor\plugins\templates\templates\default.js" />
+    <Content Include="Content\js\CKEditor\plugins\templates\templates\images\template1.gif" />
+    <Content Include="Content\js\CKEditor\plugins\templates\templates\images\template2.gif" />
+    <Content Include="Content\js\CKEditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="Content\js\CKEditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Content\js\CKEditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Content\js\CKEditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Content\js\CKEditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Content\js\CKEditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\images\icon.png" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\ar.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\de.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\el.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\en.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\es.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\fi.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\fr.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\he.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\hu.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\it.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\ja.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\nb.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\nl.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\nn.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\pl.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\pt.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\ru.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\tr.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\vi.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\lang\zh.js" />
+    <Content Include="Content\js\CKEditor\plugins\youtube\plugin.js" />
+    <Content Include="Content\js\CKEditor\samples\ajax.html" />
+    <Content Include="Content\js\CKEditor\samples\api.html" />
+    <Content Include="Content\js\CKEditor\samples\appendto.html" />
+    <Content Include="Content\js\CKEditor\samples\assets\inlineall\logo.png" />
+    <Content Include="Content\js\CKEditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Content\js\CKEditor\samples\assets\sample.jpg" />
+    <Content Include="Content\js\CKEditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="Content\js\CKEditor\samples\datafiltering.html" />
+    <Content Include="Content\js\CKEditor\samples\divreplace.html" />
+    <Content Include="Content\js\CKEditor\samples\index.html" />
+    <Content Include="Content\js\CKEditor\samples\inlineall.html" />
+    <Content Include="Content\js\CKEditor\samples\inlinebycode.html" />
+    <Content Include="Content\js\CKEditor\samples\inlinetextarea.html" />
+    <Content Include="Content\js\CKEditor\samples\jquery.html" />
+    <Content Include="Content\js\CKEditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="Content\js\CKEditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="Content\js\CKEditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="Content\js\CKEditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Content\js\CKEditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Content\js\CKEditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="Content\js\CKEditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="Content\js\CKEditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="Content\js\CKEditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="Content\js\CKEditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="Content\js\CKEditor\samples\readonly.html" />
+    <Content Include="Content\js\CKEditor\samples\replacebyclass.html" />
+    <Content Include="Content\js\CKEditor\samples\replacebycode.html" />
+    <Content Include="Content\js\CKEditor\samples\sample.css" />
+    <Content Include="Content\js\CKEditor\samples\sample.js" />
+    <Content Include="Content\js\CKEditor\samples\tabindex.html" />
+    <Content Include="Content\js\CKEditor\samples\uicolor.html" />
+    <Content Include="Content\js\CKEditor\samples\uilanguages.html" />
+    <Content Include="Content\js\CKEditor\samples\xhtmlstyle.html" />
+    <Content Include="Content\js\CKEditor\skins\moono\dialog.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\dialog_ie.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\editor.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\editor_gecko.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\editor_ie.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\editor_ie7.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\editor_ie8.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Content\js\CKEditor\skins\moono\icons.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\icons_hidpi.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\images\arrow.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\images\close.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\images\hidpi\close.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\images\lock-open.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\images\lock.png" />
+    <Content Include="Content\js\CKEditor\skins\moono\images\refresh.png" />
+    <Content Include="Content\js\CKEditor\styles.js" />
+    <Content Include="packages.config" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\Shared\404.cshtml" />
+    <Content Include="Views\Blog\New.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\js\CKEditor\CHANGES.md" />
+    <Content Include="Content\js\CKEditor\LICENSE.md" />
+    <Content Include="Content\js\CKEditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Content\js\CKEditor\plugins\scayt\README.md" />
+    <Content Include="Content\js\CKEditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Content\js\CKEditor\plugins\wsc\README.md" />
+    <Content Include="Content\js\CKEditor\README.md" />
+    <Content Include="Content\js\CKEditor\samples\assets\posteddata.php" />
+    <Content Include="Content\js\CKEditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Content\js\CKEditor\samples\sample_posteddata.php" />
+    <Content Include="Content\js\CKEditor\skins\moono\readme.md" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Modules\BlogModule.cs" />
+    <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="Modules\SearchModule.cs" />
+    <Compile Include="Modules\UserModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\AppViewModel.cs" />
+    <Compile Include="Utils\Bootstrapper.cs" />
+    <Compile Include="Views\Blog\ViewModels\NewBlogModel.cs" />
+    <Compile Include="Views\Shared\ViewModels\404Model.cs" />
+    <Compile Include="Views\Shared\ViewModels\_LayoutModel.cs" />
+    <Compile Include="Views\User\ViewModels\DetailsModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{e7b3ed1d-915f-4d78-954e-35ea1bb6674a}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nancy.ViewEngines.Razor.HtmlHelpers-master\Nancy.ViewEngines.Razor.HtmlHelpers-master\Nancy.ViewEngines.Razor.HtmlHelpers\Nancy.ViewEngines.Razor.HtmlHelpers.csproj">
+      <Project>{7499a582-da5a-4322-829b-50ed6bdc6845}</Project>
+      <Name>Nancy.ViewEngines.Razor.HtmlHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{6583aa1c-749c-41fc-a59c-7af483a61a36}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50930</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50930/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+if $(ConfigurationName) == Debug (
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.1.2.0\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.1.2.0\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
+)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

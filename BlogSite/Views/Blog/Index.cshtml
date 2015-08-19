@@ -1,26 +1,22 @@
-﻿@model IEnumerable<Models.Blog>
+﻿
+<head>
+    <title>Blog Listing</title>
+</head>
 
-@{
-    ViewBag.Title = "Blog Listing";
-}
-
-<table class="table table-striped table-bordered table-condensed">
-    <tr>
-        <th>Title</th>
-        <th>Posted By</th>
-        <th>Date Posted</th>
-    </tr>
-
-
-    @foreach (var blog in Model)
-    {
+<div ng-controller="BlogListController">
+    <table class="table table-striped table-bordered table-condensed">
         <tr>
-            <td>@Html.ActionLink(blog.Title, "Blogs", "Blog", new { id = blog.ID }, null)</td>
-            <td>@Html.ActionLink(blog.PostedBy, "Details", "User", new { id = blog.UserID }, null)</td>
-            <td>@Html.DisplayFor(modelItem => blog.CreateDate)</td>
+            <th>Title</th>
+            <th>Posted By</th>
+            <th>Date Posted</th>
         </tr>
-    }
-</table>
+        <tr ng-repeat="blog in blogs">
+            <td><a ng-href="/Blog/Blogs/{{blog.ID}}">{{blog.Title}}</a></td>
+            <td>{{blog.PostedBy}}</td>
+            <td>{{blog.CreateDate}}</td>
+        </tr>
+        </table>
+</div>
 
 
 

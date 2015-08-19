@@ -11,11 +11,10 @@ namespace Models
     {
         DbSet<Blog> Blogs { get; set; }
         DbSet<BlogLike> BlogLikes { get; set; }
-        DbSet<BlogTag> BlogTags { get; set; }
+        DbSet<Category> Categories { get; set; }
         DbSet<Comment> Comments { get; set; }
         DbSet<CommentLike> CommentLikes { get; set; }
         DbSet<Permission> Permissions { get; set; }
-        DbSet<Tag> Tags { get; set; }
         DbSet<User> Users { get; set; }
 
         int SaveChanges();

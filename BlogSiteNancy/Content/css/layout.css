@@ -1,0 +1,18 @@
+﻿/* The header bar of the app */
+#header {
+    background-color: #5c87b2;
+    color:White;
+    padding:1px;
+}
+
+/* The main section of the app */
+#content {
+    float:left;
+    margin:10px;
+}
+
+/* The footer bar of the app */
+#footer {
+    text-align:center;
+    clear:both;
+}

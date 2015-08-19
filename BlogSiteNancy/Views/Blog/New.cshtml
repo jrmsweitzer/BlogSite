@@ -1,0 +1,49 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<BlogSiteNancy.Views.Blog.ViewModels.NewBlogModel>
+@using Nancy.ViewEngines.Razor.HtmlHelpers;
+
+@{
+    
+    Layout = "Views/Shared/_Layout.cshtml";
+    var _vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
+    var categories = _vm.Categories;
+}
+
+<!-- {url}/blog/new -->
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <form action="/blog/new/" method="post">
+        <table>
+            <tr>
+                <td><input type="text" name="Title" value="@Model.Title" placeholder="Title" /></td>
+            </tr>
+            <tr>
+                <td><textarea class="ckeditor" id="ckeditor_blog" type="text" name="Content" value="@Model.Content"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="Tags" placeholder="Tags" value="@string.Join(", ", Model.Tags)" /></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="AllowComments" value="@Model.AllowComments" />Allow Comments?</td>
+            </tr>
+            <tr>
+                <td><select name="Categories" value="@Model.Categories">
+                    @foreach (var category in categories)
+                    {
+                        <option name="@category.Name" value="@category.ID">@category.Name</option>
+                    }
+                    </select></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Add New Blog" razor /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

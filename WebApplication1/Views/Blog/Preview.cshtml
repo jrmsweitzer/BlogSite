@@ -1,0 +1,17 @@
+﻿@model WebApplication1.ViewModels.Blog.BlogCreateVM
+
+@{
+    ViewBag.Title = "Preview - " + @Model.Title;
+}
+
+<h2>@Model.Title</h2>
+<div>"{your username here}"</div>
+<div>@Html.Raw(@Model.Text)</div>
+<div>@DateTime.Now</div>
+<div>"View Count: 1"</div>
+
+<form method="post" action="/Blog/Submit">
+    <p><input type="submit" value="Submit" /></p>
+</form>
+
+

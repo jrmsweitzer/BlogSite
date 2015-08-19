@@ -24,7 +24,7 @@ namespace BlogSite.Controllers
         // GET: Blog
         public ActionResult Index()
         {
-            return View(_blogService.GetBlogs());
+            return View();
         }
 
         // GET: Blog/5
@@ -40,6 +40,7 @@ namespace BlogSite.Controllers
                 return HttpNotFound();
             }
             _blogService.IncrementViewCounter(blog);
+            ViewBag.CurrentBlog = blog;
             return View("Details", blog);
         }
 
@@ -49,7 +50,7 @@ namespace BlogSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([FromJson] Blog model)
+        public ActionResult Create(Blog model)
         {
             User user;
             if (SessionUser == null)

@@ -34,9 +34,17 @@ namespace Services.Impl
             return returnedBlog;
         }
 
-        public IEnumerable<Blog> GetBlogs()
+        public List<Blog> GetBlogs()
         {
-            return _blogRepo.GetBlogs();
+            var list = _blogRepo.GetBlogs();
+            var newList = new List<Blog>();
+
+            foreach (var blog in list)
+            {
+                newList.Add(new Blog(blog));
+            };
+
+            return newList;
         }
 
         public Blog GetBlogById(int id)
@@ -57,6 +65,16 @@ namespace Services.Impl
         public Blog GetNewestBlog()
         {
             return _blogRepo.GetNewestBlog();
+        }
+
+        public Blog GetBlogByTitle(string title)
+        {
+            return _blogRepo.GetBlogByTitle(title);
+        }
+
+        public List<Blog> GetBlogsByUsername(string username)
+        {
+            return _blogRepo.GetBlogsByUsername(username);
         }
     }
 }
