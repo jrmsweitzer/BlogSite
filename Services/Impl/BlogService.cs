@@ -13,25 +13,14 @@ namespace Services.Impl
     {
         IBlogRepository _blogRepo;
 
-        public BlogService(IBlogEntities db)
-        {
-            _blogRepo = new BlogRepository(db);
-        }
-
         public BlogService()
         {
-            var db = new BlogEntities();
-            _blogRepo = new BlogRepository(db);
+            _blogRepo = new BlogRepository();
         }
 
         public Blog AddBlog(Blog blog)
         {
-            Blog returnedBlog = _blogRepo.GetBlogByTitle(blog.Title);
-            if (returnedBlog == null)
-            {
-                returnedBlog = _blogRepo.AddBlog(blog);
-            }
-            return returnedBlog;
+            return _blogRepo.AddBlog(blog);
         }
 
         public List<Blog> GetBlogs()

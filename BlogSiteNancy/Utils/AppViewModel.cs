@@ -37,6 +37,9 @@ namespace BlogSiteNancy.Utils
             return _instance;
         }
 
+        public BlogService BlogService { get { return _blogService; } }
+        public UserService UserService { get { return _userService; } }
+
         public List<Blog> Blogs
         {
             get
@@ -59,6 +62,7 @@ namespace BlogSiteNancy.Utils
             return Blogs.FirstOrDefault(b => b.Title.ToLower().Equals(title.ToLower()));
         }
 
+        public User LoggedInUser { get { return _loggedInUser; } set { _loggedInUser = value; } }
 
         public List<Category> Categories
         {
@@ -70,6 +74,11 @@ namespace BlogSiteNancy.Utils
                 }
                 return _categories;
             }
+        }
+
+        public void RefreshBlogs()
+        {
+            _blogs = _instance._blogService.GetBlogs();
         }
     }
 }

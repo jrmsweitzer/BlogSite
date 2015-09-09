@@ -6,7 +6,7 @@ var express = require('express'),
     csrf = require('csurf'),
     routes = require('./routes'),
     api = require('./routes/api'),
-    DB = require('./accessDB'),
+    DB = require('./access_db'),
     protectJSON = require('./lib/protectJSON'),
     app = express();
 

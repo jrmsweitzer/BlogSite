@@ -14,12 +14,15 @@
     <title></title>
 </head>
 <body>
-    <div>
-        @Model.Title<br />
-        <a href="/user/@Model.PostedBy">@Model.PostedBy</a><br />
-        @Model.CreateDate<br />
-        @Html.Raw(Model.Post)
-        <
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                @Model.Title<br />
+                <a href="/user/@Model.PostedBy">@Model.PostedBy</a><br />
+                @Model.CreateDate<br />
+                @Html.Raw(Model.Post)
+            </div>
+        </div>
     </div>
 </body>
 </html>

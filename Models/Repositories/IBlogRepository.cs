@@ -6,22 +6,16 @@ using System.Threading.Tasks;
 
 namespace Models.Repositories
 {
-    public interface IBlogRepository : IRepository
+    public interface IBlogRepository : IDisposable
     {
-        Blog AddBlog(Blog blog);
-
-        Blog GetBlogByTitle(string p);
-
         List<Blog> GetBlogs();
-
         Blog GetBlogById(int id);
-
-        void IncrementViewCounter(Blog blog);
-
+        Blog GetBlogByTitle(string title);
         Blog GetMostViewedBlog();
-
         Blog GetNewestBlog();
-
         List<Blog> GetBlogsByUsername(string username);
+        Blog AddBlog(Blog blog);
+        void IncrementViewCounter(Blog blog);
+        int SaveChanges();
     }
 }

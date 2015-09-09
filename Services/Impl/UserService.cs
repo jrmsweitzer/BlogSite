@@ -13,15 +13,9 @@ namespace Services.Impl
     {
         private IUserRepository _userRepo;
 
-        public UserService(IBlogEntities db)
-        {
-            _userRepo = new UserRepository(db);
-        }
-
         public UserService()
         {
-            var db = new BlogEntities();
-            _userRepo = new UserRepository(db);
+            _userRepo = new UserRepository();
         }
 
         public List<User> GetUsers()

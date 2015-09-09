@@ -1,4 +1,5 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<Models.Blog>>
+﻿@using System.Linq;
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<Models.Blog>>
 
 @{
     Layout = "Views/Shared/_Layout.cshtml";
@@ -11,11 +12,11 @@
     }
 }
 
-<!-- 
-    {url}/blog 
+<!--
+    {url}/blog
     - All Blogs
-    
-    {url}/user/{username}/allblogs 
+
+    {url}/user/{username}/allblogs
     - Blogs filtered by username
 -->
 
@@ -27,20 +28,22 @@
     <title></title>
 </head>
 <body>
-    <table>
-        <tr>
-            <td>Title</td>
-            <td>Create Date</td>
-            <td>Created By</td>
-        </tr>
-        @foreach (Models.Blog blog in blogs)
-        {
-            <tr>
-                <td><a href="/blog/@blog.Title">@blog.Title</a></td>
-                <td>@blog.CreateDate.ToShortDateString()</td>
-                <td><a href="/user/@blog.PostedBy">@blog.PostedBy</a></td>
-            </tr>
-        }
-    </table>
+    <div class="container">
+        <div class="row">
+            @foreach (Models.Blog blog in blogs)
+            {
+                <div class="box">
+                    <a href="/blog/@blog.Title/view">
+                        <img src="~/Content/img/intro-pic.jpg" class="col-md-12" />
+                        @blog.Title
+                    </a> - 
+                    @blog.CreateDate.ToShortDateString()<br />
+                    <a href="/user/@blog.PostedBy">@blog.PostedBy</a>
+                    <p>This is where the short preview of the blog would go.</p>
+                </div>
+            }
+        </div>
+    </div>
+
 </body>
 </html>

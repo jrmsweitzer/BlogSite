@@ -7,22 +7,21 @@ using System.Threading.Tasks;
 namespace Models.Repositories.Impl
 {
     public class BlogRepository : BaseRepository, IBlogRepository
-    {
+    {        
         public BlogRepository()
         {
             _db = new BlogEntities();
         }
 
-        public BlogRepository(IBlogEntities db)
-        {
-            _db = db;
-        }
-
         public Blog AddBlog(Blog blog)
         {
-            _db.Blogs.Add(blog);
-            SaveChanges();
-            return blog;
+            Blog returnedBlog = GetBlogByTitle(blog.Title);
+            if (returnedBlog == null)
+            {
+                returnedBlog = _db.Blogs.Add(blog);
+                SaveChanges();
+            }
+            return returnedBlog;
         }
 
         public Blog GetBlogByTitle(string title)

@@ -514,7 +514,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // Vendors had inconsistent prefixing with the experimental Indexed DB:
     // - Webkit's implementation is accessible through webkitIndexedDB
-    // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
+    // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexed_db
     // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function() {
       return !!testPropsAll("indexedDB", window);

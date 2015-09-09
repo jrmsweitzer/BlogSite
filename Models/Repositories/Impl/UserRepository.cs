@@ -13,11 +13,6 @@ namespace Models.Repositories.Impl
             _db = new BlogEntities();
         }
 
-        public UserRepository(IBlogEntities db)
-        {
-            _db = db;
-        }
-
         public List<User> GetUsers()
         {
             return _db.Users.ToList();

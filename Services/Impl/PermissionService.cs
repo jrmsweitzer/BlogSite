@@ -15,8 +15,7 @@ namespace Services.Impl
 
         public PermissionService()
         {
-            var context = new BlogEntities();
-            _permissionRepo = new PermissionRepository(context);
+            _permissionRepo = new PermissionRepository();
         }
 
         public Permission GetPermissionByName(string name)

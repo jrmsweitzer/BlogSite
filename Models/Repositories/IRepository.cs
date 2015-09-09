@@ -8,6 +8,6 @@ namespace Models.Repositories
 {
     public interface IRepository : IDisposable
     {
-        int SaveChanges();
+        // DO NOTHING
     }
 }

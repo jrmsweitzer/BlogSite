@@ -35,9 +35,7 @@ namespace BlogSiteNancy.Views.Blog.ViewModels
 
             blog.AllowComments = this.AllowComments;
             blog.ApprovalDate = DateTime.Now;
-            blog.BlogLikes = new List<BlogLike>();
-            blog.Category = this.Category;
-            blog.Comments = new List<Models.Comment>();
+            blog.CategoryID = 1;
             blog.CreateDate = DateTime.Now;
             blog.IsApproved = true;
             blog.NumShares = 0;
@@ -45,7 +43,7 @@ namespace BlogSiteNancy.Views.Blog.ViewModels
             blog.Post = this.Content;
             blog.Tags = string.Join(", ", this.Tags);
             blog.Title = this.Title;
-            blog.User = user;
+            blog.UserID = user.ID;
 
             return blog;
         }

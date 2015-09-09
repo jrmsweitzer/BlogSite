@@ -1,14 +1,13 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repositories.Impl
 {
+    /// <summary>
+    /// Repository class.
+    /// </summary>
     public class BaseRepository : IRepository
     {
         protected IBlogEntities _db;
@@ -34,21 +33,16 @@ namespace Models.Repositories.Impl
             {
                 foreach (var error in e.EntityValidationErrors)
                 {
-                    // Log stuff
-                    //var logger = Logger.Logger.GetLogger("EntityValidationErrorLog");
-
-                    //logger.LogInfo(string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                    //    error.Entry.Entity.GetType().Name, error.Entry.State));
-                    //foreach (var validerror in error.ValidationErrors)
-                    //{
-                    //    logger.LogError(string.Format("- Property: \"{0}\", Error: \"{1}\"",
-                    //        validerror.PropertyName, validerror.ErrorMessage));
-                    //}
+                    foreach (var validerror in error.ValidationErrors)
+                    {
+                        Console.WriteLine(string.Format("- Property: \"{0}\", Error: \"{1}\"",
+                            validerror.PropertyName, validerror.ErrorMessage));
+                    }
                 }
                 throw;
             }
         }
-        
+
         /// <summary>
         /// Public implementation of Dispose pattern callable by consumers. 
         /// </summary>

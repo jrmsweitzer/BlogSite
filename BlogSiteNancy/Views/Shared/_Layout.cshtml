@@ -1,27 +1,77 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<BlogSiteNancy.Views.Shared.ViewModels._LayoutModel>
-
-
+﻿@{
+    var vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
+    var user = vm.LoggedInUser;
+}
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>PotpourriBlogs!</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/bootstrap.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/business-casual.css")" />
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/layout.css")" />
     <script src="~/Content/js/CKEditor/ckeditor.js"></script>
     <script src="~/Content/js/CKEditor/adapters/jquery.js"></script>
-    <script src="~/Content/js/app.js"></script>
+    <script src="~/Content/js/jquery.js"></script>
+    <!--<script src="~/Content/js/app.js"></script>-->
+    <script src="~/Content/js/bootstrap.js"></script>
 </head>
 <body>
     <div id="header">
-        <a href="/">Home</a>
-        <a href="/blog/new">Write a blog!</a>
-        <a href="/blog">See all blogs</a>
+        <div class="row">
+            <div class="brand col-md-11 col-md-offset-0">Potpourri Blogs</div>
+            @if (user.IsAnonymous())
+            {
+                <div class="navbar-default">
+                    <a href="/account/login">Login</a><span> | </span>
+                    <a href="/account/register">Register</a>
+                </div>
+            }
+            else
+            {
+                <a href="/account/manage">Welcome, @user.UserName</a>
+            }
+        </div>
 
-        <form action="/search/" method="POST">
-            <input type="text" name="SearchParam" value="@Model.SearchParam" placeholder="Search PotpourriBlogs" />
-            <input type="Submit" value="Search" />
-        </form>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                    <a class="navbar-brand" href="index.html">Potpourri Blogs</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="/blog/new">Write a blog!</a>
+                        </li>
+                        <li>
+                            <a href="/blog">See all blogs!</a>
+                        </li>
+                        <li>
+                            <form action="/search/" method="POST">
+                                <input type="text" name="SearchParam" placeholder="Search PotpourriBlogs" />
+                                <input type="Submit" value="Search" />
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
     </div>
 
     <div id="content">

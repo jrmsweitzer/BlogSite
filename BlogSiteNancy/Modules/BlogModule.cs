@@ -9,23 +9,18 @@ namespace BlogSiteNancy.Modules
 {
     public class BlogModule : NancyModule
     {
-        private BlogService _blogService;
-        private UserService _userService;
         private AppViewModel _vm;
 
-        public BlogModule()
-            : base("/blog")
+        public BlogModule() : base("/blog")
         {
             _vm = AppViewModel.GetAppViewModel();
-            _blogService = new BlogService();
-            _userService = new UserService();
 
             Get["/"] = _ =>
             {
                 return View["Index", _vm.Blogs];
             };
 
-            Get["/{title}"] = parameters =>
+            Get["/{title}/view"] = parameters =>
             {
                 var blog = _vm.GetBlogByTitle(parameters.title);
 
@@ -47,10 +42,12 @@ namespace BlogSiteNancy.Modules
             Post["/new/"] = _ =>
             {
                 NewBlogModel blog = this.Bind<NewBlogModel>();
+                blog.Category = _vm.Categories[Request.Form["Categories"] - 1];
 
                 if (blog.IsValid())
                 {
-                    var newBlog = _blogService.AddBlog(blog.ToModel(_userService.GetAnonymousUser()));
+                    var newBlog = _vm.BlogService.AddBlog(blog.ToModel(_vm.UserService.GetAnonymousUser()));
+                    _vm.RefreshBlogs();
                     return View["Details", newBlog];
                 }
 

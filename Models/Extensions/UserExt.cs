@@ -23,5 +23,10 @@ namespace Models
                 return Blogs.OrderByDescending(b => b.CreateDate).FirstOrDefault();
             }
         }
+
+        public bool IsAnonymous()
+        {
+            return this.UserName.ToLower().Equals("anonymous");
+        }
     }
 }
