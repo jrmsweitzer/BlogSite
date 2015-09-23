@@ -1,8 +1,9 @@
-﻿@{
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<BlogSiteNancy.Views.Account.ViewModels.RegisterModel>
+
+@{
     Layout = "Views/Shared/_Layout.cshtml";
 
     var _vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
-    var model = new BlogSiteNancy.Views.Account.ViewModels.RegisterModel();
 }
 
 <!DOCTYPE html>
@@ -13,8 +14,38 @@
     <title></title>
 </head>
 <body>
-    <div>
-
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <div class="text-center">
+                    <form action="/account/register/" method="post" class="col-md-12">
+                        <table class="col-md-12 col-md-offset-0">
+                            @if (@Model.Failures != null)
+                            {
+                                foreach (FluentValidation.Results.ValidationFailure failure in @Model.Failures)
+                                {
+                                    <tr>
+                                        <td>@failure.ErrorMessage</td>
+                                    </tr>
+                                }
+                            }
+                            <tr>
+                                <td><input type="text" name="Username" placeholder="Username" value="@Model.Username" class="col-md-12 form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td><input type="password" name="Password" placeholder="Password" value="@Model.Password" class="col-md-12 form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td><input type="password" name="ConfirmPassword" placeholder="Confirm Password" value="@Model.ConfirmPassword" class="col-md-12 form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input type="submit" value="Register" razor class="btn btn-success col-xs-12" /></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

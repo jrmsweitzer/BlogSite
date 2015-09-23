@@ -1,0 +1,28 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<System.Collections.Generic.IList<FluentValidation.Results.ValidationFailure>>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                @foreach (FluentValidation.Results.ValidationFailure failure in Model)
+                {
+                    <p>@failure.ErrorMessage</p>
+                }
+                <a href="#" onclick="window.history.back()">Back</a> <span> | </span>
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

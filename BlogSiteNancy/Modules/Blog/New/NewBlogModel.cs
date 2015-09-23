@@ -1,0 +1,43 @@
+﻿using BlogSiteNancy.Utils;
+using Models;
+using System;
+using System.Collections.Generic;
+
+namespace BlogSiteNancy.Views.Blog.ViewModels
+{
+    public class NewBlogModel : Validatable
+    {
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public List<string> Tags { get; set; }
+        public bool AllowComments { get; set; }
+        public int CategoryId { get; set; }
+        public bool NSFW { get; set; }
+        public Category[] Categories { get; set; }
+
+        public NewBlogModel()
+        {
+            Tags = new List<string>();
+            Categories = AppViewModel.GetAppViewModel().Categories.ToArray();
+        }
+
+        public Models.Blog ToModel(int userId)
+        {
+            var blog = new Models.Blog();
+
+            blog.AllowComments = this.AllowComments;
+            blog.ApprovalDate = DateTime.Now;
+            blog.CategoryID = 1;
+            blog.CreateDate = DateTime.Now;
+            blog.IsApproved = true;
+            blog.NumShares = 0;
+            blog.NumViews = 0;
+            blog.Post = this.Content;
+            blog.Tags = string.Join(", ", this.Tags);
+            blog.Title = this.Title;
+            blog.UserID = userId;
+
+            return blog;
+        }
+    }
+}

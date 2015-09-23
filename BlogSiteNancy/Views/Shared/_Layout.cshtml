@@ -1,6 +1,6 @@
 ﻿@{
     var vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
-    var user = vm.LoggedInUser;
+    var loggedInUser = vm.LoggedInUser;
 }
 <!DOCTYPE html>
 
@@ -20,23 +20,26 @@
 <body>
     <div id="header">
         <div class="row">
-            <div class="brand col-md-11 col-md-offset-0">Potpourri Blogs</div>
-            @if (user.IsAnonymous())
+            <div class="brand col-md-11 col-md-offset-0">Welcome To</div>
+            @if (vm.LoggedInUser == null)
             {
                 <div class="navbar-default">
-                    <a href="/account/login">Login</a><span> | </span>
-                    <a href="/account/register">Register</a>
+                    <a href="/account/login" id="LoginLink">Login</a>@*<span> | </span>
+                        <a href="/account/register" id="RegisterLink">Register</a>*@
                 </div>
             }
             else
             {
-                <a href="/account/manage">Welcome, @user.UserName</a>
+                <div class="navbar-default">
+                    <a href="/account/changepassword" id="ChangePasswordLink">Change Password</a> <span> | </span>
+                    <a href="/account/logout" id="LogoutLink">LogOut</a>
+                </div>
             }
         </div>
 
         <!-- Navigation -->
         <nav class="navbar navbar-default" role="navigation">
-            <div class="container">
+            <div class="container container-full">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -46,24 +49,43 @@
                         <span class="icon-bar"></span>
                     </button>
                     <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                    <a class="navbar-brand" href="index.html">Potpourri Blogs</a>
+                    <a class="navbar-brand" href="index.html">I Should Be Sleeping</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="/">Home</a>
+                            <img src="~/Content/img/doctorTachiCropped.jpg" />
                         </li>
                         <li>
-                            <a href="/blog/new">Write a blog!</a>
+                            <a href="/">Home</a><span> | </span>
+                        </li>
+                        @if (loggedInUser != null && loggedInUser.IsBlogCreator)
+                        {
+                            <li>
+                                <a href="/blog/new">Write a blog!</a><span> | </span>
+                            </li>
+                        }
+                        @if (loggedInUser != null && loggedInUser.IsAdmin)
+                        {
+                            <li>
+                                <a href="/admin/userList">Administration</a><span> | </span>
+                            </li>
+                        }
+                        <li>
+                            <a href="/blog">See all blogs</a><span> | </span>
                         </li>
                         <li>
-                            <a href="/blog">See all blogs!</a>
+                            <a href="/tag">See all tags</a>
                         </li>
                         <li>
-                            <form action="/search/" method="POST">
-                                <input type="text" name="SearchParam" placeholder="Search PotpourriBlogs" />
-                                <input type="Submit" value="Search" />
+                            <form action="/search/" method="POST" class="col-sm-12">
+                                <div class="col-sm-9">
+                                    <input type="text" name="SearchParam" placeholder="Search PotpourriBlogs" class="form-control" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="Submit" value="Search" class="btn btn-success" />
+                                </div>
                             </form>
                         </li>
                     </ul>

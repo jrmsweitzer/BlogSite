@@ -29,9 +29,11 @@ namespace Models
         public int NumViews { get; set; }
         public int NumShares { get; set; }
         public bool IsApproved { get; set; }
-        public Nullable<bool> AllowComments { get; set; }
+        public bool AllowComments { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public string Tags { get; set; }
+        public bool NSFW { get; set; }
+        public string PostPreview { get; set; }
     
         public virtual User User { get; set; }
         public virtual ICollection<BlogLike> BlogLikes { get; set; }

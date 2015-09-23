@@ -13,6 +13,22 @@
     color: white;
 }
 
+.errorMessage {
+    color: red;
+}
+
+.successMessage {
+    color: green;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: black;
+}
+
+.nav > li > a {
+    display: initial;
+}
+
 @media (min-width: 1200px) {
   .container-full {
     width: auto;

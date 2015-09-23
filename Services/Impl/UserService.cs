@@ -42,5 +42,15 @@ namespace Services.Impl
         {
             return _userRepo.GetUserById(id);
         }
+
+        public User GetUserByGUID(Guid identifier)
+        {
+            return _userRepo.GetUserByGUID(identifier);
+        }
+
+        public void ChangeUserPassword(int userId, string hashedPassword)
+        {
+            _userRepo.ChangeUserPassword(userId, hashedPassword);
+        }
     }
 }

@@ -15,5 +15,9 @@ namespace Models.Repositories
         User GetUserByUserName(string username);
 
         User GetUserById(int id);
+
+        User GetUserByGUID(Guid identifier);
+
+        void ChangeUserPassword(int userId, string hashedPassword);
     }
 }

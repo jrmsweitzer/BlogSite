@@ -2,6 +2,7 @@
 using BlogSiteNancy.Views.Shared.ViewModels;
 using Nancy;
 using Services.Impl;
+using Utilities;
 
 namespace BlogSiteNancy.Modules
 {
@@ -15,21 +16,23 @@ namespace BlogSiteNancy.Modules
 
             Get["/"] = _ =>
             {
+                _vm.LoggedInUser = this.Context.CurrentUser as AuthenticatedUser;
+
                 var blogs = _vm.Blogs;
 
-                if (blogs != null && blogs.Count > 0)
+                if (blogs != null)
                 {
                     return View["Index"];
                 }
                 else
                 {
-                    return View["shared/404"];
+                    return View[Constants.ViewLocations._404, new _404Model("There are currently no blogs to display!")];
                 }
             };
 
             Get["/{*}"] = parameters =>
             {
-                return View["shared/404", new _404Model("The webpage you are looking for has moved or does not exist.")];
+                return View[Constants.ViewLocations._404, new _404Model("The webpage you are looking for has moved or does not exist.")];
             };
         }
     }

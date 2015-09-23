@@ -28,6 +28,7 @@ namespace Models
         public string HashedPassword { get; set; }
         public System.DateTime JoinDate { get; set; }
         public bool IsActive { get; set; }
+        public string GUID { get; set; }
     
         public virtual ICollection<Blog> Blogs { get; set; }
         public virtual ICollection<BlogLike> BlogLikes { get; set; }

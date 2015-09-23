@@ -1,4 +1,6 @@
 ﻿using Models;
+using Nancy;
+using Nancy.Security;
 using Services.Impl;
 using System;
 using System.Collections.Generic;
@@ -14,8 +16,10 @@ namespace BlogSiteNancy.Utils
         private BlogService _blogService;
         private CategoryService _categoryService;
         private UserService _userService;
+        private EncryptionService _encryptionService;
+        private PermissionService _permissionService;
 
-        private User _loggedInUser;
+        private AuthenticatedUser _loggedInUser;
         private List<Blog> _blogs;
         private List<Category> _categories;
 
@@ -24,8 +28,8 @@ namespace BlogSiteNancy.Utils
             _blogService = new BlogService();
             _categoryService = new CategoryService();
             _userService = new UserService();
-
-            _loggedInUser = _userService.GetAnonymousUser();
+            _encryptionService = new EncryptionService();
+            _permissionService = new PermissionService();
         }
 
         public static AppViewModel GetAppViewModel()
@@ -39,6 +43,9 @@ namespace BlogSiteNancy.Utils
 
         public BlogService BlogService { get { return _blogService; } }
         public UserService UserService { get { return _userService; } }
+        public CategoryService CategoryService { get { return _categoryService; } }
+        public EncryptionService EncryptionService { get { return _encryptionService; } }
+        public PermissionService PermissionService { get { return _permissionService; } }
 
         public List<Blog> Blogs
         {
@@ -62,7 +69,9 @@ namespace BlogSiteNancy.Utils
             return Blogs.FirstOrDefault(b => b.Title.ToLower().Equals(title.ToLower()));
         }
 
-        public User LoggedInUser { get { return _loggedInUser; } set { _loggedInUser = value; } }
+        public AuthenticatedUser LoggedInUser {
+            get { return _loggedInUser; } 
+            set { _loggedInUser = value; } }
 
         public List<Category> Categories
         {

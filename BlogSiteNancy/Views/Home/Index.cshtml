@@ -3,10 +3,10 @@
 
     BlogSiteNancy.Utils.AppViewModel vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
 
-    var mostRecent = vm.MostRecentBlog;
-    var mostViewed = vm.MostViewedBlog;
-    var mostShared = vm.MostSharedBlog;
-    var mostLiked = vm.MostLikedBlog;
+    var mostRecent = vm.MostRecentBlog != null ? vm.MostRecentBlog : null;
+    var mostViewed = vm.MostViewedBlog != null ? vm.MostViewedBlog : null;
+    var mostShared = vm.MostSharedBlog != null ? vm.MostSharedBlog : null;
+    var mostLiked = vm.MostLikedBlog != null ? vm.MostLikedBlog : null;
 }
 
 <!-- {url}/ -->
@@ -34,42 +34,54 @@
                         </ol>
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <a href="/blog/@mostRecent.Title/view">
-                                    <img class="img-responsive img-full" src="../content/img/slide-1.jpg" alt="">
-                                    <div class="carousel-caption">
-                                        <h3>Most Recent:</h3>
-                                        <p class="white">@mostRecent.Title</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/blog/@mostLiked.Title/view">
-                                    <img class="img-responsive img-full" src="../content/img/slide-2.jpg" alt="">
-                                    <div class="carousel-caption">
-                                        <h3>Most Liked:</h3>
-                                        <p class="white">@mostLiked.Title</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/blog/@mostViewed.Title/view">
-                                    <img class="img-responsive img-full" src="../content/img/slide-3.jpg" alt="">
-                                    <div class="carousel-caption">
-                                        <h3>Most Viewed:</h3>
-                                        <p class="white">@mostViewed.Title</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/blog/@mostShared.Title/view">
-                                    <img class="img-responsive img-full" src="../content/img/slide-2.jpg" alt="">
-                                    <div class="carousel-caption">
-                                        <h3>Most Shared:</h3>
-                                        <p class="white">@mostShared.Title</p>
-                                    </div>
-                                </a>
-                            </div>
+                            @if (mostRecent != null)
+                            {
+                                <div class="item active">
+                                    <a href="/blog/@mostRecent.Title/view">
+                                        <img class="img-responsive img-full" src="../content/img/slide-1.jpg" alt="">
+                                        <div class="carousel-caption">
+                                            <h3>Most Recent:</h3>
+                                            <p class="white">@mostRecent.Title</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            @if (mostLiked != null)
+                            {
+                                <div class="item">
+                                    <a href="/blog/@mostLiked.Title/view">
+                                        <img class="img-responsive img-full" src="../content/img/slide-2.jpg" alt="">
+                                        <div class="carousel-caption">
+                                            <h3>Most Liked:</h3>
+                                            <p class="white">@mostLiked.Title</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            @if (mostViewed != null)
+                            {
+                                <div class="item">
+                                    <a href="/blog/@mostViewed.Title/view">
+                                        <img class="img-responsive img-full" src="../content/img/slide-3.jpg" alt="">
+                                        <div class="carousel-caption">
+                                            <h3>Most Viewed:</h3>
+                                            <p class="white">@mostViewed.Title</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            @if (mostShared != null)
+                            {
+                                <div class="item">
+                                    <a href="/blog/@mostShared.Title/view">
+                                        <img class="img-responsive img-full" src="../content/img/slide-2.jpg" alt="">
+                                        <div class="carousel-caption">
+                                            <h3>Most Shared:</h3>
+                                            <p class="white">@mostShared.Title</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
                         </div>
                         <!-- Controls -->
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -79,10 +91,9 @@
                             <span class="icon-next"></span>
                         </a>
                     </div>
-                    <h2 class="brand-before">
-                        <small>Welcome to</small>
-                    </h2>
-                    <h1 class="brand-name">Potpourri Blogs</h1>
+                    <div>
+                        <h1 class="brand-name">I Should Be Sleeping</h1>
+                    </div>
                 </div>
             </div>
         </div>

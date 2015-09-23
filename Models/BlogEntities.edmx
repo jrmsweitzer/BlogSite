@@ -18,9 +18,11 @@
           <Property Name="NumViews" Type="int" Nullable="false" />
           <Property Name="NumShares" Type="int" Nullable="false" />
           <Property Name="IsApproved" Type="bit" Nullable="false" />
-          <Property Name="AllowComments" Type="bit" />
+          <Property Name="AllowComments" Type="bit" Nullable="false" />
           <Property Name="CategoryID" Type="int" />
-          <Property Name="Tags" Type="nvarchar(max)" />
+          <Property Name="Tags" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NSFW" Type="bit" Nullable="false" />
+          <Property Name="PostPreview" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="BlogLike">
           <Key>
@@ -72,6 +74,7 @@
           <Property Name="HashedPassword" Type="nvarchar(max)" Nullable="false" />
           <Property Name="JoinDate" Type="datetime" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="GUID" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK_Blog_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -243,13 +246,15 @@
           <Property Name="NumViews" Type="Int32" Nullable="false" />
           <Property Name="NumShares" Type="Int32" Nullable="false" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="AllowComments" Type="Boolean" />
+          <Property Name="AllowComments" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Blog_User" FromRole="Blog" ToRole="User" />
           <NavigationProperty Name="BlogLikes" Relationship="Self.FK_BlogLike_Blog" FromRole="Blog" ToRole="BlogLike" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Blog" FromRole="Blog" ToRole="Comment" />
           <Property Name="CategoryID" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Models.FK_Blog_Category" FromRole="Blog" ToRole="Category" />
-          <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NSFW" Type="Boolean" Nullable="false" />
+          <Property Name="PostPreview" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="BlogLike">
           <Key>
@@ -315,6 +320,7 @@
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_User" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="CommentLikes" Relationship="Self.FK_CommentLike_User" FromRole="User" ToRole="CommentLike" />
           <NavigationProperty Name="Permission" Relationship="Self.FK_User_Permission" FromRole="User" ToRole="Permission" />
+          <Property Name="GUID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Blog_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -478,6 +484,8 @@
           <EntitySetMapping Name="Blogs">
             <EntityTypeMapping TypeName="Models.Blog">
               <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="PostPreview" ColumnName="PostPreview" />
+                <ScalarProperty Name="NSFW" ColumnName="NSFW" />
                 <ScalarProperty Name="Tags" ColumnName="Tags" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -541,6 +549,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Models.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />

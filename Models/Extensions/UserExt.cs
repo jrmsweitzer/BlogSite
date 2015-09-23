@@ -8,6 +8,16 @@ namespace Models
 {
     public partial class User
     {
+        public User(string username, string hashedPassword, int permissionId)
+        {
+            this.GUID = System.Guid.NewGuid().ToString();
+            this.HashedPassword = hashedPassword;
+            this.IsActive = true;
+            this.JoinDate = DateTime.Now;
+            this.UserName = username;
+            this.PermissionID = permissionId;
+        }
+
         public Blog MostViewedBlog
         {
             get

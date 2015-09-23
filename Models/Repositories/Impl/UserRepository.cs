@@ -35,5 +35,16 @@ namespace Models.Repositories.Impl
         {
             return _db.Users.FirstOrDefault(u => u.ID == id);
         }
+
+        public User GetUserByGUID(Guid identifier)
+        {
+            return _db.Users.FirstOrDefault(u => u.GUID == identifier.ToString());
+        }
+
+        public void ChangeUserPassword(int userId, string hashedPassword)
+        {
+            _db.Users.FirstOrDefault(u => u.ID == userId).HashedPassword = hashedPassword;
+            SaveChanges();
+        }
     }
 }
