@@ -7,12 +7,13 @@ namespace BlogSiteNancy.Views.Blog.ViewModels
 {
     public class NewBlogModel : Validatable
     {
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public List<string> Tags { get; set; }
         public bool AllowComments { get; set; }
         public int CategoryId { get; set; }
         public bool NSFW { get; set; }
+        public string Content { get; set; }
+        public string PostPreview { get; set; }
+        public List<string> Tags { get; set; }
+        public string Title { get; set; }
         public Category[] Categories { get; set; }
 
         public NewBlogModel()
@@ -27,15 +28,17 @@ namespace BlogSiteNancy.Views.Blog.ViewModels
 
             blog.AllowComments = this.AllowComments;
             blog.ApprovalDate = DateTime.Now;
-            blog.CategoryID = 1;
+            blog.CategoryID = this.CategoryId;
             blog.CreateDate = DateTime.Now;
             blog.IsApproved = true;
             blog.NumShares = 0;
             blog.NumViews = 0;
+            blog.NSFW = this.NSFW;
             blog.Post = this.Content;
             blog.Tags = string.Join(", ", this.Tags);
             blog.Title = this.Title;
             blog.UserID = userId;
+            blog.PostPreview = this.PostPreview;
 
             return blog;
         }

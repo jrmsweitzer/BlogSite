@@ -95,8 +95,10 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\business-casual.css" />
     <Content Include="Content\css\layout.css" />
+    <Content Include="Content\img\404.jpg" />
     <Content Include="Content\img\doctorTachi.jpg" />
     <Content Include="Content\img\doctorTachiCropped.jpg" />
+    <Content Include="Content\img\favicon.png" />
     <Content Include="Content\img\intro-pic.jpg" />
     <Content Include="Content\img\slide-1.jpg" />
     <Content Include="Content\img\slide-2.jpg" />
@@ -170,6 +172,7 @@
     <Content Include="Content\js\CKEditor\plugins\base64image\lang\zh-cn.js" />
     <Content Include="Content\js\CKEditor\plugins\base64image\lang\zh.js" />
     <Content Include="Content\js\CKEditor\plugins\base64image\plugin.js" />
+    <Content Include="Content\js\modules\register.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\img\bg.jpg" />
     <Content Include="Content\js\app.js" />
@@ -579,8 +582,9 @@
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Shared\DebugErrors.cshtml" />
+    <Content Include="Views\Tags\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -596,13 +600,15 @@
   <ItemGroup>
     <Compile Include="Modules\Account\AccountModule.cs" />
     <Compile Include="Modules\Account\Login\LoginValidator.cs" />
-    <Compile Include="Modules\Account\Manage\ChangePasswordValidator.cs" />
+    <Compile Include="Modules\Account\Manage\ManageAccountValidator.cs" />
     <Compile Include="Modules\AdminModule.cs" />
     <Compile Include="Modules\Blog\BlogModule.cs" />
     <Compile Include="Modules\Blog\New\NewBlogValidator.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\SearchModule.cs" />
     <Compile Include="Modules\SecureModule.cs" />
+    <Compile Include="Modules\Tags\Models\BlogTag.cs" />
+    <Compile Include="Modules\Tags\TagsModule.cs" />
     <Compile Include="Modules\UserModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AppViewModel.cs" />
@@ -614,17 +620,14 @@
     <Compile Include="Utils\Attributes\PasswordAttribute.cs" />
     <Compile Include="Modules\Account\Register\RegisterValidator.cs" />
     <Compile Include="Modules\Account\Login\LoginModel.cs" />
-    <Compile Include="Modules\Account\Manage\ChangePasswordModel.cs" />
+    <Compile Include="Modules\Account\Manage\ManageAccountModel.cs" />
     <Compile Include="Modules\Account\Register\RegisterModel.cs" />
     <Compile Include="Modules\Blog\New\NewBlogModel.cs" />
     <Compile Include="Views\Shared\ViewModels\404Model.cs" />
     <Compile Include="Views\Shared\ViewModels\_LayoutModel.cs" />
     <Compile Include="Views\User\ViewModels\DetailsModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\" />
-    <Folder Include="Views\Blog\ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{e7b3ed1d-915f-4d78-954e-35ea1bb6674a}</Project>

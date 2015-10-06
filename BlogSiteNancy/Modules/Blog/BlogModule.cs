@@ -23,7 +23,7 @@ namespace BlogSiteNancy.Modules
 
             Get["/{title}/view"] = parameters =>
             {
-                var blog = _vm.GetBlogByTitle(parameters.title);
+                Models.Blog blog = _vm.GetBlogByTitle(parameters.title);
 
                 if (blog == null)
                 {

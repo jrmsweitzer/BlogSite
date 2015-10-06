@@ -17,11 +17,12 @@ namespace Utilities
 
         public class Urls
         {
-            public static string Home = "http://potpourriblogs.gear.host/";
+            public static string Home = "http://localhost:50930/";
+            //public static string Home = "http://potpourriblogs.gear.host/";
             public class Account
             {
                 public static string Login = Home + "account/login";
-                public static string ChangePassword = Home + "account/changepassword";
+                public static string Manage = Home + "account/manage";
             }
         }
 
@@ -44,7 +45,7 @@ namespace Utilities
                         "Username and/or password is not correct.";
                 }
 
-                public class ChangePassword
+                public class Manage
                 {
                     public static string MissingOldPassword =
                         "'OldPassword' should not be empty.";

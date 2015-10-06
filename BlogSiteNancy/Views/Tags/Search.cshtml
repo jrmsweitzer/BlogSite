@@ -1,0 +1,66 @@
+﻿@using System.Linq;
+@using System.Collections.Generic;
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<BlogSiteNancy.Modules.Tags.Models.BlogTag>>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+    var vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
+    var blogs = vm.Blogs;
+    var tagDict = vm.GetTagDictionary();
+
+    if (@Model != null)
+    {
+        tagDict = @Model;
+    }
+
+
+    var tagList = new List<string>();
+
+    foreach (var blogTag in tagDict)
+    {
+        if (!tagList.Contains(blogTag.Tag))
+        {
+            tagList.Add(blogTag.Tag);
+        }
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            @foreach (var taglookup in tagList)
+            {
+                <div class="box">
+                    <div class="col-md-12">
+                        <h2>@taglookup</h2>
+                    </div>
+                    @{var blogsWithTag = blogs.Where(b => b.Tags.Contains(@taglookup)).ToList();}
+                    @foreach (var blog in blogsWithTag)
+                    {
+                        <div class="col-md-3">
+                            <a href="/blog/@blog.Title/view">
+                                <img src="~/Content/img/doctorTachi.jpg" class="col-md-12">
+                            </a>
+                            <div class="col-md-12">
+
+                                <a href="/blog/@blog.Title/view">
+                                    <h4>
+                                        @blog.Title
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

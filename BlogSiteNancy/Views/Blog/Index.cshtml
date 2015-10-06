@@ -12,14 +12,6 @@
     }
 }
 
-<!--
-    {url}/blog
-    - All Blogs
-
-    {url}/user/{username}/allblogs
-    - Blogs filtered by username
--->
-
 <!DOCTYPE html>
 
 <html>
@@ -32,14 +24,34 @@
         <div class="row">
             @foreach (Models.Blog blog in blogs)
             {
+                var tags = blog.Tags.Split(',');
                 <div class="box">
-                    <a href="/blog/@blog.Title/view">
-                        <img src="~/Content/img/intro-pic.jpg" class="col-md-12" />
-                        @blog.Title
-                    </a> - 
-                    @blog.CreateDate.ToShortDateString()<br />
-                    <a href="/user/@blog.PostedBy">@blog.PostedBy</a>
-                    <p>This is where the short preview of the blog would go.</p>
+                    <div class="col-md-3">
+                        <a href="/blog/@blog.Title/view">
+                            <img src="~/Content/img/intro-pic.jpg" class="col-md-12" />
+                        </a>
+                    </div>
+                    <div class="col-md-9">
+                        <a href="/blog/@blog.Title/view">
+                            @blog.Title
+                        </a><span> - </span>
+                        <a href="/user/@blog.User.UserName">
+                            @blog.User.UserName
+                        </a>
+                        <p>@blog.PostPreview</p>
+                        <p>
+                            @foreach (var tag in tags)
+                            {
+                                var tagname = tag.Trim();
+                                <a href="/tags/@tagname">@tagname</a><span>, </span>
+                            }
+                        </p>
+                    </div>
+                    <div class="seeMore">
+                        <a href="/blog/@blog.Title/view">
+                            See More...
+                        </a>
+                    </div>
                 </div>
             }
         </div>

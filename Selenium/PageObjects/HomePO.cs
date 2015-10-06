@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using Selenium.Framework;
 using Selenium.PageObjects.Base;
+using Utilities;
 
 namespace Selenium.PageObjects
 {
@@ -9,7 +10,7 @@ namespace Selenium.PageObjects
         public HomePO(IWebDriver driver)
             : base(driver)
         {
-            _url = "http://potpourriblogs.gear.host/";
+            _url = Constants.Urls.Home;
             GoTo(_url);
         }
     }

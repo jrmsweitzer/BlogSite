@@ -16,10 +16,10 @@ namespace Selenium.PageObjects.Base
         }
 
         // Locators
-        public static readonly By Errors = By.ClassName("errorMessage");
-        public static readonly ByFormatter Error = ByFormatter.XPath("//tr/td[@class='errorMessage'][.=\"{0}\"]");
-        public static readonly By Successes = By.ClassName("successMessage");
-        public static readonly ByFormatter Success = ByFormatter.XPath("//tr/td[@class='successMessage'][.=\"{0}\"]");
+        public static readonly By Errors = By.Id("Error");
+        public static readonly ByFormatter Error = ByFormatter.XPath("//label[@id='Error'][contains(.,\"{0}\")]");
+        public static readonly By Successes = By.Id("Success");
+        public static readonly ByFormatter Success = ByFormatter.XPath("//label[@id='Success'][contains(.,\"{0}\")]");
 
         // Logic
 

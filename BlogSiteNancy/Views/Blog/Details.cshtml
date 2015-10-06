@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="box">
-                @Model.Title<br />
+                @Model.Title - Views: @Model.NumViews<br />
                 <a href="/user/@Model.PostedBy">@Model.PostedBy</a><br />
                 @Model.CreateDate<br />
                 @Html.Raw(Model.Post)

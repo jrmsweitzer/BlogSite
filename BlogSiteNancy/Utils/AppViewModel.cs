@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using BlogSiteNancy.Modules.Tags.Models;
+using Models;
 using Nancy;
 using Nancy.Security;
 using Services.Impl;
@@ -22,6 +23,20 @@ namespace BlogSiteNancy.Utils
         private AuthenticatedUser _loggedInUser;
         private List<Blog> _blogs;
         private List<Category> _categories;
+
+        public List<BlogTag> GetTagDictionary()
+        {
+            List<BlogTag> tagDictionary = new List<BlogTag>();
+            foreach (var blog in Blogs)
+            {
+                List<string> tags = blog.Tags.Split(',').ToList();
+                foreach(var tag in tags)
+                {
+                    tagDictionary.Add(new BlogTag(tag.Trim(), blog.ID));
+                }
+            }
+            return tagDictionary;
+        }
 
         private AppViewModel()
         {
@@ -63,6 +78,7 @@ namespace BlogSiteNancy.Utils
         public Blog MostRecentBlog { get { return Blogs.OrderByDescending(b => b.CreateDate).FirstOrDefault(); } }
         public Blog MostSharedBlog { get { return Blogs.OrderByDescending(b => b.NumShares).FirstOrDefault(); } }
         public Blog MostLikedBlog { get { return Blogs.OrderByDescending(b => b.BlogLikes.Count).FirstOrDefault(); } }
+        public Blog MostCommentedBlog { get { return Blogs.OrderByDescending(b => b.Comments.Count).FirstOrDefault(); } }
 
         public Blog GetBlogByTitle(string title)
         {
@@ -89,5 +105,6 @@ namespace BlogSiteNancy.Utils
         {
             _blogs = _instance._blogService.GetBlogs();
         }
+
     }
 }

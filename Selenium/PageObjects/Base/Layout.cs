@@ -14,7 +14,7 @@ namespace Selenium.PageObjects.Base
         // Locators
         private static readonly By LoginBtn = By.Id("LoginLink");
         private static readonly By RegisterBtn = By.Id("RegisterLink");
-        private static readonly By ChangePasswordBtn = By.Id("ChangePasswordLink");
+        private static readonly By ChangePasswordBtn = By.Id("ManageAccountLink");
         private static readonly By LogoutBtn = By.Id("LogoutLink");
 
         // Logic
@@ -61,7 +61,7 @@ namespace Selenium.PageObjects.Base
             if (ElementExists(ChangePasswordBtn))
             {
                 Click(ChangePasswordBtn);
-                WaitForUrl(Constants.Urls.Account.ChangePassword);
+                WaitForUrl(Constants.Urls.Account.Manage);
                 return new ChangePasswordPO(_driver).ChangePassword(oldPassword, newPassword, confirmNewPassword);
             }
             return null;

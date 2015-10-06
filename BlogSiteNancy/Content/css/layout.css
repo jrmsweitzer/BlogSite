@@ -1,16 +1,12 @@
-﻿/* The header bar of the app */
-#header {
-    padding:1px;
-}
-
-/* The footer bar of the app */
-#footer {
-    text-align:center;
-    clear:both;
-}
-
-.white {
+﻿.white {
     color: white;
+}
+
+.navbar-nav,
+.brand,
+.brand-name {
+    font-family: Gabriola;
+    font-weight: bold;
 }
 
 .errorMessage {
@@ -21,16 +17,107 @@
     color: green;
 }
 
-.navbar-default .navbar-nav > li > a {
+.navbar-nav {
+    float: left;
+    font-weight: 500;
+    padding-left: 16em;
+}
+
+.frontpage-nav {
+    margin: 7.5px -15px;
+    float: left;
+    margin: 0;
+}
+
+.frontpage-nav > li {
+    float: left;
+}
+
+.frontpage-nav > li > a {
+    padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+
+.right-nav {
+    float: right;
+}
+
+.seeMore {
+    float: right;
+}
+
+/* Bootstrap overrides */
+.navbar-default .navbar-nav > li > a,
+.nav > li > span {
     color: black;
+    font-size: 2.2em;
+}
+
+.navbar-nav .top-padding {
+    padding-top: 1.7em;
 }
 
 .nav > li > a {
     display: initial;
 }
 
-@media (min-width: 1200px) {
-  .container-full {
-    width: auto;
-  }
+.navbar-right {
+    float: right;
+    padding-right: 5em;
+}
+
+.carousel-caption {
+    background: white;
+    color: black;
+    border: 1px solid, black;
+}
+
+.carousel-indicators .active {
+    background-color: black;
+}
+
+.carousel-indicators li {
+    border: 1px solid black;
+}
+
+.carousel-indicators {
+    position: relative;
+    bottom: -2.8em;
+}
+
+.searchBox {
+    float: right;
+    position: relative;
+    width: 30em;
+    right: -1em;
+    top: 0em;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+@media screen and (min-width:768px) {
+    .brand {
+        color: #fff;
+        font-size: 6em;
+        font-weight: 700;
+        letter-spacing: 20px;
+        text-align: center;
+    }
+
+    .container-full {
+        width: 100%;
+    }
+
+    .navbar-nav > li > a {
+        line-height: normal;
+    }
+
+    .navbar-nav {
+        float: left;
+    }
+
+    .image404 {
+        width: 100%;
+    }
 }

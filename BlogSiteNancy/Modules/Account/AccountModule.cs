@@ -21,58 +21,23 @@ namespace BlogSiteNancy.Modules
             var _vm = AppViewModel.GetAppViewModel();
 
             #region GETS
-            Get["/changepassword"] = parameters => {
+            Get["/login"] = parameters => { return View["Login", new LoginModel()]; };
+            Get["/manage"] = parameters =>
+            {
                 if (_vm.LoggedInUser != null)
                 {
-                    return View["ChangePassword", new ChangePasswordModel()];
+                    return View["Manage", new ManageAccountModel()];
                 }
                 else
                 {
                     return View[Constants.ViewLocations._404, new _404Model("The webpage you are looking for has moved or does not exist.")];
                 }
             };
-            Get["/login"] = parameters => { return View["Login", new LoginModel()]; };
             Get["/logout"] = parameters => { return Nancy.Authentication.Forms.ModuleExtensions.LogoutAndRedirect(this, "/"); };
             Get["/register"] = parameters => { return View["Register", new RegisterModel()]; };
             #endregion
 
             #region POSTS
-            #region /account/changepassword
-            Post["/changepassword"] = parameters =>
-            {
-                var model = this.Bind<ChangePasswordModel>();
-                var validator = new ChangePasswordValidator();
-                var results = validator.Validate(model);
-
-                var success = results.IsValid;
-                var failures = results.Errors;
-
-                if (success)
-                {
-                    if (model.NewPassword != model.ConfirmNewPassword)
-                    {
-                        var failure = new ValidationFailure("NewPassword,ConfirmNewPassword",
-                            Constants.Messages.Account.ChangePassword.MismatchedPasswords);
-                        model.Failures = new List<ValidationFailure>() { failure };
-                        return View["changepassword", model];
-                    }
-                    if (!_vm.EncryptionService.ValidatePassword(model.OldPassword, _vm.LoggedInUser.User.HashedPassword))
-                    {
-                        var failure = new ValidationFailure("OldPassword",
-                            Constants.Messages.Account.ChangePassword.InvalidOldPassword);
-                        model.Failures = new List<ValidationFailure>() { failure };
-                        return View["changepassword", model];
-                    }
-                    _vm.UserService.ChangeUserPassword(_vm.LoggedInUser.User.ID, _vm.EncryptionService.CreateHash(model.NewPassword));
-                    var successMessage = Constants.Messages.Account.ChangePassword.SuccessPasswordChanged;
-                    model.Successes = new List<string>() { successMessage };
-                    model.Failures.Clear();
-                    _vm.LoggedInUser.User = _vm.UserService.GetUserById(_vm.LoggedInUser.User.ID);
-                    return View["changepassword", model];
-                }
-                return View["changepassword", model];
-            };
-            #endregion
             #region /account/login
             Post["/login"] = parameters =>
             {
@@ -99,6 +64,42 @@ namespace BlogSiteNancy.Modules
                 }
                 model.Failures = failures;
                 return View["login", model];
+            };
+            #endregion
+            #region /account/changepassword
+            Post["/changepassword"] = parameters =>
+            {
+                var model = this.Bind<ManageAccountModel>();
+                var validator = new ManageAccountValidator();
+                var results = validator.Validate(model);
+
+                var success = results.IsValid;
+                var failures = results.Errors;
+
+                if (success)
+                {
+                    if (model.NewPassword != model.ConfirmNewPassword)
+                    {
+                        var failure = new ValidationFailure("NewPassword,ConfirmNewPassword",
+                            Constants.Messages.Account.Manage.MismatchedPasswords);
+                        model.Failures = new List<ValidationFailure>() { failure };
+                        return View["manage", model];
+                    }
+                    if (!_vm.EncryptionService.ValidatePassword(model.OldPassword, _vm.LoggedInUser.User.HashedPassword))
+                    {
+                        var failure = new ValidationFailure("OldPassword",
+                            Constants.Messages.Account.Manage.InvalidOldPassword);
+                        model.Failures = new List<ValidationFailure>() { failure };
+                        return View["manage", model];
+                    }
+                    _vm.UserService.ChangeUserPassword(_vm.LoggedInUser.User.ID, _vm.EncryptionService.CreateHash(model.NewPassword));
+                    var successMessage = Constants.Messages.Account.Manage.SuccessPasswordChanged;
+                    model.Successes = new List<string>() { successMessage };
+                    model.Failures.Clear();
+                    _vm.LoggedInUser.User = _vm.UserService.GetUserById(_vm.LoggedInUser.User.ID);
+                    return View["manage", model];
+                }
+                return View["manage", model];
             };
             #endregion
             #region /account/register

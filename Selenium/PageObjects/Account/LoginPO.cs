@@ -1,12 +1,5 @@
 ﻿using OpenQA.Selenium;
-using Selenium.Framework;
 using Selenium.PageObjects.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Utilities;
 
 namespace Selenium.PageObjects
 {
@@ -18,8 +11,8 @@ namespace Selenium.PageObjects
         }
 
         // Locators
-        private static readonly By UsernameTextbox = By.Id("LoginInput");
-        private static readonly By PasswordTextbox = By.Id("PasswordInput");
+        private static readonly By UsernameTextbox = By.Id("LoginUsername");
+        private static readonly By PasswordTextbox = By.Id("LoginPassword");
         private static readonly By LoginButton = By.Id("LoginButton");
 
         /// <summary>
@@ -30,8 +23,8 @@ namespace Selenium.PageObjects
         /// <returns></returns>
         public IBlogPage LoginAs(string username, string password)
         {
-            SendKeys(UsernameTextbox, username);
-            SendKeys(PasswordTextbox, password);
+            ClearAndSendKeys(UsernameTextbox, username);
+            ClearAndSendKeys(PasswordTextbox, password);
             Click(LoginButton);
             if (GetErrorCount() == 0)
             {

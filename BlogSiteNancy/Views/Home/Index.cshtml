@@ -7,6 +7,7 @@
     var mostViewed = vm.MostViewedBlog != null ? vm.MostViewedBlog : null;
     var mostShared = vm.MostSharedBlog != null ? vm.MostSharedBlog : null;
     var mostLiked = vm.MostLikedBlog != null ? vm.MostLikedBlog : null;
+    var mostCommented = vm.MostCommentedBlog != null ? vm.MostCommentedBlog : null;
 }
 
 <!-- {url}/ -->
@@ -24,14 +25,10 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12 text-center">
+                    <div>
+                        <h1 class="brand-name">I Should Be Sleeping</h1>
+                    </div>
                     <div id="carousel-example-generic" class="carousel slide">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators hidden-xs">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                        </ol>
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             @if (mostRecent != null)
@@ -41,7 +38,8 @@
                                         <img class="img-responsive img-full" src="../content/img/slide-1.jpg" alt="">
                                         <div class="carousel-caption">
                                             <h3>Most Recent:</h3>
-                                            <p class="white">@mostRecent.Title</p>
+                                            <p>@mostRecent.Title</p>
+                                            <p>@mostRecent.PostPreview</p>
                                         </div>
                                     </a>
                                 </div>
@@ -53,7 +51,8 @@
                                         <img class="img-responsive img-full" src="../content/img/slide-2.jpg" alt="">
                                         <div class="carousel-caption">
                                             <h3>Most Liked:</h3>
-                                            <p class="white">@mostLiked.Title</p>
+                                            <p>@mostLiked.Title</p>
+                                            <p>@mostLiked.PostPreview</p>
                                         </div>
                                     </a>
                                 </div>
@@ -65,7 +64,8 @@
                                         <img class="img-responsive img-full" src="../content/img/slide-3.jpg" alt="">
                                         <div class="carousel-caption">
                                             <h3>Most Viewed:</h3>
-                                            <p class="white">@mostViewed.Title</p>
+                                            <p>@mostViewed.Title</p>
+                                            <p>@mostViewed.PostPreview</p>
                                         </div>
                                     </a>
                                 </div>
@@ -77,22 +77,27 @@
                                         <img class="img-responsive img-full" src="../content/img/slide-2.jpg" alt="">
                                         <div class="carousel-caption">
                                             <h3>Most Shared:</h3>
-                                            <p class="white">@mostShared.Title</p>
+                                            <p>@mostShared.Title</p>
+                                            <p>@mostShared.PostPreview</p>
                                         </div>
                                     </a>
                                 </div>
                             }
                         </div>
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators hidden-xs">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                        </ol>
                         <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="icon-prev"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="icon-next"></span>
-                        </a>
-                    </div>
-                    <div>
-                        <h1 class="brand-name">I Should Be Sleeping</h1>
+                        @*<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="icon-prev"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="icon-next"></span>
+                            </a>*@
                     </div>
                 </div>
             </div>
@@ -101,7 +106,25 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
-                    <a href="/blog">Click here to view all blogs</a><br />
+                    <ul class="nav frontpage-nav">
+                        <li>
+                            <a href="/blog/@mostRecent.Title/view">Recent</a>
+                        </li>
+                        <li>
+                            <a href="/">Guest blogs</a>
+                        </li>
+                        <li>
+                            <a href="/blog/@mostCommented.Title/view">Most Commented</a>
+                        </li>
+                        <li>
+                            <a href="/blog/@mostViewed.Title/view">Most Viewed</a>
+                        </li>
+                    </ul>
+                    <ul class="nav frontpage-nav right-nav">
+                        <li>
+                            <a href="/">@DateTime.Now.Year</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

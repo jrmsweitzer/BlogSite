@@ -5,13 +5,8 @@
  */
 
 body {
-    font-family: Gabriola;
+    font-family: 'Book Antiqua';
     background: url('../img/bg.jpg') center center fixed;
-    background-repeat: repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
 }
 
 h1,
@@ -21,29 +16,6 @@ h4,
 h5,
 h6 {
     color: black;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-p {
-    font-size: 1.25em;
-    line-height: 1.6;
-    color: #000;
-}
-
-hr {
-    max-width: 400px;
-    border-color: #999999;
-}
-
-.brand,
-.address-bar {
-    display: none;
-}
-
-.navbar-nav {
-    font-weight: 400;
-    letter-spacing: 3px;
 }
 
 .img-full {
@@ -106,18 +78,6 @@ footer p {
 }
 
 @media screen and (min-width:768px) {
-    .brand {
-        display: inherit;
-        margin: 0;
-        padding: 30px 0 10px;
-        text-align: center;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 5em;
-        font-weight: 700;
-        line-height: normal;
-        color: #fff;
-    }
 
     .top-divider {
         margin-top: 0;
@@ -151,6 +111,7 @@ footer p {
 
     .navbar {
         min-height: 0;
+        margin-bottom: 0;
     }
 
     .navbar-default {
@@ -159,25 +120,8 @@ footer p {
         background: rgba(255,255,255,0.9);
     }
 
-    .nav>li>a {
-        padding-top: 35px;
-        padding-bottom: 35px;
-    }
-
     .nav>li>form {
         padding: 35px;
-    }
-
-    .navbar-nav>li>a {
-        line-height: normal;
-    }
-
-    .navbar-nav {
-        display: table;
-        float: none;
-        margin: 0 auto;
-        table-layout: fixed;
-        font-size: 1.25em;
     }
 }
 

@@ -45,6 +45,7 @@ namespace Models
             this.NumShares = blog.NumShares;
             this.NumViews = blog.NumViews;
             this.Post = blog.Post;
+            this.PostPreview = blog.PostPreview;
             this.Tags = blog.Tags;
             this.Title = blog.Title;
             this.User = blog.User;
