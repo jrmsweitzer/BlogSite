@@ -25,15 +25,7 @@ namespace Services.Impl
 
         public List<Blog> GetBlogs()
         {
-            var list = _blogRepo.GetBlogs();
-            var newList = new List<Blog>();
-
-            foreach (var blog in list)
-            {
-                newList.Add(new Blog(blog));
-            };
-
-            return newList;
+            return _blogRepo.GetBlogs();
         }
 
         public Blog GetBlogById(int id)

@@ -19,11 +19,27 @@ namespace Utilities
         {
             public static string Home = "http://localhost:50930/";
             //public static string Home = "http://potpourriblogs.gear.host/";
+
             public class Account
             {
                 public static string Login = Home + "account/login";
                 public static string Manage = Home + "account/manage";
+                public static string Register = Home + "account/register";
             }
+            public static string Admin = Home + "admin";
+            public class Blog
+            {
+                public static string Create = Home + "blog/create";
+            }
+        }
+
+        public class Cookies
+        {
+            public static string Name = "_ncfa";
+            public static string UserCookieData = 
+                "%2bUuN7%2fAviLb8i9Faf%2b7l5n1BrpI67reD06B";
+            public static string AdminCookieData =
+                "2bNgSFtQSZNjo60TM8Q%2f67LX2MYjz81O4oMgWH7cog6wRH0S";
         }
 
         public class ViewLocations

@@ -7,9 +7,10 @@ using Models.Repositories;
 
 namespace Models
 {
+    [Serializable]
     public partial class Blog
     {
-        public Blog(string title, string content, List<string> tags, bool allowComments, User user)
+        public Blog(string title, string content, string tags, bool allowComments, User user)
         {
             this.AllowComments = allowComments;
             this.ApprovalDate = DateTime.Now;
@@ -21,41 +22,19 @@ namespace Models
             this.NumViews = 0;
             this.Post = content;
             this.Title = title;
-            this.User = user;
-            this.Tags = string.Join(", ", tags);
-        }
-
-        public Blog(Blog blog)
-        {
-            this.AllowComments = blog.AllowComments;
-            this.ApprovalDate = blog.ApprovalDate;
-            this.BlogLikes = new List<BlogLike>();
-                foreach (var like in blog.BlogLikes)
-                {
-                    this.BlogLikes.Add(like);
-                }
-            this.Comments = new List<Comment>();
-                foreach (var comment in blog.Comments)
-                {
-                    this.Comments.Add(comment);
-                }
-            this.CreateDate = blog.CreateDate;
-            this.ID = blog.ID;
-            this.IsApproved = blog.IsApproved;
-            this.NumShares = blog.NumShares;
-            this.NumViews = blog.NumViews;
-            this.Post = blog.Post;
-            this.PostPreview = blog.PostPreview;
-            this.Tags = blog.Tags;
-            this.Title = blog.Title;
-            this.User = blog.User;
+            this.UserID = user.ID;
+            this.Tags = tags;
         }
 
         public string PostedBy
         {
             get
             {
-                return User.UserName;
+                if (User != null)
+                {
+                    return User.UserName;
+                }
+                return "";
             }
         }
     }

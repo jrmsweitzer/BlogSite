@@ -5,6 +5,7 @@ using Nancy;
 using Nancy.ModelBinding;
 using Services.Impl;
 using System.Linq;
+using Utilities;
 
 namespace BlogSiteNancy.Modules
 {
@@ -38,6 +39,14 @@ namespace BlogSiteNancy.Modules
             Get["/new/"] = _ =>
             {
                 return View["New", new NewBlogModel()];
+            };
+
+            Post["/edit"] = parameters =>
+            {
+                Models.Blog model = this.Request.Form.BlogModel.Value;
+                    //this.Bind<Models.Blog>();
+                var viewModel = new NewBlogModel(model);
+                return View["model", viewModel];
             };
 
             Post["/new/"] = parameters =>

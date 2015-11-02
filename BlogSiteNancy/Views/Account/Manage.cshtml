@@ -7,22 +7,19 @@
 @{
     Layout = "Views/Shared/_Layout.cshtml";
     var _vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
+    _vm.Title = "Manage Account";
 }
 
 <!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
 <body>
     <div class="container col-md-4 col-md-offset-4 row box text-center">
 
         <!-- Change Password Form -->
         <form action="/account/changepassword/"
-              id="ManageAccountForm"
               class="col-md-12"
+              id="ManageAccountForm"
               method="post">
 
             <!-- Successes -->
@@ -52,29 +49,29 @@
             <!-- Old Password Input -->
             <input class="col-sm-12 form-control"
                    id="ManageOldPassword"
-                   name="OldPassword" 
-                   placeholder="Old Password" 
+                   name="OldPassword"
+                   placeholder="Old Password"
                    type="password" />
 
             <!-- New Password Input -->
             <input class="col-sm-12 form-control"
                    id="ManageNewPassword"
-                   name="NewPassword" 
-                   placeholder="New Password" 
+                   name="NewPassword"
+                   placeholder="New Password"
                    type="password" />
 
             <!-- Confirm New Password Input -->
             <input class="col-sm-12 form-control"
                    id="ManageConfirmNewPassword"
-                   name="ConfirmNewPassword" 
-                   placeholder="Confirm New Password" 
+                   name="ConfirmNewPassword"
+                   placeholder="Confirm New Password"
                    type="password" />
 
             <!-- Change Password Input -->
-            <input class="btn btn-success col-sm-12" 
-                   id="ChangePasswordButton" 
-                   name="Change Password" 
-                   type="submit" 
+            <input class="btn btn-success col-sm-12"
+                   id="ChangePasswordButton"
+                   name="Change Password"
+                   type="submit"
                    value="Change Password" razor />
 
         </form>

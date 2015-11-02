@@ -1,26 +1,101 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Models.Blog>
+﻿@using Nancy.ViewEngines.Razor
+
+@inherits NancyRazorViewBase<Models.Blog>
 
 @{
     Layout = "Views/Shared/_Layout.cshtml";
+    var _vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
+    _vm.Title = @Model.Title;
 }
 
 <!-- {url}/blog/{title} -->
-
+<script src="~/Content/js/modules/blog.js"></script>
 <!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
 <body>
     <div class="container">
         <div class="row">
             <div class="box">
-                @Model.Title - Views: @Model.NumViews<br />
-                <a href="/user/@Model.PostedBy">@Model.PostedBy</a><br />
-                @Model.CreateDate<br />
+                <!-- Title -->
+                <div class="postTitle">@Model.Title</div>
+
+                <!-- Posted By -->
+                <div class="postCreatedBy">
+                    by: <a href="/user/@Model.PostedBy">
+                        @Model.PostedBy
+                    </a>
+                </div>
+
+                <!-- Created Date -->
+                <div class="col-md-4 postCreateDate">@Model.CreateDate</div>
+
+                <!-- Category -->
+                <div class="col-md-4 postCategory">@Model.Category.Name</div>
+
+                <!-- Number of Views -->
+                <div class="col-md-4 postViews">Views: @Model.NumViews</div>
+            </div>
+
+            <div class="box">
+
+                <div class="editdeletepost row">
+                    <!-- Edit Button -->
+                    @*<button class="col-md-6"
+                            id="EditBlogButton"
+                            name="Edit Blog"
+                            value="Edit">                        
+                    </button>*@
+                    <form action="/blog/edit"
+                              class="col-md-6"
+                              id="EditBlog"
+                              method="post">
+
+                            <!-- Blog Model -->
+                            <input class="hidden"
+                                   id="BlogEditModel"
+                                   name="BlogModel"
+                                   value="@Model" />
+                            <input class="btn btn-success col-md-12"
+                                   id="EditBlogButton"
+                                   name="Edit Blog"
+                                   type="submit"
+                                   value="Edit" razor />
+                        </form>
+
+                    <!-- Delete Button -->
+                    <form action="/blog/delete"
+                          class="col-md-6"
+                          id="DeleteBlog"
+                          method="post">
+                        <input class="btn btn-success col-md-12"
+                               id="DeleteBlogButton"
+                               name="Delete Blog"
+                               type="submit"
+                               value="Delete" razor />
+                    </form>
+                </div>
+
+                <!-- Blog -->
                 @Html.Raw(Model.Post)
+            </div>
+
+            <div class="box">
+                <!-- Tags -->
+                @{
+                    var count = 0;
+                    var tags = Model.Tags.Split(',');
+                }
+                @foreach (var tag in tags)
+                {
+                    count++;
+                    var tagname = tag.Trim();
+                    <a href="/tags/@tagname">@tagname</a>
+                    if (count != tags.Length)
+                    {
+                        <span>, </span>
+                    }
+                }
             </div>
         </div>
     </div>

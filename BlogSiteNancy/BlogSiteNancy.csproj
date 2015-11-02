@@ -22,6 +22,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
+    <JSLintSkip>\Content\js\|\Scripts\</JSLintSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -172,6 +173,7 @@
     <Content Include="Content\js\CKEditor\plugins\base64image\lang\zh-cn.js" />
     <Content Include="Content\js\CKEditor\plugins\base64image\lang\zh.js" />
     <Content Include="Content\js\CKEditor\plugins\base64image\plugin.js" />
+    <Content Include="Content\js\modules\blog.js" />
     <Content Include="Content\js\modules\register.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\img\bg.jpg" />

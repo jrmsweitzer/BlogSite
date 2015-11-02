@@ -3,6 +3,7 @@ using BlogSiteNancy.Views.Shared.ViewModels;
 using BlogSiteNancy.Views.User.ViewModels;
 using Nancy;
 using Services.Impl;
+using Utilities;
 
 namespace BlogSiteNancy.Modules
 {

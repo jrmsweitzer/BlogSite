@@ -17,52 +17,46 @@
     <title></title>
 </head>
 <body>
-    <div class="container container-full">
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12 text-center">
-                    <form action="/blog/new/" method="post" class="col-md-12">
+    <div class="container container-full row box text-center">
+        <form action="/blog/new/" method="post" class="col-md-12">
 
-                        <div class="col-md-12">
-                            <input type="text" name="Title" value="@Model.Title" placeholder="Title" class="col-md-3" />
-                        </div>
-
-                        <div class="col-md-12">
-                            <textarea class="ckeditor col-md-12" id="ckeditor_blog" type="text" name="Content" value="@Model.Content"></textarea>
-                        </div>
-
-                        <!-- Column 1 -->
-                        <div class="col-md-5">
-                            <textarea rows="3" type="text" name="Tags" placeholder="Tags" value="@string.Join(", ", Model.Tags)" class="col-md-12" ></textarea>
-                        </div>
-
-                        <!-- Column 2 -->
-                        <div class="col-md-2">
-                            <div class="col-md-12">
-                                <input type="checkbox" name="AllowComments" value="@Model.AllowComments" />Allow Comments?
-                                <input type="checkbox" name="NSFW" />NSFW?
-                            </div>
-
-                            <!-- Categories -->
-                            <select name="Categories" value="@Model.Categories" class="col-md-12">
-                                <option name="default" selected disabled>Select Category</option>
-                                @foreach (var category in categories)
-                                {
-                                    <option name="@category.Name" value="@category.ID">@category.Name</option>
-                                }
-                            </select>
-
-                            <input type="submit" value="Add New Blog" razor class="col-md-12" />
-                        </div>
-
-                        <!-- Column 3 -->
-                        <div class="col-md-5">
-                            <textarea rows="3" type="text" name="PostPreview" placeholder="Description" class="col-md-12" value="@Model.PostPreview"></textarea>
-                        </div>
-                    </form>
-                </div>
+            <div class="col-md-12">
+                <input type="text" name="Title" value="@Model.Title" placeholder="Title" class="col-md-3" />
             </div>
-        </div>
+
+            <div class="col-md-12">
+                <textarea class="ckeditor col-md-12" id="ckeditor_blog" type="text" name="Content" value="@Model.Content"></textarea>
+            </div>
+
+            <!-- Column 1 -->
+            <div class="col-md-5">
+                <textarea rows="3" type="text" name="Tags" placeholder="Tags" value="@string.Join(", ", Model.Tags)" class="col-md-12"></textarea>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="col-md-2">
+                <div class="col-md-12">
+                    <input type="checkbox" name="AllowComments" value="@Model.AllowComments" />Allow Comments?
+                    <input type="checkbox" name="NSFW" />NSFW?
+                </div>
+
+                <!-- Categories -->
+                <select name="Categories" value="@Model.Categories" class="col-md-12">
+                    <option name="default" selected disabled>Select Category</option>
+                    @foreach (var category in categories)
+                    {
+                        <option name="@category.Name" value="@category.ID">@category.Name</option>
+                    }
+                </select>
+
+                <input type="submit" value="Add New Blog" razor class="col-md-12" />
+            </div>
+
+            <!-- Column 3 -->
+            <div class="col-md-5">
+                <textarea rows="3" type="text" name="PostPreview" placeholder="Description" class="col-md-12" value="@Model.PostPreview"></textarea>
+            </div>
+        </form>
     </div>
 </body>
 </html>

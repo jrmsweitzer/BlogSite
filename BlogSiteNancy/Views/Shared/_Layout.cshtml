@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>@vm.Title</title>
     <link href="@Url.Content("~/Content/css/bootstrap.css")"
           rel="stylesheet"
           type="text/css" />
@@ -56,10 +56,14 @@
                         <li>
                             <img src="~/Content/img/favicon.png" />
                         </li>
+
+                        <!-- Home Link -->
                         <li class="top-padding">
                             <a href="/">Home</a>
                             <span> | </span>
                         </li>
+
+                        <!-- Write Blog Link -->
                         @if (loggedInUser != null && loggedInUser.IsBlogCreator)
                         {
                             <li class="top-padding">
@@ -67,6 +71,8 @@
                                 <span> | </span>
                             </li>
                         }
+                        
+                        <!-- Administration Link -->
                         @if (loggedInUser != null && loggedInUser.IsAdmin)
                         {
                             <li class="top-padding">
@@ -74,10 +80,14 @@
                                 <span> | </span>
                             </li>
                         }
+                        
+                        <!-- Blog Listing Link -->
                         <li class="top-padding">
                             <a href="/blog">See all blogs</a>
                             <span> | </span>
                         </li>
+
+                        <!-- Tag Listing Link -->
                         <li class="top-padding">
                             <a href="/tags">See all tags</a>
                         </li>

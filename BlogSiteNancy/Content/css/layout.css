@@ -1,4 +1,13 @@
-﻿.white {
+﻿body {
+    font-family: Gabriola;
+    background: url('../img/bg.jpg') center fixed;
+}
+
+#content {
+    font-size: 1.5em;
+}
+
+.white {
     color: white;
 }
 
@@ -94,6 +103,29 @@
     top: 0em;
     padding-top: 2px;
     padding-bottom: 2px;
+}
+
+.postTitle {
+    text-align: center;
+    font-size: 2em;
+}
+
+.postCreatedBy {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 1.2em;
+}
+
+.postCreateDate {
+    float: left;
+}
+
+.postCategory {
+    text-align: center;
+}
+
+.postViews {
+    text-align: right;
 }
 
 @media screen and (min-width:768px) {

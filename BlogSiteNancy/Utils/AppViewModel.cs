@@ -1,7 +1,6 @@
 ﻿using BlogSiteNancy.Modules.Tags.Models;
+using BlogSiteNancy.Utils;
 using Models;
-using Nancy;
-using Nancy.Security;
 using Services.Impl;
 using System;
 using System.Collections.Generic;
@@ -106,5 +105,6 @@ namespace BlogSiteNancy.Utils
             _blogs = _instance._blogService.GetBlogs();
         }
 
+        public string Title { get; set; }
     }
 }

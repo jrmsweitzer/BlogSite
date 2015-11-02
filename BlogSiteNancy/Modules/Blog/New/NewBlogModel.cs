@@ -22,6 +22,19 @@ namespace BlogSiteNancy.Views.Blog.ViewModels
             Categories = AppViewModel.GetAppViewModel().Categories.ToArray();
         }
 
+        public NewBlogModel(Models.Blog blog)
+        {
+            AllowComments = blog.AllowComments;
+            CategoryId = (int)blog.CategoryID;
+            NSFW = blog.NSFW;
+            Content = blog.Post;
+            PostPreview = blog.PostPreview;
+            Tags = new List<string>();
+            //Tags = blog.Tags;
+            Title = blog.Title;
+            Categories = AppViewModel.GetAppViewModel().Categories.ToArray();
+        }
+
         public Models.Blog ToModel(int userId)
         {
             var blog = new Models.Blog();

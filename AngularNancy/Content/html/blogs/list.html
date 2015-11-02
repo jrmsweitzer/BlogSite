@@ -1,0 +1,24 @@
+﻿<div class="container row box" ng-repeat="blog in blogCtrl.blogs">
+    <div class="col-md-3">
+        <a href="/blog/{{blog.Title}}/view">
+            <img src="Content/img/intro-pic.jpg" class="col-md-12"/>
+        </a>
+    </div>
+    <div class="col-md-9">
+        <a ui-sref="blog.detail({ blogTitle: blog.Title })">
+            {{blog.Title}}
+        </a><span> - </span>
+        <a href="/user/{{blog.User.UserName}}">
+            {{blog.User.UserName}}
+        </a>
+        <p>{{blog.PostPreview}}</p>
+        <p ng-repeat="tag in blog.Tags">
+            <a href="/tags/{{tag}}">{{tag}}</a><span>, </span>
+        </p>
+    </div>
+    <div class="seeMore">
+        <a href="/blog/{{blog.Title}}/view">
+            See More...
+        </a>
+    </div>
+</div>

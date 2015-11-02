@@ -2,20 +2,11 @@
 
 @{
     Layout = "Views/Shared/_Layout.cshtml";
+    var vm = BlogSiteNancy.Utils.AppViewModel.GetAppViewModel();
+    vm.Title = "404";
 }
+<div class="container container-full row box page404">
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>404</title>
-</head>
-<body>
-    <div class="container container-full row box page404">
-
-        <img class="image404"
-             src="~/Content/img/404.jpg"/>
-    </div>
-</body>
-</html>
+    <img class="image404"
+         src="~/Content/img/404.jpg" />
+</div>

@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <JSLintSkip>\Scripts\</JSLintSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -104,7 +105,7 @@
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Extensions\BlogExtension.cs" />
-    <Compile Include="Extensions\UserExt.cs" />
+    <Compile Include="Extensions\UserExtension.cs" />
     <Compile Include="IBlogEntities.cs" />
     <Compile Include="Permission.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>

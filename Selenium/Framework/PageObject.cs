@@ -111,7 +111,7 @@ namespace Selenium.Framework
         {
             var _stopwatch = new Stopwatch();
             _stopwatch.Start();
-            while (_driver.FindElements(by).Count == 0)
+            while (FindAll(by).Count == 0)
             {
                 if (_stopwatch.ElapsedMilliseconds > _defaultTimeout)
                 {
@@ -442,5 +442,32 @@ namespace Selenium.Framework
             WaitForUrl(url, _defaultTimeout);
         }
 
+        /// <summary>
+        /// Sets a cookie in the browser
+        /// </summary>
+        /// <param name="cookie"></param>
+        public void SetCookie(string cookieName, string cookieData)
+        {
+            Cookie cookie = new Cookie(cookieName, cookieData);
+            _driver.Manage().Cookies.AddCookie(cookie);
+            //Refresh();
+        }
+
+        /// <summary>
+        /// Deletes all cookies from the browser
+        /// </summary>
+        public void DeleteCookies()
+        {
+            _driver.Manage().Cookies.DeleteAllCookies();
+            Refresh();
+        }
+
+        /// <summary>
+        /// Refreshes the page
+        /// </summary>
+        public void Refresh()
+        {
+            _driver.Navigate().Refresh();
+        }
     }
 }

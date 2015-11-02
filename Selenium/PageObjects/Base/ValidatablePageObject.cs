@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Selenium.PageObjects.Base
 {
-    public class ValidatablePageObject : Layout
+    public class ValidatablePageObject : LayoutPageObject
     {
         public ValidatablePageObject(IWebDriver driver) : base(driver)
         {
@@ -39,7 +39,11 @@ namespace Selenium.PageObjects.Base
         /// <returns></returns>
         public int GetErrorCount()
         {
-            return FindAll(Errors).Count;
+            if (ElementExists(Errors))
+            {
+                return FindAll(Errors).Count;
+            }
+            return 0;
         }
 
         /// <summary>
@@ -57,7 +61,11 @@ namespace Selenium.PageObjects.Base
         /// <returns></returns>
         public int GetSuccessCount()
         {
-            return FindAll(Successes).Count;
+            if (ElementExists(Successes))
+            {
+                return FindAll(Successes).Count;
+            }
+            return 0;
         }
     }
 }
