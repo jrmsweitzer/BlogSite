@@ -1,4 +1,8 @@
-﻿<div class="container row box" ng-repeat="blog in blogCtrl.blogs">
+﻿<div class="box" id="bloglist">
+    BLOG LIST VIEW
+</div>
+
+<div class="container row box" ng-repeat="blog in blogCtrl.blogs" id="bloglist2">
     <div class="col-md-3">
         <a href="/blog/{{blog.Title}}/view">
             <img src="Content/img/intro-pic.jpg" class="col-md-12"/>

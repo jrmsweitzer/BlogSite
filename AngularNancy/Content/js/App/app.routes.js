@@ -12,27 +12,27 @@
             name: 'home',
             url: '/',
             templateUrl: 'Content/html/home/landing.html'
-        },
-        blogs = {
+        };
+        var blogs = {
             name: 'blogs',
-            url: 'blogs/list',
+            url: '/blogs',
             templateUrl: 'Content/html/blogs/blogsbase.html'
-        },
-        bloglist = {
-            name: 'blogs.list',
+        };
+        var bloglist = {
+            name: 'list',
             parent: blogs,
-            url: 'blogs/list',
+            url: '/list',
             templateUrl: 'Content/html/blogs/list.html',
-            controller: BlogController,
-            controllerAs: 'blogCtrl'
-        },
-        blogdetail = {
+            //controller: BlogController,
+            //controllerAs: 'blogCtrl'
+        };
+        var blogdetail = {
             name: 'blogs.detail',
-            parent: blogs,
-            url: '/:blogTitle',
+            //parent: blogs,
+            url: '/:blogTitle/view',
             templateUrl: 'Content/html/blogs/detail.html',
-            controller: BlogDetailController,
-            controllerAs: 'blogCtrl',
+            //controller: BlogDetailController,
+            //controllerAs: 'blogCtrl',
         };
 
         $stateProvider.state(home);
