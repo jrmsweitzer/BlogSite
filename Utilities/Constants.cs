@@ -10,9 +10,18 @@ namespace Utilities
     {
         public class Permissions
         {
+            public static string God = "God";
             public static string Admin = "Admin";
             public static string RegularPoster = "Regular Poster";
             public static string User = "User";
+        }
+
+        public class PermissionIDs
+        {
+            public static int God = 1;
+            public static int Admin = 2;
+            public static int RegularPoster = 3;
+            public static int User = 4;
         }
 
         public class Urls
@@ -44,7 +53,7 @@ namespace Utilities
 
         public class ViewLocations
         {
-            public static string _404 = "shared/404";
+            public static string _404 = "Content/html/shared/404";
         }
 
         public class Messages

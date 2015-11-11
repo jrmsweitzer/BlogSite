@@ -1,0 +1,109 @@
+﻿<div class="container container-full row box text-center">
+
+    <!-- Blog Creation Form -->
+    <form class="col-md-12"
+          name="CreationForm"
+          ng-submit="creation.submit()"
+          novalidate>
+
+        <!-- Form -->
+        <div class="form-group">
+
+            <!-- Main Form (full width)-->
+            <div class="col-md-12">
+
+                <!-- Title -->
+                <input class="form-control col-md-3"
+                       id="CreationTitle"
+                       name="title"
+                       ng-model="creation.blog.title"
+                       placeholder="Title"
+                       required
+                       type="text" />
+
+                <!-- Content Field -->
+                <textarea class="ckeditor col-md-12"
+                          id="ckeditor_blog"
+                          name="content"
+                          ng-model="creation.blog.post"
+                          required
+                          type="text"></textarea>
+            </div>
+
+            <!-- Column 1 -->
+            <div class="col-md-5">
+
+                <!-- Tags -->
+                <textarea class="col-md-12"
+                          id="CreationTags"
+                          name="Tags"
+                          ng-model="creation.blog.tagsCS"
+                          placeholder="Tags"
+                          rows="4"
+                          type="text"></textarea>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="col-md-2">
+                <div class="col-md-12">
+
+                    <!-- Allow Comments CheckBox -->
+                    <input id="CreationAllowComments"
+                           name="AllowComments"
+                           ng-model="creation.blog.allowComments"
+                           type="checkbox" />Allow Comments?
+
+                    <!-- NSFW CheckBox -->
+                    <input id="CreationNSFW"
+                           name="NSFW"
+                           ng-model="creation.blog.NSFW"
+                           type="checkbox" />NSFW?
+                </div>
+
+                <!-- Categories -->
+                <select class="col-md-12"
+                        id="CreationCategory"
+                        name="Categories"
+                        ng-model="creation.blog.category">
+
+                    <!-- Default 'Select' option -->
+                    <option disabled
+                            name="default"
+                            selected>
+                        Select Category
+                    </option>
+
+                    <!-- All options -->
+                    <option ng-repeat="category in creation.blog.categories"
+                            name="{{category}}"
+                            value="{{category}}">
+                        {{category}}
+                    </option>
+                </select>
+
+                <button class="btn btn-success col-md-12"
+                        type="submit">
+                    Add New Blog
+                </button>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="col-md-5">
+                <textarea class="col-md-12"
+                          id="CreationPostPreview"
+                          name="PostPreview"
+                          ng-model="creation.blog.postpreview"
+                          placeholder="Description"
+                          rows="4"
+                          type="text"></textarea>
+            </div>
+        </div>
+    </form> <!-- End Form -->
+</div>
+
+<div class="container box">
+    <h2>BLOG CREATE TODO:</h2>
+    <p>Fix ckeditor</p>
+    <p>submit should submit to server</p>
+    <p>Validation</p>
+</div>

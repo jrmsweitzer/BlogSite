@@ -1,4 +1,4 @@
-﻿using AngularNancy.Base.DTO;
+﻿using AngularNancy.ViewModels;
 using Nancy;
 using Services.Impl;
 using System.Linq;

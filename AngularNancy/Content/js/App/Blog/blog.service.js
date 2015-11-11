@@ -1,6 +1,11 @@
 ﻿(function () {
     'use strict';
 
+    angular
+        .module('app')
+        .factory('blogService', blogService);
+
+    blogService.$inject = ['$http'];
 
     function blogService($http) {
 
@@ -38,9 +43,4 @@
         }
     }
 
-    angular
-        .module('app')
-        .service('blogService', blogService);
-
-    blogService.$inject = ['$http'];
 })();

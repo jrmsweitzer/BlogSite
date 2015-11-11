@@ -11,36 +11,19 @@
         var home = {
             name: 'home',
             url: '/',
-            templateUrl: 'Content/html/home/landing.html'
+            templateUrl: 'Content/html/home/landing.html',
+            controller: 'LayoutController',
+            controllerAS: 'layout'
         };
-        var blogs = {
-            name: 'blogs',
-            url: '/blogs',
-            templateUrl: 'Content/html/blogs/blogsbase.html'
-        };
-        var bloglist = {
-            name: 'list',
-            parent: blogs,
-            url: '/list',
-            templateUrl: 'Content/html/blogs/list.html',
-            //controller: BlogController,
-            //controllerAs: 'blogCtrl'
-        };
-        var blogdetail = {
-            name: 'blogs.detail',
-            //parent: blogs,
-            url: '/:blogTitle/view',
-            templateUrl: 'Content/html/blogs/detail.html',
-            //controller: BlogDetailController,
-            //controllerAs: 'blogCtrl',
+
+        var _404 = {
+            name: '404',
+            url: '/404',
+            templateUrl: 'Content/html/shared/404.html'
         };
 
         $stateProvider.state(home);
-        $stateProvider.state(blogs);
-        $stateProvider.state(blogdetail);
-        $stateProvider.state(bloglist);
-
-
+        $stateProvider.state(_404);
     }
 
 })();
