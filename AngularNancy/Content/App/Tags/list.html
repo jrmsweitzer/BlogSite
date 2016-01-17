@@ -1,0 +1,21 @@
+﻿<!-- Search Bar -->
+<div class="container box">
+    <input class="form-control"
+           ng-model="vm.search.filter"
+           placeholder="Enter text to search..."/>
+</div>
+
+<!-- Loop to display every tag -->
+<div class="container box"
+     ng-repeat="tag in vm.tags | filter:{Name:vm.search.filter} | orderBy:vm.predicate:vm.reverse">
+    <a ui-sref="tags.view({ tagName: tag.Name })">{{tag.Name}}</a>
+    <div ng-repeat="blog in tag.Blogs">
+        <blog-listing-ind />
+    </div>
+</div>
+
+<!-- Nothing to see here! -->
+<div class="container box"
+     ng-show="(vm.tags | filter:{Name:vm.search.filter}).length === 0">
+     No tags match your search criteria!
+</div>

@@ -46,5 +46,13 @@ namespace Models.Repositories.Impl
             _db.Users.FirstOrDefault(u => u.ID == userId).HashedPassword = hashedPassword;
             SaveChanges();
         }
+
+        public User ToggleActive(int userID)
+        {
+            _db.Users.FirstOrDefault(u => u.ID == userID).IsActive =
+                !_db.Users.FirstOrDefault(u => u.ID == userID).IsActive;
+            SaveChanges();
+            return _db.Users.FirstOrDefault(u => u.ID == userID);
+        }
     }
 }

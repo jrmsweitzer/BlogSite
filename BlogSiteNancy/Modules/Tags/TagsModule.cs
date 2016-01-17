@@ -15,11 +15,6 @@ namespace BlogSiteNancy.Modules.Tags
         public TagsModule() : base("/tags")
         {
             _vm = AppViewModel.GetAppViewModel();
-
-            Get["/"] = _ => 
-            {
-                return View["Search", _vm.GetTagDictionary()];
-            };
         }
     }
 }

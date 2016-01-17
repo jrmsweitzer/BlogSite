@@ -9,6 +9,9 @@ namespace AngularNancy.ViewModels
     {
         public string UserName { get; set; }
         public int ID { get; set; }
+        public PermissionDTO Permission { get; set; }
         public int PermissionID { get; set; }
+        public string JoinDate { get; set; }
+        public bool IsActive { get; set; }
     }
 }

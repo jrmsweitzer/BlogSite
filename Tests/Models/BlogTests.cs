@@ -29,14 +29,13 @@ namespace Tests.Models
                 ID = -1
             };
 
-            Blog blog = new Blog(title, content, tags, allowComments, user);
+            Blog blog = new Blog(title, content, allowComments, user);
 
             Assert.NotNull(blog);
             Assert.AreEqual(typeof(Blog), blog.GetType());
 
             Assert.AreEqual(title, blog.Title);
             Assert.AreEqual(content, blog.Post);
-            Assert.AreEqual(tags, blog.Tags);
             Assert.AreEqual(allowComments, blog.AllowComments);
             Assert.AreEqual(user.UserName, blog.User.UserName);
             Assert.AreEqual(user.ID, blog.User.ID);

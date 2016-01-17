@@ -1,0 +1,35 @@
+﻿<div class="container box">
+    <h2>{{vm.blog.Title}}</h2>
+    <p>
+        <a ui-sref="users.profile({ userName: vm.blog.UserUserName })">
+            {{vm.blog.UserUserName}}
+        </a><span> - </span>
+        {{vm.blog.CreateDate}}
+    </p>
+    <span ng-bind-html="vm.blog.Post"></span>
+    <p>
+        <span ng-repeat="tag in vm.blog.Tags">
+            <a ui-sref="tags.view({ tagName: tag.Name })">{{tag.Name}}</a>
+            <span ng-hide="tag === vm.blog.Tags[vm.blog.Tags.length - 1]">, </span>
+        </span>
+    </p>
+    <meta property="og:url" content="{{vm.blogs.Url}}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{vm.blogs.Title}}"/>
+    <meta property="og:description" content="{{vm.blogs.Post}}"/>
+    <div class="fb-share-button" data-href="{{vm.blogs.Url}}" data-layout="button_count"></div>
+</div>
+
+<!--<div class="container box">
+    <h2>BLOG VIEW TODO:</h2>
+    <ul>
+        <li>
+            Add details to the blog
+            <ul>
+                <li>Num Views</li>
+                <li>Num Shares</li>
+                <li>Share widgets for Facebook, Twitter, etc.</li>
+            </ul>
+        </li>
+    </ul>
+</div>-->

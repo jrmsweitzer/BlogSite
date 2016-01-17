@@ -4,23 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2c1a793a5e8e48e7ab087ee62ebb759c" Name="Diagram1">
-        <EntityTypeShape EntityType="Models.Blog" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Models.BlogLike" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Models.Category" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="Models.Comment" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Models.CommentLike" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Models.Permission" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="Models.User" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <AssociationConnector Association="Models.FK_Blog_User" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_BlogLike_Blog" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Comment_Blog" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_BlogLike_User" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Comment_User" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_CommentLike_Comment" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_CommentLike_User" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_User_Permission" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Blog_Category" />
+      <Diagram DiagramId="6f05eae772e44bb9ad4fcc3829bac7e3" Name="Diagram1">
+        <EntityTypeShape EntityType="BlogEntities.Blog" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogEntities.BlogLike" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogEntities.BlogTag" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogEntities.Category" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogEntities.Comment" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogEntities.CommentLike" Width="1.5" PointX="9.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogEntities.Permission" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogEntities.Tag" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogEntities.User" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="BlogEntities.FK_Blog_Blog1" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_Blog_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_BlogLike_Blog" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_BlogTag_Blog" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_Comment_Blog" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_BlogLike_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_BlogTag_Tag" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_Comment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_CommentLike_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_CommentLike_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogEntities.FK_User_Permission" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,34 @@
+﻿<div class="row">
+    <div class="col-md-3">
+        <a ui-sref="blogs.detail({ blogTitle: blog.Title })">
+            <img src="Content/img/intro-pic.jpg" class="col-md-12" />
+        </a>
+    </div>
+    <div class="col-md-9">
+        <a ui-sref="blogs.detail({ blogTitle: blog.Title })">
+            {{blog.Title}}
+        </a><span> - </span>
+        <a ui-sref="users.profile({ userName: blog.UserUserName })">
+            {{blog.UserUserName}}
+        </a>
+        <p>
+            {{blog.CreateDate}}
+            <span> - </span>
+            <a ui-sref="categories.view({categoryID : blog.CategoryDTO.ID})">
+                {{blog.CategoryDTO.Name}}
+            </a>
+        </p>
+        <p>{{blog.PostPreview}}</p>
+        <p>
+            <span ng-repeat="tag in blog.Tags">
+                <a ui-sref="tags.view({ tagName : tag.Name })">{{tag.Name}}</a>
+                <span ng-hide="tag === blog.Tags[blog.Tags.length - 1]">, </span>
+            </span>
+        </p>
+    </div>
+    <div class="seeMore">
+        <a ui-sref="blogs.detail({ blogTitle: blog.Title })">
+            See More...
+        </a>
+    </div>
+</div>

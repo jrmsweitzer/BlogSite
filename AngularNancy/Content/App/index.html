@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <base href="/" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Content/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="Content/css/Site.css" />
+    <link rel="stylesheet" type="text/css" href="Content/css/angular-socialshare.min.css" />
+
+    <!-- Third Party -->
+    <script src="../Content/scripts/jquery-1.9.1.min.js"></script>
+    <script src="../Content/scripts/angular.min.js"></script>
+    <script src="../Content/scripts/angular-ui-router.min.js"></script>
+    <script src="../Content/scripts/angular-animate.min.js"></script>
+    <script src="../Content/scripts/angular-messages.min.js"></script>
+    <script src="../Content/scripts/ui-bootstrap.min.js"></script>
+    <script src="../Content/scripts/ui-bootstrap-tpls.min.js"></script>
+    <script src="../Content/scripts/CKEditor/ckeditor.js"></script>
+    <script src="../Content/scripts/CKEditor/adapters/jquery.js"></script>
+    <script src="../Content/scripts/ng-flow-standalone.min.js"></script>
+    <script src="../Content/scripts/angular-sanitize.min.js"></script>
+
+    <!-- App -->
+    <script src="../Content/App/app.module.js"></script>
+
+    <!-- Blog -->
+    <script src="../Content/App/Blog/blog.module.js"></script>
+    <script src="../Content/App/Blog/blog.service.js"></script>
+    <script src="../Content/App/Blog/create.controller.js"></script>
+    <script src="../Content/App/Blog/details.controller.js"></script>
+    <script src="../Content/App/Blog/list.controller.js"></script>
+
+    <!-- Account -->
+    <script src="../Content/App/Account/account.service.js"></script>
+    <script src="../Content/App/Account/account.controller.js"></script>
+    <script src="../Content/App/Account/Login/login.controller.js"></script>
+
+    <!-- Administration -->
+    <script src="../Content/App/Administration/administration.module.js"></script>
+    <script src="../Content/App/Administration/userlist.controller.js"></script>
+    <script src="../Content/App/Administration/toggleUserActiveModal.controller.js"></script>
+
+    <!-- Category -->
+    <script src="../Content/App/Category/category.module.js"></script>
+    <script src="../Content/App/Category/category.service.js"></script>
+    
+    <!-- Users -->
+    <script src="../Content/App/Users/users.module.js"></script>
+    <script src="../Content/App/Users/users.service.js"></script>
+    <script src="../Content/App/Users/profile.controller.js"></script>
+
+    <!-- Tags -->
+    <script src="../Content/App/Tags/tags.module.js"></script>
+    <script src="../Content/App/Tags/tags.service.js"></script>
+    <script src="../Content/App/Tags/blogtag.service.js"></script>
+    <script src="../Content/App/Tags/blogtag.controller.js"></script>
+    <script src="../Content/App/Tags/list.controller.js"></script>
+    <script src="../Content/App/Tags/view.controller.js"></script>
+
+    <!-- Routes -->
+    <script src="../Content/App/app.routes.js"></script>
+    <script src="../Content/App/Blog/blog.routes.js"></script>
+    <script src="../Content/App/Account/account.routes.js"></script>
+    <script src="../Content/App/Administration/administration.routes.js"></script>
+    <script src="../Content/App/Users/users.routes.js"></script>
+    <script src="../Content/App/Tags/tags.routes.js"></script>
+    <script src="../Content/App/Category/category.routes.js"></script>
+
+    <!-- Directives -->
+    <script src="../Content/App/Directives/directive.ckeditor.js"></script>
+    <script src="../Content/App/Directives/directive.bloglisting.js"></script>
+    <script src="../Content/App/Directives/directive.bloglistingind.js"></script>
+
+</head>
+<body ng-app="app">
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=666021963500583";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- LAYOUT -->
+    <div ng-include="'Content/App/Layout/layout.html'"></div>
+
+    <!-- Main Content -->
+    <div id="content"
+         ui-view></div>
+
+</body>
+</html>

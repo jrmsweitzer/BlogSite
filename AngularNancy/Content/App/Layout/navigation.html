@@ -1,0 +1,71 @@
+﻿<nav class="navbar navbar-default"
+     role="navigation"
+     ng-controller="AuthenticationController as authCtrl">
+
+    <div class="collapse navbar-collapse"
+         id="mainNavigation">
+        <ul class="nav navbar-nav navbar-padding">
+            <li>
+                <img src="Content/img/favicon.png" />
+            </li>
+
+            <li class="top-padding">
+
+                <!-- Home Link -->
+                <a ui-sref="home">Home</a>
+                <span> | </span>
+
+                <!-- Write Blog Link -->
+                <a ui-sref="blogs.create">Write a blog!</a>
+                <span> | </span>
+
+                <!-- Administration -->
+                <a ui-sref="administration.list">Administration</a>
+                <span> | </span>
+
+                <!-- Blog Listing Link -->
+                <a ui-sref="blogs.list">See all blogs</a>
+                <span> | </span>
+
+                <!-- Tag Listing Link -->
+                <a ui-sref="tags.list">See all tags</a>
+
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+            <!-- If no user is logged in -->
+            <li class="top-padding"
+                ng-hide="authCtrl.isAuthenticated()">
+
+                <!-- Login -->
+                <a ui-sref="account.login"
+                   id="LoginLink">Log in</a>
+                <span> | </span>
+
+                <!-- Register -->
+                <a ui-sref="account.register"
+                   id="RegisterLink">Register</a>
+
+            </li>
+
+            <!-- If there is a user logged in -->
+            <li class="top-padding"
+                ng-show="authCtrl.isAuthenticated()">
+                <!-- Manage Account -->
+                <a ui-sref="account.manage"
+                   id="ManageAccountLink">Hello, {{authCtrl.user.username}}</a>
+                <span> | </span>
+                <!-- Logout -->
+                <a ui-sref="account.logout"
+                   id="LogoutLink">Log out</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<!--<div class="container box">
+    <p>isAuthenticated: {{authCtrl.user.isAuthenticated}}</p>
+    <p>UserName: {{authCtrl.user.username}}</p>
+</div>-->

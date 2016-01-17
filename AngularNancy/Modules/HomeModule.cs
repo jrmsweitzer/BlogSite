@@ -1,7 +1,6 @@
 ﻿namespace AngularNancy
 {
     using Nancy;
-    using Utilities;
 
     public class IndexModule : NancyModule
     {
@@ -9,15 +8,8 @@
         {
             Get["/"] = parameters =>
             {
-                return View["Content/index.html"];
+                return View["Content/App/index.html"];
             };
-
-            Get["/{*}"] = parameters =>
-            {
-                return Response.AsRedirect("/#/404");
-            };
-
-
         }
     }
 }

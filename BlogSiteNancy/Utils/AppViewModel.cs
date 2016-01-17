@@ -23,20 +23,6 @@ namespace BlogSiteNancy.Utils
         private List<Blog> _blogs;
         private List<Category> _categories;
 
-        public List<BlogTag> GetTagDictionary()
-        {
-            List<BlogTag> tagDictionary = new List<BlogTag>();
-            foreach (var blog in Blogs)
-            {
-                List<string> tags = blog.Tags.Split(',').ToList();
-                foreach(var tag in tags)
-                {
-                    tagDictionary.Add(new BlogTag(tag.Trim(), blog.ID));
-                }
-            }
-            return tagDictionary;
-        }
-
         private AppViewModel()
         {
             _blogService = new BlogService();

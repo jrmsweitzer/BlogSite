@@ -48,7 +48,6 @@ namespace BlogSiteNancy.Views.Blog.ViewModels
             blog.NumViews = 0;
             blog.NSFW = this.NSFW;
             blog.Post = this.Content;
-            blog.Tags = string.Join(", ", this.Tags);
             blog.Title = this.Title;
             blog.UserID = userId;
             blog.PostPreview = this.PostPreview;

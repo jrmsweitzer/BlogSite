@@ -22,5 +22,10 @@ namespace Services.Impl
         {
             return _permissionRepo.GetPermissionByName(name);
         }
+
+        public List<Permission> GetPermissions()
+        {
+            return _permissionRepo.GetPermissions();
+        }
     }
 }

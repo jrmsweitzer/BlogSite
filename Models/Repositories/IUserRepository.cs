@@ -19,5 +19,7 @@ namespace Models.Repositories
         User GetUserByGUID(Guid identifier);
 
         void ChangeUserPassword(int userId, string hashedPassword);
+
+        User ToggleActive(int userID);
     }
 }

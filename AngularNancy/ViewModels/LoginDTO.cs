@@ -9,6 +9,5 @@ namespace AngularNancy.ViewModels
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public string ProfileImage { get; set; }
     }
 }

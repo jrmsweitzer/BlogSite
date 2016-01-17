@@ -14,9 +14,11 @@ namespace Models
     
     public partial class Blog
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Blog()
         {
             this.BlogLikes = new HashSet<BlogLike>();
+            this.BlogTags = new HashSet<BlogTag>();
             this.Comments = new HashSet<Comment>();
         }
     
@@ -30,14 +32,17 @@ namespace Models
         public int NumShares { get; set; }
         public bool IsApproved { get; set; }
         public bool AllowComments { get; set; }
-        public Nullable<int> CategoryID { get; set; }
-        public string Tags { get; set; }
         public bool NSFW { get; set; }
         public string PostPreview { get; set; }
+        public int CategoryID { get; set; }
     
-        public virtual User User { get; set; }
-        public virtual ICollection<BlogLike> BlogLikes { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
         public virtual Category Category { get; set; }
+        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BlogLike> BlogLikes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BlogTag> BlogTags { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

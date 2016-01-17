@@ -13,7 +13,7 @@ namespace Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BlogEntities : DbContext
+    public partial class BlogEntities : DbContext, IBlogEntities
     {
         public BlogEntities()
             : base("name=BlogEntities")
@@ -27,10 +27,12 @@ namespace Models
     
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<BlogLike> BlogLikes { get; set; }
+        public virtual DbSet<BlogTag> BlogTags { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<CommentLike> CommentLikes { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

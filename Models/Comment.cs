@@ -14,6 +14,7 @@ namespace Models
     
     public partial class Comment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Comment()
         {
             this.CommentLikes = new HashSet<CommentLike>();
@@ -27,6 +28,7 @@ namespace Models
     
         public virtual Blog Blog { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CommentLike> CommentLikes { get; set; }
     }
 }

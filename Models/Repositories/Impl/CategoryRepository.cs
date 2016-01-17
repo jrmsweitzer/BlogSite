@@ -17,5 +17,16 @@ namespace Models.Repositories.Impl
         {
             return _db.Categories.ToList();
         }
+
+        public Category GetCategory(int categoryID)
+        {
+            return _db.Categories.FirstOrDefault(c => c.ID == categoryID);
+        }
+
+        public IQueryable<Blog> GetBlogs(int categoryID)
+        {
+            return _db.Blogs
+                .Where(b => b.CategoryID == categoryID);
+        }
     }
 }

@@ -69,9 +69,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Impl\BlogService.cs" />
+    <Compile Include="Impl\BlogTagService.cs" />
     <Compile Include="Impl\CategoryService.cs" />
     <Compile Include="Impl\EncryptionService.cs" />
     <Compile Include="Impl\PermissionService.cs" />
+    <Compile Include="Impl\TagService.cs" />
     <Compile Include="Impl\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

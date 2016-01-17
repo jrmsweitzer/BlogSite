@@ -1,0 +1,54 @@
+﻿<!-- Quick Search Box -->
+<div class="container box">
+    <span>Quick Search: </span>
+    <input class="form-control"
+           id="QuickSearch"
+           name="QuickSearch"
+           ng-model="vm.search.filter"
+           placeholder="Enter text to search..." />
+
+    <!-- Sort by Title -->
+    <button class="btn btn-primary col-md-4"
+            ng-click="vm.order('title')">
+        Title
+    </button>
+
+    <!-- Sort by Author -->
+    <button class="btn btn-primary col-md-4"
+            ng-click="vm.order('author')">
+        Author
+    </button>
+
+    <!-- Sort by Create Date -->
+    <button class="btn btn-primary col-md-4"
+            ng-click="vm.order('createDate')">
+        Create Date
+    </button>
+
+    <!-- Sort By message -->
+    <span>Sort By </span>
+    <span>{{vm.predicate}}</span>
+    <span ng-show="vm.reverse"> Ascending: </span>
+    <span ng-hide="vm.reverse"> Descending: </span>
+
+</div>
+
+<!-- Template for blog preview using ng-repeat -->
+<div class="container box"
+     ng-repeat="blog in vm.blogs | filter:vm.search.filter | orderBy:vm.predicate:vm.reverse"
+     ng-show="vm.blogsloaded">
+    <blog-listing-ind />
+</div>
+
+<!-- Nothing to see here! -->
+<div class="container box"
+     ng-show="((vm.blogs | filter:vm.search.filter).length === 0)">
+    No blogs match your search criteria!
+</div>
+
+<!-- Loading! Please wait... -->
+<div class="container box"
+     ng-show="!vm.blogsloaded"
+     ng-hide="vm.blogsloaded">
+    Loading! Please wait...
+</div>

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Models;
+﻿using Models;
 using Models.Repositories;
 using Models.Repositories.Impl;
+using System;
+using System.Collections.Generic;
 
 namespace Services.Impl
 {
@@ -51,6 +48,11 @@ namespace Services.Impl
         public void ChangeUserPassword(int userId, string hashedPassword)
         {
             _userRepo.ChangeUserPassword(userId, hashedPassword);
+        }
+
+        public User ToggleActive(int userID)
+        {
+            return _userRepo.ToggleActive(userID);
         }
     }
 }

@@ -1,0 +1,8 @@
+﻿<div class="container box">
+    <h2>{{vm.category.Name}}</h2>
+</div>
+
+<div class="container box"
+     ng-repeat="blog in vm.category.Blogs">
+    <blog-listing-ind />
+</div>

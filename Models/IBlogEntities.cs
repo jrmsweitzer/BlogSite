@@ -16,6 +16,8 @@ namespace Models
         DbSet<CommentLike> CommentLikes { get; set; }
         DbSet<Permission> Permissions { get; set; }
         DbSet<User> Users { get; set; }
+        DbSet<Tag> Tags { get; set; }
+        DbSet<BlogTag> BlogTags { get; set; }
 
         int SaveChanges();
     }

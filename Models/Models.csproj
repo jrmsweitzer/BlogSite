@@ -95,6 +95,9 @@
     <Compile Include="BlogLike.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="BlogTag.cs">
+      <DependentUpon>BlogEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
@@ -112,14 +115,21 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IBlogRepository.cs" />
+    <Compile Include="Repositories\IBlogTagRepository.cs" />
     <Compile Include="Repositories\Impl\BaseRepository.cs" />
     <Compile Include="Repositories\Impl\BlogRepository.cs" />
+    <Compile Include="Repositories\Impl\BlogTagRepository.cs" />
     <Compile Include="Repositories\Impl\CategoryRepository.cs" />
+    <Compile Include="Repositories\Impl\TagRepository.cs" />
     <Compile Include="Repositories\IPermissionRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\ITagRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\Impl\PermissionRepository.cs" />
     <Compile Include="Repositories\Impl\UserRepository.cs" />
+    <Compile Include="Tag.cs">
+      <DependentUpon>BlogEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
@@ -130,18 +140,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BlogEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="BlogEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BlogEntities.edmx</DependentUpon>
-      <LastGenOutput>BlogEntities.Context.cs</LastGenOutput>
-    </None>
     <None Include="BlogEntities.edmx.diagram">
       <DependentUpon>BlogEntities.edmx</DependentUpon>
-    </None>
-    <None Include="BlogEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BlogEntities.edmx</DependentUpon>
-      <LastGenOutput>BlogEntities.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Scripts\jquery-2.1.1.min.map" />
@@ -150,6 +150,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BlogEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BlogEntities.edmx</DependentUpon>
+      <LastGenOutput>BlogEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BlogEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BlogEntities.edmx</DependentUpon>
+      <LastGenOutput>BlogEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repositories.Impl
 {
@@ -58,8 +55,7 @@ namespace Models.Repositories.Impl
         {
             return _db.Blogs.OrderByDescending(b => b.CreateDate).FirstOrDefault();
         }
-
-
+        
         public List<Blog> GetBlogsByUsername(string username)
         {
             return _db.Blogs.Where(b => b.User.UserName.ToLower().Equals(username.ToLower())).ToList();

@@ -26,5 +26,15 @@ namespace Services.Impl
         {
             return _repo.GetCategories();
         }
+
+        public IQueryable<Blog> GetBlogs(int categoryID)
+        {
+            return _repo.GetBlogs(categoryID);
+        }
+
+        public Category GetCategory(int categoryID)
+        {
+            return _repo.GetCategory(categoryID);
+        }
     }
 }

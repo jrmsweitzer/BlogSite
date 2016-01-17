@@ -22,5 +22,10 @@ namespace Models.Repositories.Impl
         {
             return _db.Permissions.FirstOrDefault(p => p.Name.Equals(permissionName));
         }
+
+        public List<Permission> GetPermissions()
+        {
+            return _db.Permissions.ToList();
+        }
     }
 }

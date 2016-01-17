@@ -10,7 +10,7 @@ namespace Models
     [Serializable]
     public partial class Blog
     {
-        public Blog(string title, string content, string tags, bool allowComments, User user)
+        public Blog(string title, string content, bool allowComments, User user)
         {
             this.AllowComments = allowComments;
             this.ApprovalDate = DateTime.Now;
@@ -23,7 +23,6 @@ namespace Models
             this.Post = content;
             this.Title = title;
             this.UserID = user.ID;
-            this.Tags = tags;
         }
 
         public string PostedBy
