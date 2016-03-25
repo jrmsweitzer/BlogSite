@@ -1,0 +1,16 @@
+﻿<div class="container box">
+    <h2>{{vm.blog.Title}}</h2>
+    <p>
+        <a ui-sref="users.profile({ userName: vm.blog.UserUserName })">
+            {{vm.blog.UserUserName}}
+        </a><span> - </span>
+        {{vm.blog.CreateDate}}
+    </p>
+    <span ng-bind-html="vm.blog.Post"></span>
+    <p>
+        <span ng-repeat="tag in vm.blog.Tags">
+            <a ui-sref="tags.view({ tagName: tag.Name })">{{tag.Name}}</a>
+            <span ng-hide="tag === vm.blog.Tags[vm.blog.Tags.length - 1]">, </span>
+        </span>
+    </p>
+</div>

@@ -1,0 +1,12 @@
+﻿<h2>My Blogs</h2>
+<ul class="blogs">
+    <li *ngFor="#blog of blogs"
+        [class.selected]="blog === selectedBlog"
+        (click)="onSelect(blog)">
+        <span class="badge">{{blog.id}}</span> {{blog.title}}
+    </li>
+</ul>
+<div *ngIf="selectedBlog">
+    <h2>{{selectedBlog.title}}</h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>

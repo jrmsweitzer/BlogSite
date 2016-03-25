@@ -10,5 +10,6 @@ namespace Models.Repositories
     {
         IQueryable<Tag> GetTags(int blogID);
         IQueryable<Blog> GetBlogs(int tagID);
+        BlogTag AddBlogTag(int blogId, int tagId);
     }
 }

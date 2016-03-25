@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularNancy", "AngularNanc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{B5B56F15-939B-4207-B4CF-7C344ED5A642}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Angular2ASPNET", "Angular2ASPNET\Angular2ASPNET.xproj", "{C4AE226C-7891-4EFB-9352-8CF6E715FA8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,14 @@ Global
 		{B5B56F15-939B-4207-B4CF-7C344ED5A642}.MonoRelease|Any CPU.Build.0 = Release|Any CPU
 		{B5B56F15-939B-4207-B4CF-7C344ED5A642}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5B56F15-939B-4207-B4CF-7C344ED5A642}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4AE226C-7891-4EFB-9352-8CF6E715FA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4AE226C-7891-4EFB-9352-8CF6E715FA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4AE226C-7891-4EFB-9352-8CF6E715FA8A}.MonoDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4AE226C-7891-4EFB-9352-8CF6E715FA8A}.MonoDebug|Any CPU.Build.0 = Debug|Any CPU
+		{C4AE226C-7891-4EFB-9352-8CF6E715FA8A}.MonoRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{C4AE226C-7891-4EFB-9352-8CF6E715FA8A}.MonoRelease|Any CPU.Build.0 = Release|Any CPU
+		{C4AE226C-7891-4EFB-9352-8CF6E715FA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4AE226C-7891-4EFB-9352-8CF6E715FA8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

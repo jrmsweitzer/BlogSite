@@ -10,5 +10,6 @@ namespace Models.Repositories
     {
         List<Tag> GetTags();
         Tag GetTag(string tagName);
+        Tag AddTag(string tagName);
     }
 }

@@ -32,9 +32,14 @@ namespace Services.Impl
             return _repo.GetBlogs(categoryID);
         }
 
-        public Category GetCategory(int categoryID)
+        public Category GetCategoryById(int categoryID)
         {
             return _repo.GetCategory(categoryID);
+        }
+
+        public Category GetCategory(string categoryName)
+        {
+            return _repo.GetCategory(categoryName);
         }
     }
 }

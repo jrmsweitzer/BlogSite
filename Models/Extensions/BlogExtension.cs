@@ -36,5 +36,11 @@ namespace Models
                 return "";
             }
         }
+
+        public List<Tag> ConvertTagsToList(string commaSeparatedTags)
+        {
+
+            return null;
+        }
     }
 }

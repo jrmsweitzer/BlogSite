@@ -24,5 +24,10 @@ namespace Services.Impl
         {
             return _tagRepo.GetTag(tagName);
         }
+
+        public Tag AddTag(string tagName)
+        {
+            return _tagRepo.AddTag(tagName);
+        }
     }
 }

@@ -1,0 +1,11 @@
+﻿<div *ngIf="blog">
+    <h2>{{blog.title}}</h2>
+    <input [(ngModel)]="blog.title" placeholder="Title" />
+    <div>
+        <label>id: </label>{{blog.id}}
+    </div>
+    <div>
+        <textarea [(ngModel)]="blog.post" placeholder="Post"></textarea>
+    </div>
+    <button (click)="goBack()">Back</button>
+</div>

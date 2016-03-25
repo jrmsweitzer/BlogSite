@@ -32,5 +32,13 @@ namespace Models.Repositories.Impl
             return _db.Blogs
                     .Where(b => blogIDs.Contains(b.ID));
         }
+
+        public BlogTag AddBlogTag(int blogId, int tagId)
+        {
+            var returns = 
+                _db.BlogTags.Add(new BlogTag { BlogID = blogId, TagID = tagId });
+            SaveChanges();
+            return returns;
+        }
     }
 }

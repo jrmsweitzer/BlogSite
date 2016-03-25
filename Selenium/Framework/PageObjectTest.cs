@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,7 @@ namespace Selenium.Framework
             var methodname = context.Test.Name;
             var browser = Driver.GetType().ToString().Split('.')[2];
 
-            if (context.Result.Status == TestStatus.Passed)
+            if (context.Result.Outcome == ResultState.Success)
             {
                 _logger.LogPass(context.Test.Name);
                 if (_takeScreenshotOnPass)

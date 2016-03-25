@@ -1,0 +1,79 @@
+﻿<div class="container container-full box text-center">
+
+    <form class="col-md-12"
+          name="BlogCreate"
+          novalidate>
+
+        <!-- Form -->
+        <div class="form-group">
+
+            <!-- Main Form (full width) -->
+            <div class="col-md-12">
+
+                <!-- Title -->
+                <input class="form-control col-md-3"
+                       id="BlogCreateTitle"
+                       name="title"
+                       [(ngModel)]="title"
+                       placeholder="Title"
+                       required
+                       type="text" />
+                
+                <!-- Post Area -->
+                <textarea class="col-md-12"
+                          [(ngModel)]="post">
+                    Content goes here!
+                </textarea>
+            </div>
+
+            <!-- Column 1 -->
+            <div class="col-md-5">
+
+                <!-- Tags -->
+                <textarea class="col-md-12"
+                          [(ngModel)]="tags"
+                          placeholder="Tag1, Tag2, Tag3"
+                          rows="4">
+                </textarea>
+
+            </div>
+
+            <!-- Column 2 -->
+            <div class="col-md-2">
+                <div class="col-md-12">
+
+                    <!-- Allow Comments? -->
+                    <input [(ngModel)]="allowComments"
+                           type="checkbox" />Allow Comments?
+
+                    <!-- NSFW? -->
+                    <input [(ngModel)]="nsfw"
+                           type="checkbox" />NSFW?
+                    
+                </div>
+
+                <!-- Categories -->
+                <select class="col-md-12"
+                        [(ngModel)]="categories">
+
+                </select>
+
+                <!-- Add New Blog -->
+                <button class="btn btn-success col-md-12"
+                        type="submit">
+                    Preview Blog
+                </button>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="col-md-5">
+                <textarea class="col-md-12"
+                          [(ngModel)]="postPreview"
+                          placeholder="This is what your viewers see before clicking your blog title."
+                          rows="4"></textarea>
+            </div>
+                 
+        </div>
+
+    </form>
+</div>

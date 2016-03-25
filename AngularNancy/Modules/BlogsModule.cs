@@ -44,7 +44,7 @@ namespace AngularNancy.Modules
 
                     blog.CategoryDTO =
                         AutoMapper.Mapper.DynamicMap<CategoryDTO>(
-                            categoryService.GetCategory(blog.CategoryID));
+                            categoryService.GetCategoryById(blog.CategoryID));
 
                     returns.Add(blog);
                 }

@@ -23,6 +23,11 @@ namespace Models.Repositories.Impl
             return _db.Categories.FirstOrDefault(c => c.ID == categoryID);
         }
 
+        public Category GetCategory(string categoryName)
+        {
+            return _db.Categories.FirstOrDefault(c => c.Name.Equals(categoryName));
+        }
+
         public IQueryable<Blog> GetBlogs(int categoryID)
         {
             return _db.Blogs

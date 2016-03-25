@@ -10,6 +10,13 @@ namespace Models.Repositories.Impl
             _db = new BlogEntities();
         }
 
+        public Tag AddTag(string tagName)
+        {
+            var returns = _db.Tags.Add(new Tag { Name = tagName });
+            SaveChanges();
+            return returns;
+        }
+
         public List<Tag> GetTags()
         {
             return _db.Tags.ToList();

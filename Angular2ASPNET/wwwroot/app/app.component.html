@@ -1,0 +1,25 @@
+﻿<div class="brand">{{title}}</div>
+
+<div class="navbar navbar-default" role="navigation">
+    <ul class="nav navbar-nav navbar-padding">
+        <li>
+            <img src="../img/favicon.png" />
+        </li>
+        <li class="top-padding">
+            <a [routerLink]="['Dashboard']">Home</a><span> | </span>
+            <a [routerLink]="['Blog', 'BlogCreate']">Write a blog!</a><span> | </span>
+            <a>Administration</a><span> | </span>
+            <a>See all blogs</a><span> | </span>
+            <a>See all tags</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="top-padding">
+            <a>Log In</a><span> | </span>
+            <a>Register</a>
+        </li>
+    </ul>
+</div>
+<div id='content'>
+    <router-outlet></router-outlet>
+</div>

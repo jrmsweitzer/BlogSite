@@ -51,7 +51,7 @@ namespace Selenium.Framework
 
         internal static void LogStackTrace()
         {
-            if (_context != null && _context.Result.Status == TestStatus.Failed)
+            if (_context != null && _context.Result.Outcome.Equals(ResultState.Failure))
             {
                 var testname = _context.Test.FullName.Split('.')[2].Split('<')[0];
                 var methodname = _context.Test.Name;

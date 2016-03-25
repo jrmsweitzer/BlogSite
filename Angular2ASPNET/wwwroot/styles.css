@@ -1,0 +1,324 @@
+﻿body {
+    font-family: Gabriola;
+    background: url('img/bg.jpg') center fixed;
+    background-size: 100% 100%;
+}
+
+#content {
+    font-size: 1.5em;
+}
+
+.white {
+    color: white;
+}
+
+.navbar-nav,
+.brand,
+.brand-name {
+    font-family: Gabriola;
+    font-weight: bold;
+}
+
+.errorMessage {
+    color: red;
+}
+
+.successMessage {
+    color: green;
+}
+
+.navbar-nav {
+    float: left;
+    font-weight: 500;
+}
+
+.navbar-padding {
+    padding-left: 16em;
+}
+
+.frontpage-nav {
+    margin: 7.5px -15px;
+    float: left;
+    margin: 0;
+}
+
+.frontpage-nav > li {
+    float: left;
+}
+
+.frontpage-nav > li > a {
+    padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+
+.right-nav {
+    float: right;
+}
+
+.seeMore {
+    float: right;
+}
+
+/* Bootstrap overrides */
+.navbar-default .navbar-nav > li > a,
+.nav > li > span {
+    color: black;
+    font-size: 2.2em;
+}
+
+.navbar-nav .top-padding {
+    padding-top: 1.7em;
+}
+
+.nav > li > a {
+    display: initial;
+}
+
+.navbar-right {
+    float: right;
+    padding-right: 5em;
+}
+
+.carousel-caption {
+    background: white;
+    color: black;
+    border: 1px solid, black;
+}
+
+.carousel-indicators .active {
+    background-color: black;
+}
+
+.carousel-indicators li {
+    border: 1px solid black;
+}
+
+.carousel-indicators {
+    position: relative;
+    bottom: -2.8em;
+}
+
+.box {
+    margin-top: 30px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+.searchBox {
+    float: right;
+    position: relative;
+    width: 30em;
+    right: -1em;
+    top: 0em;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.postTitle {
+    text-align: center;
+    font-size: 2em;
+}
+
+.postCreatedBy {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 1.2em;
+}
+
+.postCreateDate {
+    float: left;
+}
+
+.postCategory {
+    text-align: center;
+}
+
+.postViews {
+    text-align: right;
+}
+
+.landing {
+    margin-top: 30px;
+}
+
+@media screen and (min-width:768px) {
+    .brand {
+        color: #fff;
+        font-size: 6em;
+        font-weight: 700;
+        letter-spacing: 20px;
+        text-align: center;
+    }
+
+    .container-full {
+        width: 100%;
+    }
+
+    .navbar-nav > li > a {
+        line-height: normal;
+    }
+
+    .navbar-nav {
+        float: left;
+    }
+
+    .image404 {
+        width: 100%;
+    }
+
+    .box:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*!
+ * Start Bootstrap - Business Casual Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+}
+
+.img-full {
+    min-width: 100%;
+}
+
+.brand-before,
+.brand-name {
+    text-transform: capitalize;
+}
+
+.brand-before {
+    margin: 15px 0;
+}
+
+.brand-name {
+    margin: 0;
+    font-size: 3em;
+}
+
+.tagline-divider {
+    margin: 15px auto 3px;
+    max-width: 250px;
+    border-color: #999999;
+}
+
+.box {
+    margin-bottom: 20px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.img-border {
+    float: none;
+    margin: 0 auto 0;
+    border: #999999 solid 1px;
+}
+
+.img-left {
+    float: none;
+    margin: 0 auto 0;
+}
+
+footer {
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+footer p {
+    margin: 0;
+    padding: 50px 0;
+}
+
+@media screen and (min-width:768px) {
+
+    .top-divider {
+        margin-top: 0;
+    }
+
+    .img-left {
+        float: left;
+        margin-right: 25px;
+    }
+
+    .address-bar {
+        display: inherit;
+        margin: 0;
+        padding: 0 0 40px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        text-transform: uppercase;
+        font-size: 1.25em;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: #fff;
+    }
+
+    .navbar {
+        border-radius: 0;
+    }
+
+    .navbar-header {
+        display: none;
+    }
+
+    .navbar {
+        min-height: 0;
+        margin-bottom: 0;
+    }
+
+    .navbar-default {
+        border: none;
+        background: #fff;
+        background: rgba(255,255,255,0.9);
+    }
+
+    .nav>li>form {
+        padding: 35px;
+    }
+}
