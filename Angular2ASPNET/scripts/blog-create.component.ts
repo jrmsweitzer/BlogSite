@@ -1,12 +1,11 @@
-﻿import {Component, OnInit} from 'angular2/core';
+﻿import {Component} from "angular2/core";
 
-import {Blog} from './blog';
-import {BlogService} from './blog.service';
+import {BlogService} from "./blog.service";
 
 
 @Component({
-    selector: 'blog-create',
-    templateUrl: 'app/blog-create.component.html',
+    selector: "blog-create",
+    templateUrl: "app/blog-create.component.html",
 })
 
 export class BlogCreateComponent {
@@ -19,8 +18,5 @@ export class BlogCreateComponent {
 
     constructor(
         private _blogService: BlogService) {
-    }
-
-    ngOnInit() {
     }
 }

@@ -1,6 +1,6 @@
-﻿import {Blog} from './blog';
+﻿import {IBlog} from "./blog";
 
-export var BLOGS: Blog[] = [
+export var BLOGS: IBlog[] = [
     {
         "id": 21,
         "userid": 13,

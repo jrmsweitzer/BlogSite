@@ -1,13 +1,12 @@
-﻿import {Component, OnInit} from 'angular2/core';
-import {Router} from 'angular2/router';
-import {Hero} from './hero';
-import {HeroDetailComponent} from './hero-detail.component';
-import {HeroService} from './hero.service';
+﻿import {Component, OnInit} from "angular2/core";
+import {Router} from "angular2/router";
+import {IHero} from "./hero";
+import {HeroService} from "./hero.service";
 
 @Component({
-    selector: 'my-heroes',
-    templateUrl: 'app/heroes.component.html',
-    styleUrls: ['app/heroes.component.css']
+    selector: "my-heroes",
+    templateUrl: "app/heroes.component.html",
+    styleUrls: ["app/heroes.component.css"]
 })
 
 export class HeroListComponent implements OnInit {
@@ -19,11 +18,11 @@ export class HeroListComponent implements OnInit {
         this.getHeroes();
     }
 
-    title = 'Tour of Heroes';
-    heroes: Hero[];
-    selectedHero: Hero;
+    title = "Tour of Heroes";
+    heroes: IHero[];
+    selectedHero: IHero;
 
-    onSelect(hero: Hero) {
+    onSelect(hero: IHero) {
         this.selectedHero = hero;
     }
 
@@ -32,6 +31,6 @@ export class HeroListComponent implements OnInit {
     }
 
     gotoDetail() {
-        this._router.navigate(['HeroDetail', { id: this.selectedHero.id }]);
+        this._router.navigate(["HeroDetail", { id: this.selectedHero.id }]);
     }
 }
