@@ -3,6 +3,7 @@ import {RouteConfig, RouterOutlet, RouterLink, ROUTER_DIRECTIVES} from "angular2
 
 import {BlogCreateComponent} from "./blog-create.component";
 import {BlogListComponent} from "./blog-list.component";
+import {BlogDetailComponent} from "./blog-detail.component";
 import {BlogService} from "./blog.service";
 
 @Component({
@@ -20,6 +21,11 @@ import {BlogService} from "./blog.service";
         path: "/create",
         name: "BlogCreate",
         component: BlogCreateComponent
+    },
+    {
+        path: '/detail/:id',
+        name: "BlogDetail",
+        component: BlogDetailComponent
     }
 ])
 export class BlogComponent {
