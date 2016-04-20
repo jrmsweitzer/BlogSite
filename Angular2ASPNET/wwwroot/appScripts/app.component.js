@@ -8,11 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// CORE
 var core_1 = require("angular2/core");
 var router_1 = require("angular2/router");
+// CUSTOM
 var dashboard_component_1 = require("./dashboard.component");
 var blog_component_1 = require("./blog.component");
-var hero_service_1 = require("./hero.service");
 var blog_service_1 = require("./blog.service");
 var AppComponent = (function () {
     function AppComponent() {
@@ -25,7 +26,6 @@ var AppComponent = (function () {
             styleUrls: ["app/app.component.css"],
             providers: [
                 router_1.ROUTER_PROVIDERS,
-                hero_service_1.HeroService,
                 blog_service_1.BlogService]
         }),
         router_1.RouteConfig([

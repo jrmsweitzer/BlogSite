@@ -1,6 +1,4 @@
-﻿import {Component, OnInit} from "angular2/core";
-import {IHero} from "./hero";
-import {HeroService} from "./hero.service";
+﻿import {Component} from "angular2/core";
 import {Router} from "angular2/router";
 
 @Component({
@@ -9,21 +7,8 @@ import {Router} from "angular2/router";
     styleUrls: ["app/dashboard.component.css"]
 })
 
-export class DashboardComponent implements OnInit {
-
-    heroes: IHero[] = [];
+export class DashboardComponent {
 
     constructor(
-        private _heroService: HeroService,
         private _router: Router) { }
-
-    ngOnInit() {
-        this._heroService.getHeroes()
-            .then(heroes => this.heroes = heroes.slice(1, 5));
-    }
-
-    gotoDetail(hero: IHero) {
-        let link = ["HeroDetail", { id: hero.id }];
-        this._router.navigate(link);
-    }
 }

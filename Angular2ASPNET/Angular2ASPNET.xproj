@@ -23,5 +23,9 @@
     <DnxInvisibleFolder Include="wwwroot\appScripts\" />
     <DnxInvisibleFolder Include="wwwroot\libs\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>
