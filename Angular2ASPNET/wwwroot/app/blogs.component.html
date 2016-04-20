@@ -1,4 +1,20 @@
-﻿<h2>My Blogs</h2>
+<div class="container box" *ngFor="#blog of blogs">
+    <div class="col-md-3">
+        <a [routerLink]="['BlogDetail', {id:blog.id}]">
+            <img src="/img/intro-pic.jpg" class="col-md-12" />
+        </a>
+    </div>
+    <div class="col-md-9">
+        <a [routerLink]="['BlogDetail', {id:blog.id}]">
+            {{blog.title}}
+        </a><span> - </span>
+        {{blog.UserUserName}}
+    </div>
+</div>
+
+
+
+<!--<h2>My Blogs</h2>
 <ul class="blogs">
     <li *ngFor="#blog of blogs"
         [class.selected]="blog === selectedBlog"
@@ -9,4 +25,4 @@
 <div *ngIf="selectedBlog">
     <h2>{{selectedBlog.title}}</h2>
     <button (click)="gotoDetail()">View Details</button>
-</div>
+</div>-->

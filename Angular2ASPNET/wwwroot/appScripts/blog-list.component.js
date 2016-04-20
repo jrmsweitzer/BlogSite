@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
-var blog_service_1 = require('./blog.service');
+var core_1 = require("angular2/core");
+var router_1 = require("angular2/router");
+var blog_service_1 = require("./blog.service");
 var BlogListComponent = (function () {
     function BlogListComponent(_blogService, _router) {
         this._blogService = _blogService;
@@ -28,13 +28,13 @@ var BlogListComponent = (function () {
         this._blogService.getBlogs().then(function (blogs) { return _this.blogs = blogs; });
     };
     BlogListComponent.prototype.gotoDetail = function () {
-        this._router.navigate(['BlogDetail', { id: this.selectedBlog.id }]);
+        this._router.navigate(["BlogDetail", { id: this.selectedBlog.id }]);
     };
     BlogListComponent = __decorate([
         core_1.Component({
-            selector: 'my-blogs',
-            templateUrl: 'app/blogs.component.html',
-            styleUrls: ['app/blogs.component.css']
+            selector: "my-blogs",
+            templateUrl: "app/blogs.component.html",
+            styleUrls: ["app/blogs.component.css"]
         }), 
         __metadata('design:paramtypes', [blog_service_1.BlogService, router_1.Router])
     ], BlogListComponent);

@@ -54,6 +54,7 @@ gulp.task('moveToLibs', function (done) {
       'node_modules/angular2/router.js',
       'node_modules/angular2/bundles/router.*.js*',
       'node_modules/es6-shim/es6-shim.min.js*',
+      'node_modules/es6-shim/es6-shim.map',
       'node_modules/angular2/es6/dev/src/testing/shims_for_IE.js',
       'node_modules/systemjs/dist/*.*',
       'node_modules/jquery/dist/jquery.*js',

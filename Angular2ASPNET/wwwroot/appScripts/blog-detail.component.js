@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
-var blog_service_1 = require('./blog.service');
+var core_1 = require("angular2/core");
+var router_1 = require("angular2/router");
+var blog_service_1 = require("./blog.service");
 var BlogDetailComponent = (function () {
     function BlogDetailComponent(_blogService, _routeParams, _router) {
         this._blogService = _blogService;
@@ -19,7 +19,7 @@ var BlogDetailComponent = (function () {
     }
     BlogDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var id = +this._routeParams.get('id');
+        var id = +this._routeParams.get("id");
         this._blogService.getBlog(id)
             .then(function (blog) { return _this.blog = blog; });
     };
@@ -27,12 +27,12 @@ var BlogDetailComponent = (function () {
         window.history.back();
     };
     BlogDetailComponent.prototype.edit = function (id) {
-        this._router.navigate(['BlogEdit', { id: id }]);
+        this._router.navigate(["BlogEdit", { id: id }]);
     };
     BlogDetailComponent = __decorate([
         core_1.Component({
-            selector: 'my-blog-detail',
-            templateUrl: 'app/blog-detail.component.html'
+            selector: "my-blog-detail",
+            templateUrl: "app/blog-detail.component.html"
         }), 
         __metadata('design:paramtypes', [blog_service_1.BlogService, router_1.RouteParams, router_1.Router])
     ], BlogDetailComponent);

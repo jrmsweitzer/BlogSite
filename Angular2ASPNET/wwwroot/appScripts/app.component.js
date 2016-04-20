@@ -8,21 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
-var dashboard_component_1 = require('./dashboard.component');
-var blog_component_1 = require('./blog.component');
-var hero_service_1 = require('./hero.service');
-var blog_service_1 = require('./blog.service');
+var core_1 = require("angular2/core");
+var router_1 = require("angular2/router");
+var dashboard_component_1 = require("./dashboard.component");
+var blog_component_1 = require("./blog.component");
+var hero_service_1 = require("./hero.service");
+var blog_service_1 = require("./blog.service");
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Welcome';
+        this.title = "Welcome";
     }
     AppComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            templateUrl: 'app/app.component.html',
-            styleUrls: ['app/app.component.css'],
+            selector: "my-app",
+            templateUrl: "app/app.component.html",
+            styleUrls: ["app/app.component.css"],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [
                 router_1.ROUTER_PROVIDERS,
@@ -31,14 +31,14 @@ var AppComponent = (function () {
         }),
         router_1.RouteConfig([
             {
-                path: '/dashboard',
-                name: 'Dashboard',
+                path: "/dashboard",
+                name: "Dashboard",
                 component: dashboard_component_1.DashboardComponent,
                 useAsDefault: true
             },
             {
-                path: '/blog/...',
-                name: 'Blog',
+                path: "/blog/...",
+                name: "Blog",
                 component: blog_component_1.BlogComponent,
             },
         ]), 

@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
-var blog_service_1 = require('./blog.service');
+var core_1 = require("angular2/core");
+var router_1 = require("angular2/router");
+var blog_service_1 = require("./blog.service");
 var BlogEditComponent = (function () {
     function BlogEditComponent(_blogService, _routeParams) {
         this._blogService = _blogService;
@@ -18,7 +18,7 @@ var BlogEditComponent = (function () {
     }
     BlogEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var id = +this._routeParams.get('id');
+        var id = +this._routeParams.get("id");
         this._blogService.getBlog(id)
             .then(function (blog) { return _this.blog = blog; });
     };
@@ -27,8 +27,8 @@ var BlogEditComponent = (function () {
     };
     BlogEditComponent = __decorate([
         core_1.Component({
-            selector: 'blog-edit',
-            templateUrl: 'app/blog-edit.component.html'
+            selector: "blog-edit",
+            templateUrl: "app/blog-edit.component.html"
         }), 
         __metadata('design:paramtypes', [blog_service_1.BlogService, router_1.RouteParams])
     ], BlogEditComponent);

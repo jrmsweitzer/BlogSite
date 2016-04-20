@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
-var hero_service_1 = require('./hero.service');
+var core_1 = require("angular2/core");
+var router_1 = require("angular2/router");
+var hero_service_1 = require("./hero.service");
 var HeroDetailComponent = (function () {
     function HeroDetailComponent(_heroService, _routeParams) {
         this._heroService = _heroService;
@@ -18,7 +18,7 @@ var HeroDetailComponent = (function () {
     }
     HeroDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var id = +this._routeParams.get('id');
+        var id = +this._routeParams.get("id");
         this._heroService.getHero(id)
             .then(function (hero) { return _this.hero = hero; });
     };
@@ -27,8 +27,8 @@ var HeroDetailComponent = (function () {
     };
     HeroDetailComponent = __decorate([
         core_1.Component({
-            selector: 'my-hero-detail',
-            templateUrl: 'app/hero-detail.component.html'
+            selector: "my-hero-detail",
+            templateUrl: "app/hero-detail.component.html"
         }), 
         __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.RouteParams])
     ], HeroDetailComponent);
