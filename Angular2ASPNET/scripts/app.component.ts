@@ -1,21 +1,18 @@
-﻿import {Component} from "angular2/core";
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouterLink, RouterOutlet} from "angular2/router";
+﻿// CORE
+import {Component} from "angular2/core";
+import {RouteConfig, ROUTER_PROVIDERS} from "angular2/router";
 
+// CUSTOM
 import {DashboardComponent}  from "./dashboard.component";
-
 import {BlogComponent}       from "./blog.component";
-
-import {HeroService}         from "./hero.service";
 import {BlogService}         from "./blog.service";
 
 @Component({
     selector: "my-app",
     templateUrl: "app/app.component.html",
     styleUrls: ["app/app.component.css"],
-    directives: [ROUTER_DIRECTIVES, RouterLink, RouterOutlet],
     providers: [
         ROUTER_PROVIDERS,
-        HeroService,
         BlogService]
 })
 
@@ -26,7 +23,7 @@ import {BlogService}         from "./blog.service";
         component: DashboardComponent,
         useAsDefault: true
     },
-    { // blog child route...
+    {
         path: "/blog/...",
         name: "Blog",
         component: BlogComponent,

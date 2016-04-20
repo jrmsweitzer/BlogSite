@@ -12,6 +12,7 @@ var core_1 = require("angular2/core");
 var router_1 = require("angular2/router");
 var blog_create_component_1 = require("./blog-create.component");
 var blog_list_component_1 = require("./blog-list.component");
+var blog_detail_component_1 = require("./blog-detail.component");
 var blog_service_1 = require("./blog.service");
 var BlogComponent = (function () {
     function BlogComponent() {
@@ -19,7 +20,6 @@ var BlogComponent = (function () {
     BlogComponent = __decorate([
         core_1.Component({
             template: "<router-outlet></router-outlet>",
-            directives: [router_1.RouterOutlet],
             providers: [blog_service_1.BlogService]
         }),
         router_1.RouteConfig([
@@ -32,6 +32,11 @@ var BlogComponent = (function () {
                 path: "/create",
                 name: "BlogCreate",
                 component: blog_create_component_1.BlogCreateComponent
+            },
+            {
+                path: '/detail/:id',
+                name: "BlogDetail",
+                component: blog_detail_component_1.BlogDetailComponent
             }
         ]), 
         __metadata('design:paramtypes', [])
