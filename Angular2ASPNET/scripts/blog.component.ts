@@ -1,5 +1,5 @@
 ﻿import {Component} from "angular2/core";
-import {RouteConfig, RouterOutlet} from "angular2/router";
+import {RouteConfig, RouterOutlet, RouterLink, ROUTER_DIRECTIVES} from "angular2/router";
 
 import {BlogCreateComponent} from "./blog-create.component";
 import {BlogListComponent} from "./blog-list.component";
@@ -7,7 +7,7 @@ import {BlogService} from "./blog.service";
 
 @Component({
     template: "<router-outlet></router-outlet>",
-    directives: [RouterOutlet],
+    directives: [RouterOutlet, RouterLink, ROUTER_DIRECTIVES],
     providers: [BlogService]
 })
 @RouteConfig([

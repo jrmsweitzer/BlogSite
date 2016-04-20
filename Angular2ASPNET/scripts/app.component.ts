@@ -1,5 +1,5 @@
 ﻿import {Component} from "angular2/core";
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from "angular2/router";
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouterLink, RouterOutlet} from "angular2/router";
 
 import {DashboardComponent}  from "./dashboard.component";
 
@@ -12,7 +12,7 @@ import {BlogService}         from "./blog.service";
     selector: "my-app",
     templateUrl: "app/app.component.html",
     styleUrls: ["app/app.component.css"],
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, RouterLink, RouterOutlet],
     providers: [
         ROUTER_PROVIDERS,
         HeroService,
