@@ -164,6 +164,10 @@
         float: left;
     }
 
+    .navbar-right {
+        margin-right: 0px;
+    }
+
     .image404 {
         width: 100%;
     }
